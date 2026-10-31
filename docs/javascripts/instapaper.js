@@ -210,8 +210,9 @@ document$.subscribe(() => {
     const firstPara = g.nodes.find((el) => el.tagName === 'P' && clean(el.textContent).length > 20);
     let glimpse = '';
     if (isSyllabus) {
-      const items = g.nodes.flatMap((el) => Array.from(el.querySelectorAll ? el.querySelectorAll('li') : []));
-      const lines = items.length ? items.map((li) => clean(li.firstChild ? li.textContent : '').split(/\s+[—–-]\s+/)[0]) : [clean(g.nodes.map((n) => n.textContent).join(' '))];
+      const items = g.nodes.flatMap((el) => (el.tagName === 'OL' || el.tagName === 'UL') ? Array.from(el.children).filter((li) => li.tagName === 'LI') : []);
+      const topText = (li) => { const n = Array.from(li.childNodes).find((c) => c.nodeType === 3 && clean(c.textContent)); return clean(n ? n.textContent : li.textContent); };
+      const lines = items.length ? items.map((li) => topText(li).split(/\s+[—–-]\s+/)[0]) : [clean(g.nodes.map((n) => n.textContent).join(' '))];
       glimpse = lines.join(' · ');
       if (glimpse.length > 170) glimpse = glimpse.slice(0, 167).trimEnd() + '...';
     } else if (firstPara) {
