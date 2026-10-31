@@ -112,7 +112,8 @@ Rules (the checker `scripts/check_content.py` enforces most of these):
 9. Keep answers as short as the marks allow. Wide tables scroll badly on phones; prefer lists.
 10. If you are not sure an answer is correct, add `!!! warning "Verify this"` inside it.
 11. A page with no questions yet is just the title and `!!! note "No questions yet"`. It has no `## Q` headings.
-12. The old wrapper format (`<div class="question-article" data-title=...>`) and `??? success` collapsibles are **gone**. Don't bring them back; the checker rejects them.
+12. **Answer length = marks.** Write exactly as many bullet points as the question has marks: 2 marks = 2 bullet points, 5 marks = 5 points, 10 marks = 10 points. One idea per bullet (a bullet may be one or two sentences). Keep the diagram if one helps; don't add extra sub-headings or long tables for small questions.
+13. The old wrapper format (`<div class="question-article" data-title=...>`) and `??? success` collapsibles are **gone**. Don't bring them back; the checker rejects them.
 
 ## 7. Recipes: how to make common changes (do exactly this, nothing more)
 
