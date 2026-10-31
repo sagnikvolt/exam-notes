@@ -5,8 +5,7 @@ hide: [toc]
 <div class="hero-container" markdown="1">
 <div class="hero-badge">B.Tech Electrical Engineering · IEM Kolkata (2023–27)</div>
 
-# IEM Kolkata EE Exam Prep
-{: .hero-title }
+# IEM Kolkata EE Exam Prep { .hero-title }
 
 Your focused revision companion for Mid-Sem and End-Sem exams. Concise, verified question banks, step-by-step derivations, and high-contrast circuit diagrams.
 {: .hero-subtitle }

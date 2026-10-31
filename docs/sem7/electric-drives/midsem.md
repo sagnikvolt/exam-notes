@@ -3,10 +3,9 @@ title: Electric Drives — Mid Sem Q&A
 hide: [toc]
 ---
 
-# Electric Drives — Mid Sem
-{: .instapaper-subject-title }
+# Electric Drives — Mid Sem { .instapaper-subject-title }
 
-<div class="instapaper-container">
+<div class="instapaper-container" markdown="1">
 
 <!-- QUESTION 1 -->
 <div class="question-article" id="q1" 
@@ -14,7 +13,7 @@ hide: [toc]
      data-title="Describe the 4-quadrant operation of an electrical drive."
      data-meta="PEC-EE 701C · 5 marks · Mid Sem · 2 min read"
      data-glimpse="An electric drive operates in four distinct quadrants on the torque-speed plane depending on the sign of angular speed and torque..."
-     data-thumb="img/four-quadrant-operation.svg" markdown="1">
+     data-thumb="../img/four-quadrant-operation.svg" markdown="1">
 
 ## Q1. Describe the 4-quadrant operation of an electrical drive. <small>(5 marks · Mid Sem)</small>
 
@@ -23,7 +22,7 @@ An electric drive operates across four distinct quadrants on the torque-speed ($
 </div>
 
 <figure class="article-illustration">
-  <img src="img/four-quadrant-operation.svg" alt="4-Quadrant Operation of an Electrical Drive" loading="lazy" />
+  <img src="../img/four-quadrant-operation.svg" alt="4-Quadrant Operation of an Electrical Drive" loading="lazy" />
   <figcaption>Illustration: 4-Quadrant Drive Operating Characteristics on the Torque-Speed Plane</figcaption>
 </figure>
 
@@ -61,7 +60,7 @@ An electric motor can operate either as a motor (converting electrical power to 
      data-title="Derive the torque-speed equation for a separately excited DC motor."
      data-meta="PEC-EE 701C · 5 marks · Mid Sem · 3 min read"
      data-glimpse="Under steady-state DC conditions, armature terminal voltage V = Eb + Ia·Ra. Using Eb = KΦω and T = KΦIa, solving for speed yields ω = V/(KΦ) - (Ra/(KΦ)²)T..."
-     data-thumb="img/separately-excited-dc-motor.svg" markdown="1">
+     data-thumb="../img/separately-excited-dc-motor.svg" markdown="1">
 
 ## Q2. Derive the torque-speed equation for a separately excited DC motor. <small>(5 marks · Mid Sem)</small>
 
@@ -70,7 +69,7 @@ The steady-state torque-speed characteristic of a separately excited DC motor re
 </div>
 
 <figure class="article-illustration">
-  <img src="img/separately-excited-dc-motor.svg" alt="Separately Excited DC Motor Circuit Diagram" loading="lazy" />
+  <img src="../img/separately-excited-dc-motor.svg" alt="Separately Excited DC Motor Circuit Diagram" loading="lazy" />
   <figcaption>Illustration: Separately Excited DC Motor Equivalent Circuit Schematic</figcaption>
 </figure>
 
@@ -122,7 +121,7 @@ $$ \omega = \frac{V}{K \Phi} - \frac{R_a}{(K \Phi)^2} T $$
      data-title="Explain the principle of regenerative braking in a chopper-fed DC drive."
      data-meta="PEC-EE 701C · 5 marks · Mid Sem · 3 min read"
      data-glimpse="During regenerative braking, the DC motor acts as a generator. A step-up (boost) chopper configuration allows returning kinetic energy into the higher voltage DC bus..."
-     data-thumb="img/chopper-regenerative-braking.svg" markdown="1">
+     data-thumb="../img/chopper-regenerative-braking.svg" markdown="1">
 
 ## Q3. Explain the principle of regenerative braking in a chopper-fed DC drive. <small>(5 marks · Mid Sem)</small>
 
@@ -131,7 +130,7 @@ Regenerative braking in a chopper-fed DC drive operates on the step-up (boost) c
 </div>
 
 <figure class="article-illustration">
-  <img src="img/chopper-regenerative-braking.svg" alt="Chopper-fed DC Drive Regenerative Braking" loading="lazy" />
+  <img src="../img/chopper-regenerative-braking.svg" alt="Chopper-fed DC Drive Regenerative Braking" loading="lazy" />
   <figcaption>Illustration: Step-Up Chopper Topology for DC Motor Regenerative Braking</figcaption>
 </figure>
 
@@ -165,7 +164,7 @@ By dynamically varying the duty ratio $\delta$, the effective braking torque and
      data-title="Explain scalar (V/f) speed control of a 3-phase induction motor."
      data-meta="PEC-EE 701C · 5 marks · Mid Sem · 4 min read"
      data-glimpse="Scalar control maintains a constant ratio of stator voltage to supply frequency below base speed to keep the air-gap magnetic flux constant and avoid magnetic saturation..."
-     data-thumb="img/vf-control-induction-motor.svg" markdown="1">
+     data-thumb="../img/vf-control-induction-motor.svg" markdown="1">
 
 ## Q4. Explain scalar (V/f) speed control of a 3-phase induction motor. <small>(5 marks · Mid Sem)</small>
 
@@ -174,7 +173,7 @@ Scalar $V/f$ control regulates the synchronous speed of a 3-phase induction moto
 </div>
 
 <figure class="article-illustration">
-  <img src="img/vf-control-induction-motor.svg" alt="Scalar V/f Speed Control Characteristics" loading="lazy" />
+  <img src="../img/vf-control-induction-motor.svg" alt="Scalar V/f Speed Control Characteristics" loading="lazy" />
   <figcaption>Illustration: Induction Motor Torque-Speed Curves under Variable Frequency (V/f) Control</figcaption>
 </figure>
 

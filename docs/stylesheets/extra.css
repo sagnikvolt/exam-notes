@@ -1,205 +1,376 @@
 /* ==========================================================================
-   Instapaper 3-Pane Reader Design System for Exam Notes
-   Matches: Extreme Left Nav | Middle Question Feed | Right Reading Pane
+   Examnotes Instapaper Exact 3-Pane Interface Stylesheet
+   Extreme Left Nav | Middle Feed | Right Reader
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Typography & Global Resets
+   1. Typography & Colors (Exact Instapaper Specs)
    -------------------------------------------------------------------------- */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 :root {
-  --ip-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --ip-font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --ip-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --ip-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   
-  /* Light Mode Colors */
   --ip-bg-left: #f6f6f5;
   --ip-bg-middle: #ffffff;
   --ip-bg-right: #ffffff;
-  --ip-border: #e5e7eb;
-  --ip-border-subtle: #f1f5f9;
-  --ip-text-main: #0f172a;
-  --ip-text-body: #1e293b;
-  --ip-text-muted: #64748b;
-  --ip-active-card-bg: #eff6ff;
-  --ip-active-card-border: #3b82f6;
-  --ip-hover-card: #f8fafc;
+  --ip-border: #e8e8e7;
+  --ip-border-light: #f1f1f0;
+  
+  --ip-text-title: #1a1a1a;
+  --ip-text-body: #222222;
+  --ip-text-meta: #8c8c8b;
+  --ip-text-glimpse: #555555;
+  
+  --ip-active-blue: #2563eb;
+  --ip-hover-gray: #ebebea;
+  --ip-active-pill: #ebebea;
 }
 
 [data-md-color-scheme="slate"] {
-  /* Dark Mode Colors */
   --ip-bg-left: #18181b;
   --ip-bg-middle: #1e1e24;
   --ip-bg-right: #18181b;
   --ip-border: #27272a;
-  --ip-border-subtle: #27272a;
-  --ip-text-main: #f8fafc;
-  --ip-text-body: #e2e8f0;
-  --ip-text-muted: #94a3b8;
-  --ip-active-card-bg: rgba(59, 130, 246, 0.14);
-  --ip-active-card-border: #3b82f6;
-  --ip-hover-card: rgba(255, 255, 255, 0.04);
-}
-
-/* Hide standard MkDocs TOC sidebar on desktop when Instapaper app is active */
-.instapaper-subject-title {
-  display: none !important;
-}
-
-/* --------------------------------------------------------------------------
-   2. Extreme Left Panel: MkDocs Navigation Sidebar (.md-sidebar--primary)
-   -------------------------------------------------------------------------- */
-.md-sidebar--primary {
-  background-color: var(--ip-bg-left) !important;
-  border-right: 1px solid var(--ip-border) !important;
-}
-
-.md-sidebar--primary .md-nav {
-  font-family: var(--ip-font-sans) !important;
-}
-
-.md-sidebar--primary .md-nav__title {
-  font-weight: 800 !important;
-  font-size: 1.15rem !important;
-  color: var(--ip-text-main) !important;
-  letter-spacing: -0.01em;
-  padding: 1rem 1rem 0.5rem;
-}
-
-.md-sidebar--primary .md-nav__item {
-  padding: 2px 8px;
-}
-
-.md-sidebar--primary .md-nav__link {
-  font-size: 0.88rem !important;
-  color: var(--ip-text-muted) !important;
-  font-weight: 500 !important;
-  border-radius: 6px !important;
-  padding: 6px 10px !important;
-  transition: all 0.15s ease;
-}
-
-.md-sidebar--primary .md-nav__link:hover {
-  background-color: var(--ip-hover-card) !important;
-  color: var(--ip-text-main) !important;
-}
-
-.md-sidebar--primary .md-nav__link--active {
-  background-color: var(--ip-active-card-bg) !important;
-  color: var(--ip-active-card-border) !important;
-  font-weight: 700 !important;
+  --ip-border-light: #222226;
+  
+  --ip-text-title: #f4f4f5;
+  --ip-text-body: #e4e4e7;
+  --ip-text-meta: #a1a1aa;
+  --ip-text-glimpse: #d4d4d8;
+  
+  --ip-active-blue: #3b82f6;
+  --ip-hover-gray: rgba(255, 255, 255, 0.06);
+  --ip-active-pill: #27272a;
 }
 
 /* --------------------------------------------------------------------------
-   3. Main 3-Pane Layout Wrapper (.instapaper-app)
+   2. Desktop Layout: Seamless Full-Height 3-Pane Window
    -------------------------------------------------------------------------- */
 @media (min-width: 960px) {
-  /* Expand main container to full width on desktop for 3-pane experience */
-  .md-main__inner {
-    max-width: 100% !important;
+  .md-header {
+    display: none !important;
+  }
+
+  .md-container {
     margin: 0 !important;
     padding: 0 !important;
   }
-  
+
+  .md-main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .md-main__inner {
+    margin: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+  }
+
   .md-sidebar--secondary {
     display: none !important;
   }
 
+  /* Extreme Left Panel (.md-sidebar--primary) */
+  .md-sidebar--primary {
+    position: sticky !important;
+    top: 0 !important;
+    align-self: flex-start !important;
+    width: 240px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
+    height: 100vh !important;
+    background-color: var(--ip-bg-left) !important;
+    border-right: 1px solid var(--ip-border) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: hidden !important;
+    z-index: 20 !important;
+  }
+
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    height: 100% !important;
+    margin: 0 !important;
+  }
+
+  .md-sidebar--primary .md-sidebar__inner {
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Main Content Area */
   .md-content {
+    flex: 1 !important;
+    min-width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-    height: calc(100vh - 48px);
-    overflow: hidden;
   }
 
   .md-content__inner {
-    padding: 0 !important;
     margin: 0 !important;
-    height: 100%;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Question pages only: lock to the viewport and let each pane scroll on its own.
+     Every other page (home, overview) scrolls normally. */
+  .md-main__inner:has(.instapaper-container, .instapaper-app),
+  .md-content:has(.instapaper-container, .instapaper-app) {
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  .md-content__inner:has(.instapaper-container, .instapaper-app) {
+    height: 100% !important;
+  }
+
+  /* Normal pages: keep the text off the screen edges */
+  .md-content__inner:not(:has(.instapaper-container, .instapaper-app)) {
+    padding: 24px clamp(20px, 4vw, 56px) 64px !important;
   }
 
   .instapaper-app {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    display: flex !important;
+    width: 100% !important;
+    height: 100vh !important;
+    overflow: hidden !important;
   }
+}
+
+/* --------------------------------------------------------------------------
+   3. Extreme Left Panel: Clean Instapaper Sidebar Structure
+   -------------------------------------------------------------------------- */
+.ip-sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.ip-brand-header {
+  padding: 24px 20px 18px;
+  font-family: var(--ip-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ip-text-title);
+  letter-spacing: -0.02em;
+}
+
+.ip-nav-list {
+  flex: 1;
+  padding: 4px 10px;
+  overflow-y: auto;
+}
+
+.ip-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 12px;
+  margin-bottom: 3px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-family: var(--ip-sans);
+  font-size: 13.5px;
+  color: var(--ip-text-body) !important;
+  transition: background 0.12s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ip-nav-row:hover {
+  background-color: var(--ip-hover-gray);
+  color: var(--ip-text-title) !important;
+}
+
+.ip-nav-row.is-active {
+  background-color: var(--ip-active-pill) !important;
+  color: var(--ip-text-title) !important;
+  font-weight: 600 !important;
+}
+
+.ip-row-icon {
+  color: #555555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+[data-md-color-scheme="slate"] .ip-row-icon {
+  color: #a1a1aa;
+}
+
+.ip-nav-row.is-active .ip-row-icon {
+  color: var(--ip-text-title);
+}
+
+.ip-row-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ip-row-badge {
+  font-size: 12px;
+  color: var(--ip-text-meta);
+  font-weight: 400;
+}
+
+.ip-section-heading {
+  padding: 16px 12px 6px;
+  font-family: var(--ip-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ip-text-meta);
+  letter-spacing: 0.02em;
+}
+
+/* User Profile Footer */
+.ip-user-footer {
+  margin-top: auto;
+  padding: 14px 18px;
+  border-top: 1px solid var(--ip-border);
+  background-color: var(--ip-bg-left);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ip-text-title);
+}
+
+.ip-user-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #3b82f6;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.ip-user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ip-user-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ip-user-more {
+  color: var(--ip-text-meta);
+  cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------
    4. Middle Section: Question Feed (.instapaper-feed)
    -------------------------------------------------------------------------- */
 .instapaper-feed {
-  width: 390px;
-  min-width: 360px;
-  max-width: 420px;
+  width: 370px;
+  min-width: 350px;
+  max-width: 390px;
+  height: 100%;
   background-color: var(--ip-bg-middle);
   border-right: 1px solid var(--ip-border);
   display: flex;
   flex-direction: column;
-  height: 100%;
   overflow: hidden;
 }
 
 .instapaper-feed-header {
-  padding: 14px 16px 12px;
-  border-bottom: 1px solid var(--ip-border-subtle);
-  background: var(--ip-bg-middle);
-}
-
-.feed-header-top {
+  height: 52px;
+  min-height: 52px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--ip-border);
+  background-color: var(--ip-bg-middle);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
 }
 
-.feed-header-title {
+.feed-header-left {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--ip-font-sans);
+  gap: 6px;
+  font-family: var(--ip-sans);
+}
+
+.feed-home-icon {
+  font-size: 17px;
+  color: var(--ip-text-title);
+}
+
+.feed-home-title {
   font-size: 15px;
   font-weight: 700;
-  color: var(--ip-text-main);
+  color: var(--ip-text-title);
 }
 
-.feed-icon {
-  font-size: 14px;
+.feed-count {
+  font-size: 13px;
+  color: var(--ip-text-meta);
+  margin-left: 2px;
 }
 
-.feed-count-badge {
-  background-color: var(--ip-border);
-  color: var(--ip-text-muted);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 999px;
+.feed-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.feed-action-btn {
+.feed-icon-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  color: var(--ip-text-muted);
+  color: var(--ip-text-meta);
   padding: 4px;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.feed-icon-btn:hover {
+  color: var(--ip-text-title);
+}
+
+.feed-search-drawer {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--ip-border);
+  background-color: var(--ip-bg-left);
 }
 
 .feed-search-input {
   width: 100%;
-  padding: 7px 12px;
-  border-radius: 6px;
-  border: 1px solid var(--ip-border);
-  background-color: var(--ip-bg-left);
-  color: var(--ip-text-main);
+  padding: 6px 10px;
   font-size: 13px;
-  font-family: var(--ip-font-sans);
+  font-family: var(--ip-sans);
+  border: 1px solid var(--ip-border);
+  border-radius: 6px;
   outline: none;
-  transition: border-color 0.15s ease;
-}
-
-.feed-search-input:focus {
-  border-color: var(--ip-active-card-border);
+  background-color: var(--ip-bg-middle);
+  color: var(--ip-text-title);
 }
 
 .instapaper-card-list {
@@ -208,7 +379,6 @@
   padding: 8px;
 }
 
-/* Question Cards */
 .instapaper-card {
   display: flex;
   gap: 12px;
@@ -220,18 +390,22 @@
   border: 1.5px solid transparent;
   background-color: var(--ip-bg-middle);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.12s ease;
   user-select: none;
 }
 
 .instapaper-card:hover {
-  background-color: var(--ip-hover-card);
+  background-color: #fafaf9;
+}
+
+[data-md-color-scheme="slate"] .instapaper-card:hover {
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 .instapaper-card.is-active {
-  border-color: var(--ip-active-card-border) !important;
-  background-color: var(--ip-active-card-bg) !important;
-  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.12);
+  border-color: var(--ip-active-blue) !important;
+  background-color: var(--ip-bg-middle) !important;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.08);
 }
 
 .card-body {
@@ -240,11 +414,11 @@
 }
 
 .card-title {
-  font-family: var(--ip-font-sans) !important;
-  font-size: 14px !important;
+  font-family: var(--ip-sans) !important;
+  font-size: 14.5px !important;
   font-weight: 700 !important;
-  color: var(--ip-text-main) !important;
-  line-height: 1.35 !important;
+  color: var(--ip-text-title) !important;
+  line-height: 1.32 !important;
   margin: 0 0 4px 0 !important;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -253,18 +427,18 @@
 }
 
 .card-meta {
-  font-family: var(--ip-font-sans);
+  font-family: var(--ip-sans);
   font-size: 11.5px;
-  color: var(--ip-text-muted);
+  color: var(--ip-text-meta);
   margin-bottom: 5px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .card-glimpse {
-  font-family: var(--ip-font-sans);
+  font-family: var(--ip-sans);
   font-size: 12.5px;
-  color: var(--ip-text-muted);
-  line-height: 1.4;
+  color: var(--ip-text-glimpse);
+  line-height: 1.42;
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -273,12 +447,12 @@
 }
 
 .card-thumb {
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
   border-radius: 6px;
-  overflow: hidden;
   border: 1px solid var(--ip-border);
+  overflow: hidden;
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -304,12 +478,14 @@
 }
 
 .instapaper-toolbar {
+  height: 52px;
+  min-height: 52px;
+  padding: 0 28px;
+  border-bottom: 1px solid var(--ip-border);
+  background-color: var(--ip-bg-right);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 24px;
-  border-bottom: 1px solid var(--ip-border-subtle);
-  background: var(--ip-bg-right);
+  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -319,38 +495,44 @@
 .toolbar-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
 }
 
 .toolbar-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 15px;
-  color: var(--ip-text-muted);
-  padding: 5px 8px;
-  border-radius: 4px;
-  font-family: var(--ip-font-sans);
-  transition: all 0.15s ease;
+  color: var(--ip-text-meta);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ip-sans);
+  transition: color 0.15s ease;
 }
 
 .toolbar-btn:hover {
-  color: var(--ip-text-main);
-  background-color: var(--ip-hover-card);
+  color: var(--ip-text-title);
 }
 
-.toolbar-btn.favorite-btn.is-favorited {
-  color: #ef4444 !important;
+.toolbar-btn.fav-btn.is-favorited svg {
+  fill: #ef4444;
+  stroke: #ef4444;
+}
+
+.toolbar-btn.type-settings-btn {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.05em;
 }
 
 .mobile-back-btn {
   display: none;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
-  color: var(--ip-active-card-border);
+  color: var(--ip-active-blue);
 }
 
-/* Typography dropdown menu */
 .typography-dropdown-wrap {
   position: relative;
 }
@@ -360,13 +542,13 @@
   position: absolute;
   top: 100%;
   right: 0;
-  margin-top: 6px;
+  margin-top: 10px;
   width: 180px;
   background: var(--ip-bg-middle);
   border: 1px solid var(--ip-border);
   border-radius: 8px;
   padding: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
   z-index: 100;
 }
 
@@ -388,7 +570,8 @@
 .type-menu-label {
   font-size: 12px;
   font-weight: 600;
-  color: var(--ip-text-muted);
+  color: var(--ip-text-meta);
+  font-family: var(--ip-sans);
 }
 
 .type-pill-group {
@@ -404,29 +587,30 @@
   padding: 3px 8px;
   font-size: 12px;
   cursor: pointer;
-  color: var(--ip-text-muted);
+  color: var(--ip-text-meta);
+  font-family: var(--ip-sans);
 }
 
 .font-pill.is-selected {
-  background-color: var(--ip-active-card-border);
+  background-color: var(--ip-active-blue);
   color: #ffffff;
   font-weight: 700;
 }
 
-/* Reading Article Container */
+/* Article Reading Viewport */
 .instapaper-article {
-  max-width: 780px;
+  max-width: 740px;
   width: 100%;
   margin: 0 auto;
-  padding: 32px 32px 80px;
-  font-family: var(--ip-font-serif);
+  padding: 40px 36px 90px;
+  font-family: var(--ip-serif);
   font-size: 19px;
   line-height: 1.72;
   color: var(--ip-text-body);
 }
 
 .instapaper-article.font-sans {
-  font-family: var(--ip-font-sans) !important;
+  font-family: var(--ip-sans) !important;
 }
 
 .reader-header {
@@ -435,26 +619,31 @@
 
 .reader-title {
   font-family: inherit !important;
-  font-size: 2.15rem !important;
+  font-size: 32px !important;
   font-weight: 700 !important;
   line-height: 1.25 !important;
   letter-spacing: -0.015em;
-  color: var(--ip-text-main) !important;
+  color: var(--ip-text-title) !important;
   margin: 0 0 10px 0 !important;
 }
 
 .reader-byline {
-  font-family: var(--ip-font-sans);
-  font-size: 13.5px;
-  color: var(--ip-text-muted);
-  font-weight: 500;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  color: var(--ip-text-meta);
+  font-weight: 400;
 }
 
 .article-lead {
-  font-size: 1.22rem;
-  line-height: 1.6;
-  color: var(--ip-text-main);
-  margin-bottom: 24px;
+  font-size: 19.5px;
+  line-height: 1.58;
+  color: #333333;
+  margin-bottom: 28px;
+  font-family: inherit;
+}
+
+[data-md-color-scheme="slate"] .article-lead {
+  color: #d4d4d8;
 }
 
 .article-illustration {
@@ -465,31 +654,37 @@
 .article-illustration img {
   max-width: 100%;
   border-radius: 8px;
-  border: 1px solid var(--ip-border);
+  border: 1.5px solid #1a1a1a;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+}
+
+[data-md-color-scheme="slate"] .article-illustration img {
+  border-color: #3f3f46;
 }
 
 .article-illustration figcaption {
-  font-family: var(--ip-font-sans);
+  font-family: var(--ip-sans);
   font-size: 13px;
-  color: var(--ip-text-muted);
+  color: var(--ip-text-meta);
   font-style: italic;
   margin-top: 10px;
+  margin-bottom: 24px;
+  text-align: left;
 }
 
 .reader-content h3 {
   font-family: inherit !important;
-  font-size: 1.45rem !important;
+  font-size: 22px !important;
   font-weight: 700 !important;
-  margin: 32px 0 14px 0 !important;
-  color: var(--ip-text-main) !important;
+  margin: 36px 0 14px 0 !important;
+  color: var(--ip-text-title) !important;
 }
 
 .reader-content p, .reader-content li {
-  margin-bottom: 1.1em;
+  margin-bottom: 1.2em;
 }
 
-/* Expanded Reader Mode */
 .instapaper-app.is-reader-expanded .instapaper-feed {
   display: none !important;
 }
@@ -516,7 +711,6 @@
     width: 100%;
   }
 
-  /* When mobile reader is active */
   .instapaper-app.mobile-reader-open .instapaper-feed {
     display: none;
   }
@@ -530,11 +724,53 @@
   }
 
   .instapaper-article {
-    padding: 20px 16px 60px;
+    padding: 24px 18px 60px;
     font-size: 17.5px;
   }
 
   .reader-title {
-    font-size: 1.7rem !important;
+    font-size: 26px !important;
   }
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Behaviour fixes (scrolling / focus)
+   -------------------------------------------------------------------------- */
+/* The page title is redundant on question pages (the list header shows it); hide it at every width */
+.instapaper-subject-title,
+.md-content__inner:has(.instapaper-app) > h1 {
+  display: none !important;
+}
+
+/* Scrolling inside the list or the answer must never drag the page behind it */
+.instapaper-card-list,
+.instapaper-reader {
+  overscroll-behavior: contain;
+}
+
+.instapaper-card:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+/* Question pages on desktop: the panes already fill the screen, so the theme footer and its
+   8px top spacer would only create a second, page-level scrollbar behind the panes. */
+.md-content__inner:has(.instapaper-app)::before,
+.md-content__inner:has(.instapaper-app)::after {
+  display: none !important;
+}
+
+@media (min-width: 960px) {
+  .md-container:has(.instapaper-app) > .md-footer {
+    display: none !important;
+  }
+}
+
+/* KaTeX adds an invisible position:absolute copy of every equation. With no positioned ancestor those
+   copies escaped the reader pane and stretched the whole page, creating a second page-level scrollbar
+   behind the panes. A positioned reader keeps them inside its own scroll area. */
+.instapaper-reader,
+.instapaper-feed {
+  position: relative;
 }
