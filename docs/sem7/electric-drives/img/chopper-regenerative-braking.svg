@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 320" width="100%" height="auto">
+  <defs>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <filter id="cShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="4" y="4" width="532" height="312" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#cShadow)"/>
+
+  <!-- Title Badge -->
+  <rect x="25" y="20" width="220" height="26" rx="5" fill="#eff6ff"/>
+  <text x="135" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle">CHOPPER REGENERATIVE BRAKING</text>
+
+  <!-- DC Supply Terminals (Left) -->
+  <circle cx="50" cy="90" r="5" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+  <text x="32" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#dc2626">+</text>
+  <circle cx="50" cy="250" r="5" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+  <text x="34" y="255" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#1e293b">-</text>
+  <text x="25" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#1e293b">V</text>
+
+  <!-- Top rail -->
+  <line x1="55" y1="90" x2="160" y2="90" stroke="#1e293b" stroke-width="2"/>
+  
+  <!-- Diode D1 (pointing right to left for regenerative feed back to supply) -->
+  <line x1="160" y1="90" x2="185" y2="90" stroke="#1e293b" stroke-width="2"/>
+  <!-- Diode Symbol -->
+  <polygon points="185,102 185,78 215,90" fill="#2563eb" stroke="#1e293b" stroke-width="1.5" transform="rotate(180 200 90)"/>
+  <line x1="185" y1="78" x2="185" y2="102" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="200" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle">Diode D</text>
+  <line x1="215" y1="90" x2="270" y2="90" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Regenerative Current Arrow I_regen back into supply -->
+  <line x1="150" y1="80" x2="80" y2="80" stroke="#16a34a" stroke-width="2" marker-end="url(#arr-b)"/>
+  <text x="115" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#16a34a" text-anchor="middle">I<tspan font-size="9" dy="2">regen</tspan></text>
+
+  <!-- Chopper CH Switch (Shunt Branch) -->
+  <line x1="270" y1="90" x2="270" y2="130" stroke="#1e293b" stroke-width="2"/>
+  <rect x="250" y="130" width="40" height="45" rx="4" fill="#f8fafc" stroke="#1e293b" stroke-width="2"/>
+  <!-- Transistor / IGBT symbol inside -->
+  <line x1="260" y1="140" x2="260" y2="165" stroke="#1e293b" stroke-width="2.5"/>
+  <line x1="260" y1="145" x2="280" y2="135" stroke="#1e293b" stroke-width="2"/>
+  <line x1="260" y1="160" x2="280" y2="170" stroke="#1e293b" stroke-width="2"/>
+  <text x="310" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#b45309">CH (Chopper)</text>
+  <line x1="270" y1="175" x2="270" y2="250" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Smoothing Inductor L -->
+  <line x1="270" y1="90" x2="330" y2="90" stroke="#1e293b" stroke-width="2"/>
+  <path d="M 330 90 C 340 75, 350 75, 360 90 C 370 75, 380 75, 390 90 C 400 75, 410 75, 420 90" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="375" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">L (Inductor)</text>
+  <line x1="420" y1="90" x2="470" y2="90" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Motor Armature (Right Branch) -->
+  <line x1="470" y1="90" x2="470" y2="135" stroke="#1e293b" stroke-width="2"/>
+  <rect x="462" y="135" width="16" height="8" fill="#1e293b" rx="1"/>
+  <circle cx="470" cy="170" r="28" fill="#eff6ff" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="470" y="176" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="800" fill="#1d4ed8" text-anchor="middle">M</text>
+  <text x="470" y="191" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#475569" text-anchor="middle">+ E<tspan font-size="9" dy="2">b</tspan> -</text>
+  <rect x="462" y="198" width="16" height="8" fill="#1e293b" rx="1"/>
+  <line x1="470" y1="206" x2="470" y2="250" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Bottom Rail -->
+  <line x1="55" y1="250" x2="470" y2="250" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Operation Description Note -->
+  <rect x="25" y="275" width="490" height="28" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="270" y="294" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">When CH is OFF: Inductor L boosts energy, forcing current through Diode D back into supply V</text>
+</svg>
+

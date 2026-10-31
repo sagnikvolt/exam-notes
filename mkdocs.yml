@@ -53,6 +53,7 @@ extra_javascript:
   - javascripts/katex.js
   - https://unpkg.com/katex@0.16.11/dist/katex.min.js
   - https://unpkg.com/katex@0.16.11/dist/contrib/auto-render.min.js
+  - javascripts/instapaper.js
 
 nav:
   - Home: index.md
