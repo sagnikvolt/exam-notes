@@ -31,24 +31,24 @@ An electric drive operates across four distinct quadrants on the torque-speed ($
 An electric motor can operate either as a motor (converting electrical power to mechanical power) or as a generator/brake (converting mechanical power back to electrical power or heat). The operational quadrant is dictated by the direction of angular speed $\omega$ and developed electromagnetic torque $T$:
 
 1. **Quadrant I — Forward Motoring:**
-   * **Conditions:** Angular speed $\omega > 0$ and developed torque $T > 0$.
-   * **Power Flow:** Mechanical power $P = T \cdot \omega > 0$ (power is transferred from the source to the mechanical load).
-   * **Practical Example:** An electric train or EV accelerating forward on a level track, or a crane hoist lifting a loaded container upwards.
+    * **Conditions:** Angular speed $\omega > 0$ and developed torque $T > 0$.
+    * **Power Flow:** Mechanical power $P = T \cdot \omega > 0$ (power is transferred from the source to the mechanical load).
+    * **Practical Example:** An electric train or EV accelerating forward on a level track, or a crane hoist lifting a loaded container upwards.
 
 2. **Quadrant II — Forward Braking (Regenerative / Generating):**
-   * **Conditions:** Angular speed $\omega > 0$ and developed torque $T < 0$.
-   * **Power Flow:** Mechanical power $P = T \cdot \omega < 0$ (energy is extracted from the moving kinetic load and returned to the electrical supply).
-   * **Practical Example:** An electric vehicle braking while moving forward, or an electric locomotive decelerating down a steep slope.
+    * **Conditions:** Angular speed $\omega > 0$ and developed torque $T < 0$.
+    * **Power Flow:** Mechanical power $P = T \cdot \omega < 0$ (energy is extracted from the moving kinetic load and returned to the electrical supply).
+    * **Practical Example:** An electric vehicle braking while moving forward, or an electric locomotive decelerating down a steep slope.
 
 3. **Quadrant III — Reverse Motoring:**
-   * **Conditions:** Angular speed $\omega < 0$ and developed torque $T < 0$.
-   * **Power Flow:** $P = (-T) \cdot (-\omega) > 0$ (power is delivered to drive the mechanical load in reverse).
-   * **Practical Example:** A rolling mill reversing direction or an EV driving in reverse gear.
+    * **Conditions:** Angular speed $\omega < 0$ and developed torque $T < 0$.
+    * **Power Flow:** $P = (-T) \cdot (-\omega) > 0$ (power is delivered to drive the mechanical load in reverse).
+    * **Practical Example:** A rolling mill reversing direction or an EV driving in reverse gear.
 
 4. **Quadrant IV — Reverse Braking:**
-   * **Conditions:** Angular speed $\omega < 0$ and developed torque $T > 0$.
-   * **Power Flow:** $P = T \cdot \omega < 0$ (the motor produces positive torque opposing reverse motion to decelerate the load).
-   * **Practical Example:** Controlled lowering of an empty hoist cage where gravitational torque acts in the reverse direction.
+    * **Conditions:** Angular speed $\omega < 0$ and developed torque $T > 0$.
+    * **Power Flow:** $P = T \cdot \omega < 0$ (the motor produces positive torque opposing reverse motion to decelerate the load).
+    * **Practical Example:** Controlled lowering of an empty hoist cage where gravitational torque acts in the reverse direction.
 
 *Source: G.K. Dubey, Fundamentals of Electrical Drives, Ch. 1*
 
@@ -76,6 +76,7 @@ The steady-state torque-speed characteristic of a separately excited DC motor re
 ### Mathematical Derivation
 
 **Assumptions:**
+
 - Steady-state operating conditions with pure DC supply.
 - Constant field excitation current ($I_f = \text{constant} \implies \Phi = \text{constant}$).
 - Negligible armature reaction demagnetization effect.
@@ -105,8 +106,10 @@ Rearranging to solve for angular speed $\omega$:
 $$ \omega = \frac{V}{K \Phi} - \frac{R_a}{(K \Phi)^2} T $$
 
 ### Analytical Interpretation:
+
 * **Ideal No-Load Speed ($\omega_0$):** At zero developed torque ($T = 0$):
   $$ \omega_0 = \frac{V}{K \Phi} $$
+
 * **Speed Droop Slope:** The speed falls linearly with increasing load torque with a slope equal to:
   $$ m = -\frac{R_a}{(K \Phi)^2} $$
   Because $R_a$ is typically very small in modern industrial DC machines, the slope is slight, providing an almost constant (stiff) speed characteristic across rated load.
@@ -139,15 +142,16 @@ Regenerative braking in a chopper-fed DC drive operates on the step-up (boost) c
 During regenerative braking, the motor field remains excited while the armature acts as a DC generator with induced EMF $E_b$. The circuit behaves as a boost converter consisting of the motor back EMF $E_b$, series smoothing inductor $L$, power semiconductor switch (chopper $CH$), and freewheeling feedback diode $D$:
 
 1. **Mode 1 — Chopper ON ($0 \le t \le t_{on}$):**
-   * Switch $CH$ is closed. Current flows from the motor armature $E_b$ through inductor $L$ and switch $CH$, completing the loop.
-   * Energy is extracted from the rotating kinetic mass of the motor and stored in the magnetic field of inductor $L$:
+    * Switch $CH$ is closed. Current flows from the motor armature $E_b$ through inductor $L$ and switch $CH$, completing the loop.
+    * Energy is extracted from the rotating kinetic mass of the motor and stored in the magnetic field of inductor $L$:
      $$ E_b = L \frac{di_a}{dt} + R_a i_a $$
-   * Armature current rises linearly, developing an opposing electromagnetic braking torque ($T = K\Phi I_a$).
+
+    * Armature current rises linearly, developing an opposing electromagnetic braking torque ($T = K\Phi I_a$).
 
 2. **Mode 2 — Chopper OFF ($t_{on} \le t \le T$):**
-   * Switch $CH$ is opened. Because inductor current cannot drop discontinuously, the voltage across inductor $L$ reverses polarity (L Lenz's law).
-   * The combined induced voltage $(E_b + L \frac{di_a}{dt})$ exceeds the DC supply voltage $V$.
-   * Feedback diode $D$ becomes forward-biased, forcing the stored energy and generated current to flow directly back into the DC supply $V$.
+    * Switch $CH$ is opened. Because inductor current cannot drop discontinuously, the voltage across inductor $L$ reverses polarity (L Lenz's law).
+    * The combined induced voltage $(E_b + L \frac{di_a}{dt})$ exceeds the DC supply voltage $V$.
+    * Feedback diode $D$ becomes forward-biased, forcing the stored energy and generated current to flow directly back into the DC supply $V$.
 
 **Average Armature Terminal Voltage:**
 $$ V_a = (1 - \delta) V $$
@@ -188,12 +192,13 @@ From Faraday's law of electromagnetic induction, the induced stator EMF $E_1$ is
 $$ E_1 = 4.44 \cdot k_w \cdot f \cdot N_{ph} \cdot \Phi_m \implies \Phi_m \approx \frac{V_1}{4.44 \, k_w \, N_{ph} \, f} \propto \frac{V_1}{f} $$
 
 1. **If Frequency Decreases with Constant Voltage:**
-   * The flux $\Phi_m \propto \frac{V}{f}$ would increase rapidly.
-   * This drives the magnetic core into deep magnetic saturation, causing excessive magnetizing current, severe overheating, and high harmonic distortion.
+    * The flux $\Phi_m \propto \frac{V}{f}$ would increase rapidly.
+    * This drives the magnetic core into deep magnetic saturation, causing excessive magnetizing current, severe overheating, and high harmonic distortion.
 2. **If Frequency Increases with Constant Voltage:**
-   * The flux $\Phi_m$ decreases, causing a steep decline in maximum breakdown torque ($T_{max} \propto \Phi_m^2$).
+    * The flux $\Phi_m$ decreases, causing a steep decline in maximum breakdown torque ($T_{max} \propto \Phi_m^2$).
 
 ### Operating Regions:
+
 * **Region 1 — Sub-Base Speed ($f \le f_{base}$, Constant Torque Region):**
   * Both voltage and frequency are scaled proportionally: $\frac{V_1}{f} = \text{constant}$.
   * Air-gap flux $\Phi_m$ is held constant at rated value.

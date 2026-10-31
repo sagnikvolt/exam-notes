@@ -1,76 +1,102 @@
 ---
-hide: [toc]
+title: Home
+hide:
+  - toc
 ---
 
-<div class="hero-container" markdown="1">
-<div class="hero-badge">B.Tech Electrical Engineering · IEM Kolkata (2023–27)</div>
+<div class="home">
 
-# IEM Kolkata EE Exam Prep { .hero-title }
+<p class="home-eyebrow">B.Tech Electrical Engineering · IEM Kolkata · 2023–27</p>
 
-Your focused revision companion for Mid-Sem and End-Sem exams. Concise, verified question banks, step-by-step derivations, and high-contrast circuit diagrams.
-{: .hero-subtitle }
+<h1 class="home-title">IEM Kolkata EE Exam Prep</h1>
 
-<div class="hero-actions" markdown="1">
-[Explore 7th Semester](#7th-semester){: .md-button .md-button--primary }
-[Electric Drives Mid Sem](sem7/electric-drives/midsem.md){: .md-button }
+<p class="home-lead">Mid Sem and End Sem questions with worked answers, equations and diagrams, made for quick revision on your phone.</p>
+
+<div class="home-actions">
+  <a class="home-btn is-primary" href="sem7/electric-drives/midsem/">Start with Electric Drives</a>
+  <a class="home-btn" href="#semester-7">Browse subjects</a>
 </div>
 
-<div class="hero-features-grid" markdown="1">
-<div class="hero-feature-card" markdown="1">
-⚡ **Fast & Mobile-First**  
-Built for quick late-night revision on phone screens with instant KaTeX math rendering and zero lag.
+<div class="home-section" id="semester-7">7th Semester <span>5 subjects</span></div>
+<div class="home-list">
+  <div class="home-row">
+    <a class="home-row-main" href="sem7/electric-drives/">
+      <span class="home-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
+      <span class="home-row-text">
+        <span class="home-row-title">Electric Drives</span>
+        <span class="home-row-sub"><span class="home-row-code">PEC-EE 701C</span> · DC drives, choppers, 4-quadrant operation, induction motor V/f control</span>
+      </span>
+    </a>
+    <div class="home-row-actions">
+      <a class="home-chip" href="sem7/electric-drives/midsem/">Mid Sem</a>
+      <a class="home-chip" href="sem7/electric-drives/endsem/">End Sem</a>
+    </div>
+  </div>
+  <div class="home-row">
+    <a class="home-row-main" href="sem7/embedded-system/">
+      <span class="home-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg></span>
+      <span class="home-row-text">
+        <span class="home-row-title">Embedded Systems</span>
+        <span class="home-row-sub"><span class="home-row-code">OEC-EE 701A</span> · Microcontrollers, RTOS, PIC architecture, IoT and debugging</span>
+      </span>
+    </a>
+    <div class="home-row-actions">
+      <a class="home-chip" href="sem7/embedded-system/midsem/">Mid Sem</a>
+      <a class="home-chip" href="sem7/embedded-system/endsem/">End Sem</a>
+    </div>
+  </div>
+  <div class="home-row">
+    <a class="home-row-main" href="sem7/computer-network/">
+      <span class="home-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>
+      <span class="home-row-text">
+        <span class="home-row-title">Computer Networks</span>
+        <span class="home-row-sub"><span class="home-row-code">OEC-EE 702B</span> · OSI layers, data link, routing, TCP/IP, network security</span>
+      </span>
+    </a>
+    <div class="home-row-actions">
+      <a class="home-chip" href="sem7/computer-network/midsem/">Mid Sem</a>
+      <a class="home-chip" href="sem7/computer-network/endsem/">End Sem</a>
+    </div>
+  </div>
+  <div class="home-row">
+    <a class="home-row-main" href="sem7/hsmc701/">
+      <span class="home-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+      <span class="home-row-text">
+        <span class="home-row-title">HRD &amp; Organisational Behaviour</span>
+        <span class="home-row-sub"><span class="home-row-code">HSMC-701</span> · Personality, motivation theories, group dynamics, conflict resolution</span>
+      </span>
+    </a>
+    <div class="home-row-actions">
+      <a class="home-chip" href="sem7/hsmc701/midsem/">Mid Sem</a>
+      <a class="home-chip" href="sem7/hsmc701/endsem/">End Sem</a>
+    </div>
+  </div>
+  <div class="home-row">
+    <a class="home-row-main" href="sem7/esp-vii/">
+      <span class="home-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+      <span class="home-row-text">
+        <span class="home-row-title">Essential Studies for Professionals VII</span>
+        <span class="home-row-sub"><span class="home-row-code">ESPEE 701</span> · Professional development, quantitative skills, aptitude prep</span>
+      </span>
+    </a>
+    <div class="home-row-actions">
+      <a class="home-chip" href="sem7/esp-vii/midsem/">Mid Sem</a>
+      <a class="home-chip" href="sem7/esp-vii/endsem/">End Sem</a>
+    </div>
+  </div>
 </div>
-<div class="hero-feature-card" markdown="1">
-📐 **Step-by-Step Derivations**  
-Complete equations, assumptions, and boxed results following IEM evaluation standards.
+
+<div class="home-section" id="semester-8">8th Semester</div>
+<div class="home-list">
+  <div class="home-row is-soon">
+    <a class="home-row-main" href="sem8/">
+      <span class="home-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
+      <span class="home-row-text">
+        <span class="home-row-title">8th Semester</span>
+        <span class="home-row-sub">Coming soon. Subjects will be added once the syllabus is out.</span>
+      </span>
+    </a>
+  </div>
 </div>
-<div class="hero-feature-card" markdown="1">
-🔌 **Crisp Vector Diagrams**  
-Lightweight SVG circuits and characteristic curves designed for high contrast and readability.
-</div>
-<div class="hero-feature-card" markdown="1">
-🎯 **Exam-Targeted**  
-Organized strictly by IEM Kolkata syllabus and previous university papers.
-</div>
-</div>
-</div>
-
-## 7th Semester
-
-<div class="grid cards" markdown>
-
--   **[Electric Drives](sem7/electric-drives/index.md)**  
-    `PEC-EE 701C`  
-    DC Drives, Choppers, 4-Quadrant Operation, Induction Motor Drives & V/f Control.  
-    [:octicons-arrow-right-24: Mid Sem](sem7/electric-drives/midsem.md) · [:octicons-arrow-right-24: End Sem](sem7/electric-drives/endsem.md)
-
--   **[Embedded Systems](sem7/embedded-system/index.md)**  
-    `OEC-EE 701A`  
-    Microcontrollers, RTOS, PIC Architecture, IoT & Embedded Debugging.  
-    [:octicons-arrow-right-24: Mid Sem](sem7/embedded-system/midsem.md) · [:octicons-arrow-right-24: End Sem](sem7/embedded-system/endsem.md)
-
--   **[Computer Networks](sem7/computer-network/index.md)**  
-    `OEC-EE 702B`  
-    OSI Layers, Data Link protocols, Routing, TCP/IP, and Network Security.  
-    [:octicons-arrow-right-24: Mid Sem](sem7/computer-network/midsem.md) · [:octicons-arrow-right-24: End Sem](sem7/computer-network/endsem.md)
-
--   **[HRD & Organisational Behaviour](sem7/hsmc701/index.md)**  
-    `HSMC-701`  
-    Personality, Motivation Theories, Group Dynamics, and Conflict Resolution.  
-    [:octicons-arrow-right-24: Mid Sem](sem7/hsmc701/midsem.md) · [:octicons-arrow-right-24: End Sem](sem7/hsmc701/endsem.md)
-
--   **[Essential Studies for Professionals VII](sem7/esp-vii/index.md)**  
-    `ESPEE 701`  
-    Professional development, quantitative skills, and aptitude prep.  
-    [:octicons-arrow-right-24: Mid Sem](sem7/esp-vii/midsem.md) · [:octicons-arrow-right-24: End Sem](sem7/esp-vii/endsem.md)
-
-</div>
-
-## 8th Semester
-
-<div class="grid cards" markdown>
-
--   **[8th Semester Hub](sem8/index.md)**  
-    *Coming soon* — Subject cards and question banks will be published once the 8th semester syllabus is released.
 
 </div>

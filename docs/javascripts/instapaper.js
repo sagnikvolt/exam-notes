@@ -145,7 +145,10 @@ document$.subscribe(() => {
     const cloneH2 = fullContent.querySelector('h2');
     if (cloneH2) cloneH2.remove();
 
-    return { id, qid, title, meta, glimpse, thumb, fullContent };
+    const parts = meta.split('·').map(x => x.trim()).filter(Boolean);
+    const metaShort = (parts.length > 2 ? parts.slice(1) : parts).join(' • ');
+
+    return { id, qid, title, meta, metaShort, glimpse, thumb, fullContent };
   });
 
   container.style.display = 'none';
@@ -161,27 +164,26 @@ document$.subscribe(() => {
   feed.className = 'instapaper-feed';
 
   const feedTitle = esc((document.querySelector('.md-content__inner > h1')?.textContent || 'Questions').replace(/[¶\u00b6]/g, '').trim());
+  const chevronLeft = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>`;
   feed.innerHTML = `
     <div class="instapaper-feed-header">
+      <a class="feed-back-btn" href="${root}" aria-label="Back to home">${chevronLeft}</a>
       <div class="feed-header-left">
-        <span class="feed-home-icon">⌂</span>
+        <span class="feed-home-icon">${icons.home}</span>
         <span class="feed-home-title">${feedTitle}</span>
         <span class="feed-count">${questionsData.length}</span>
       </div>
       <div class="feed-header-right">
-        <button class="feed-icon-btn search-btn" title="Search questions" aria-label="Search">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <button class="feed-icon-btn search-btn" title="Search questions" aria-label="Search questions">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
-        <button class="feed-icon-btn add-btn" title="Add item" aria-label="Add">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        </button>
-        <button class="feed-icon-btn more-btn" title="Options" aria-label="More">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="12" cy="19" r="1.5"></circle></svg>
+        <button class="feed-icon-btn theme-btn" title="Light / dark mode" aria-label="Switch light or dark mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"></path></svg>
         </button>
       </div>
     </div>
     <div class="feed-search-drawer" style="display: none;">
-      <input type="text" class="feed-search-input" placeholder="Search questions..." />
+      <input type="text" class="feed-search-input" placeholder="Search questions..." aria-label="Search questions" />
     </div>
     <div class="instapaper-card-list"></div>
   `;
@@ -198,7 +200,7 @@ document$.subscribe(() => {
     card.innerHTML = `
       <div class="card-body">
         <h4 class="card-title">${q.title}</h4>
-        <div class="card-meta">${q.meta}</div>
+        <div class="card-meta">${q.metaShort}</div>
         <p class="card-glimpse">${q.glimpse}</p>
       </div>
       ${q.thumb ? `<div class="card-thumb"><img src="${q.thumb}" alt="${q.title}" loading="lazy"/></div>` : ''}
@@ -225,7 +227,7 @@ document$.subscribe(() => {
   reader.innerHTML = `
     <div class="instapaper-toolbar">
       <div class="toolbar-left">
-        <button class="toolbar-btn mobile-back-btn" title="Back to questions">← Back</button>
+        <button class="toolbar-btn mobile-back-btn" title="Back to questions" aria-label="Back to questions">${chevronLeft}</button>
         <button class="toolbar-btn close-btn" title="Close">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
@@ -234,6 +236,12 @@ document$.subscribe(() => {
         </button>
       </div>
       <div class="toolbar-right">
+        <button class="toolbar-btn mobile-step-btn prev-q-btn" title="Previous question" aria-label="Previous question">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+        <button class="toolbar-btn mobile-step-btn next-q-btn" title="Next question" aria-label="Next question">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
         <button class="toolbar-btn fav-btn" title="Like / Bookmark">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
@@ -327,16 +335,30 @@ document$.subscribe(() => {
 
   // Phone layout: the reader replaces the list. Reset scroll on open, restore the list position on back.
   let feedScrollY = 0;
+  let readerPushed = false;
   function openMobileReader() {
+    if (appWrapper.classList.contains('mobile-reader-open')) return;
     feedScrollY = window.scrollY;
     appWrapper.classList.add('mobile-reader-open');
     window.scrollTo({ top: 0, behavior: 'instant' });
+    // A state-less history entry: the theme's instant navigation ignores it, but the phone's Back
+    // button pops it, which returns to the list instead of leaving the page.
+    try { history.pushState(null, '', `#${currentId}`); readerPushed = true; } catch (e) { readerPushed = false; }
   }
-  function closeMobileReader() {
+  function hideMobileReader() {
+    if (!appWrapper.classList.contains('mobile-reader-open')) return;
     appWrapper.classList.remove('mobile-reader-open');
+    readerPushed = false;
     window.scrollTo({ top: feedScrollY, behavior: 'instant' });
   }
+  function backFromReader() {
+    if (readerPushed) history.back(); // popstate below hides the reader
+    else hideMobileReader();
+  }
+  window.addEventListener('popstate', hideMobileReader, listen);
 
+  const prevBtn = reader.querySelector('.prev-q-btn');
+  const nextBtn = reader.querySelector('.next-q-btn');
   let currentId = null;
   function selectQuestion(id) {
     const qData = questionsData.find(item => item.id === id) || questionsData[0];
@@ -351,8 +373,13 @@ document$.subscribe(() => {
 
     articleViewport.replaceChildren(...getArticleNodes(qData));
     reader.scrollTo({ top: 0, behavior: 'instant' });
+    const pos = questionsData.indexOf(qData);
+    if (prevBtn) prevBtn.disabled = pos <= 0;
+    if (nextBtn) nextBtn.disabled = pos >= questionsData.length - 1;
 
-    if (history.replaceState && window.location.hash !== `#${qData.id}`) {
+    // On phones the list keeps a clean URL; only the reader entry carries #qN (so Back returns to the list).
+    const writeHash = !isMobile() || appWrapper.classList.contains('mobile-reader-open');
+    if (writeHash && history.replaceState && window.location.hash !== `#${qData.id}`) {
       history.replaceState(history.state, '', `#${qData.id}`);
     }
   }
@@ -390,12 +417,12 @@ document$.subscribe(() => {
   // Mobile Back Button
   const mobileBackBtn = reader.querySelector('.mobile-back-btn');
   if (mobileBackBtn) {
-    mobileBackBtn.addEventListener('click', closeMobileReader);
+    mobileBackBtn.addEventListener('click', backFromReader);
   }
   const closeBtn = reader.querySelector('.close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
-      if (isMobile()) closeMobileReader();
+      if (isMobile()) backFromReader();
       else appWrapper.classList.remove('is-reader-expanded');
     });
   }
@@ -413,6 +440,26 @@ document$.subscribe(() => {
   if (favBtn) {
     favBtn.addEventListener('click', () => {
       favBtn.classList.toggle('is-favorited');
+    });
+  }
+
+  // Previous / next question (phone toolbar)
+  function stepQuestion(delta) {
+    const pos = questionsData.findIndex(q => q.id === currentId);
+    const target = questionsData[pos + delta];
+    if (!target) return;
+    selectQuestion(target.id);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', () => stepQuestion(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => stepQuestion(1));
+
+  // Light / dark switch: reuse the theme's own palette toggle (its header is hidden on these pages)
+  const themeBtn = feed.querySelector('.theme-btn');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const label = document.querySelector('[data-md-component="palette"] label:not([hidden])');
+      if (label) label.click();
     });
   }
 
@@ -447,7 +494,7 @@ document$.subscribe(() => {
   }
 
   // Font Size Up / Down
-  let currentFontSize = 19;
+  let currentFontSize = parseFloat(getComputedStyle(articleViewport).fontSize) || 19;
   const sizeUpBtn = reader.querySelector('.size-up');
   const sizeDownBtn = reader.querySelector('.size-down');
   if (sizeUpBtn && sizeDownBtn) {

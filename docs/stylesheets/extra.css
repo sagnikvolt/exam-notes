@@ -29,6 +29,14 @@ html, body {
   --ip-active-blue: #2563eb;
   --ip-hover-gray: #ebebea;
   --ip-active-pill: #ebebea;
+  --ip-pill-bg: rgba(255, 255, 255, 0.94);
+}
+
+/* Make the theme's own page background follow the panes (no grey "box" around the list on phones) */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: var(--ip-bg-middle);
+  --md-typeset-a-color: var(--ip-active-blue);
 }
 
 [data-md-color-scheme="slate"] {
@@ -46,6 +54,7 @@ html, body {
   --ip-active-blue: #3b82f6;
   --ip-hover-gray: rgba(255, 255, 255, 0.06);
   --ip-active-pill: #27272a;
+  --ip-pill-bg: rgba(39, 39, 42, 0.94);
 }
 
 /* --------------------------------------------------------------------------
@@ -690,49 +699,294 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   6. Mobile Responsiveness (< 960px)
+   6. Phone layout (< 960px): Instapaper iOS style
+      Home page = menu, question page = feed list, tap a question = reader with a floating pill
    -------------------------------------------------------------------------- */
-@media (max-width: 959px) {
+.feed-back-btn,
+.mobile-back-btn,
+.mobile-step-btn {
+  display: none;
+}
+
+/* Long equations, tables and code scroll inside the answer instead of widening the page */
+.reader-content {
+  overflow-wrap: break-word;
+}
+.reader-content .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+.reader-content table,
+.reader-content pre {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.reader-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 959.98px) {
+  /* --- Header on ordinary pages: plain bar, serif wordmark ------------------- */
+  .md-header {
+    background-color: var(--ip-bg-middle);
+    color: var(--ip-text-title);
+    box-shadow: none;
+    border-bottom: 1px solid var(--ip-border-light);
+  }
+  .md-header[data-md-state="shadow"] {
+    box-shadow: none;
+  }
+  .md-header__title .md-header__topic:first-child {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+  .md-header__title .md-header__topic + .md-header__topic {
+    display: none;
+  }
+  .md-header__topic {
+    font-family: var(--ip-serif);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* --- Question pages: no theme header, no side gaps ------------------------- */
+  body:has(.instapaper-container, .instapaper-app) .md-header {
+    display: none !important;
+  }
+  .md-main__inner:has(.instapaper-container, .instapaper-app) {
+    margin: 0 !important;
+  }
+  .md-content__inner:has(.instapaper-container, .instapaper-app) {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   .instapaper-app {
-    display: flex;
-    flex-direction: column;
+    display: block;
     width: 100%;
   }
 
+  /* --- Screen 2: the feed ------------------------------------------------------ */
   .instapaper-feed {
     width: 100%;
+    min-width: 0;
     max-width: 100%;
-    border-right: none;
     height: auto;
+    overflow: visible;
+    border-right: none;
   }
 
+  .instapaper-feed-header {
+    position: sticky;
+    top: 0;
+    z-index: 8;
+    height: 56px;
+    min-height: 56px;
+    padding: 0 12px;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--ip-border-light);
+  }
+
+  .feed-back-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ip-active-pill);
+    color: var(--ip-text-title) !important;
+  }
+
+  .feed-header-left {
+    justify-content: center;
+    min-width: 0;
+    gap: 8px;
+  }
+  .feed-home-icon {
+    display: inline-flex;
+    flex: none;
+  }
+  .feed-home-title {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .feed-count {
+    display: none;
+  }
+
+  .feed-header-right {
+    gap: 0;
+  }
+  .feed-icon-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    color: var(--ip-text-title);
+  }
+
+  .feed-search-drawer {
+    padding: 10px 16px;
+    background-color: var(--ip-bg-middle);
+    border-bottom: none;
+  }
+  .feed-search-input {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 16px; /* 16px stops iOS from zooming the page on focus */
+    border: none;
+    border-radius: 12px;
+    background-color: var(--ip-active-pill);
+  }
+
+  .instapaper-card-list {
+    overflow: visible;
+    padding: 6px 0 40px;
+  }
+
+  .instapaper-card {
+    gap: 16px;
+    margin: 0;
+    padding: 14px 18px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .instapaper-card.is-active {
+    border: 0 !important;
+    box-shadow: none;
+  }
+  .instapaper-card:hover {
+    background-color: transparent;
+  }
+  .instapaper-card:active {
+    background-color: var(--ip-hover-gray);
+  }
+
+  .card-title {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 5px !important;
+  }
+  .card-meta {
+    font-size: 12.5px;
+    margin-bottom: 5px;
+  }
+  .card-glimpse {
+    font-size: 14px;
+    line-height: 1.42;
+  }
+  .card-thumb {
+    width: 76px;
+    height: 76px;
+    min-width: 76px;
+    border: 0;
+    border-radius: 10px;
+    background-color: var(--ip-bg-left);
+  }
+
+  /* --- Screen 3: the reader ---------------------------------------------------- */
   .instapaper-reader {
     display: none;
     width: 100%;
+    height: auto;
+    overflow: visible;
   }
-
   .instapaper-app.mobile-reader-open .instapaper-feed {
     display: none;
   }
-
   .instapaper-app.mobile-reader-open .instapaper-reader {
-    display: flex;
-  }
-
-  .mobile-back-btn {
-    display: inline-block;
+    display: block;
   }
 
   .instapaper-article {
-    padding: 24px 18px 60px;
-    font-size: 17.5px;
+    padding: 34px 22px 130px;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  .reader-header {
+    margin-bottom: 20px;
+  }
+  .reader-title {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+  .article-lead {
+    font-size: 18.5px;
+  }
+  .reader-content h3 {
+    font-size: 20px !important;
+    margin-top: 30px !important;
   }
 
-  .reader-title {
-    font-size: 26px !important;
+  /* Floating pill with the few controls that do something on a phone */
+  .instapaper-toolbar {
+    position: fixed;
+    top: auto;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    width: auto;
+    max-width: calc(100vw - 24px);
+    height: auto;
+    min-height: 0;
+    padding: 4px 8px;
+    gap: 4px;
+    border: 1px solid var(--ip-border);
+    border-radius: 999px;
+    background-color: var(--ip-pill-bg);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+  }
+  .toolbar-left,
+  .toolbar-right {
+    gap: 2px;
+  }
+  .toolbar-btn {
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+    color: var(--ip-text-title);
+  }
+  .mobile-back-btn,
+  .mobile-step-btn {
+    display: flex;
+  }
+  .toolbar-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  .close-btn,
+  .expand-btn,
+  .tag-btn,
+  .folder-btn,
+  .archive-btn,
+  .trash-btn,
+  .more-options-btn {
+    display: none !important;
+  }
+  .toolbar-btn.type-settings-btn {
+    font-size: 17px;
+  }
+  .type-settings-menu {
+    top: auto;
+    bottom: calc(100% + 20px);
+    right: -8px;
   }
 }
-
 
 /* --------------------------------------------------------------------------
    7. Behaviour fixes (scrolling / focus)
@@ -761,10 +1015,8 @@ html, body {
   display: none !important;
 }
 
-@media (min-width: 960px) {
-  .md-container:has(.instapaper-app) > .md-footer {
-    display: none !important;
-  }
+.md-container:has(.instapaper-app) > .md-footer {
+  display: none !important;
 }
 
 /* KaTeX adds an invisible position:absolute copy of every equation. With no positioned ancestor those
@@ -773,4 +1025,209 @@ html, body {
 .instapaper-reader,
 .instapaper-feed {
   position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   8. Home page (same serif / clean-row look as the reader and the feed)
+   -------------------------------------------------------------------------- */
+.home {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+.home-eyebrow {
+  margin: 0 0 14px;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ip-text-meta);
+}
+
+.md-typeset .home-title {
+  margin: 0 0 16px;
+  font-family: var(--ip-serif);
+  font-size: clamp(34px, 7vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ip-text-title);
+}
+.home-title .headerlink {
+  display: none;
+}
+
+.home-lead {
+  max-width: 32em;
+  margin: 0 0 26px;
+  font-family: var(--ip-serif);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ip-text-glimpse);
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.md-typeset a.home-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--ip-border);
+  border-radius: 999px;
+  font-family: var(--ip-sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ip-text-title);
+  background: transparent;
+}
+.md-typeset a.home-btn:hover {
+  background: var(--ip-hover-gray);
+}
+.md-typeset a.home-btn.is-primary {
+  background: var(--ip-text-title);
+  border-color: var(--ip-text-title);
+  color: var(--ip-bg-middle);
+}
+.md-typeset a.home-btn.is-primary:hover {
+  opacity: 0.88;
+}
+
+.home-section {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 4px;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ip-text-meta);
+}
+.home-section span {
+  font-weight: 400;
+}
+
+.home-list {
+  margin-bottom: 40px;
+}
+
+.home-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ip-border-light);
+}
+
+.md-typeset a.home-row-main {
+  display: flex;
+  flex: 1 1 320px;
+  gap: 14px;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-row-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--ip-bg-left);
+  color: var(--ip-text-meta);
+}
+
+.home-row-title {
+  display: block;
+  font-family: var(--ip-sans);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ip-text-title);
+}
+.home-row-sub {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--ip-sans);
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ip-text-glimpse);
+}
+.home-row-code {
+  color: var(--ip-text-meta);
+}
+
+.home-row-actions {
+  display: flex;
+  flex: none;
+  gap: 8px;
+  align-items: center;
+}
+
+.md-typeset a.home-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--ip-active-pill);
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ip-text-title);
+}
+.md-typeset a.home-chip:hover {
+  background: var(--ip-hover-gray);
+  box-shadow: inset 0 0 0 1px var(--ip-border);
+}
+
+.home-row.is-soon .home-row-title,
+.home-row.is-soon .home-row-icon {
+  opacity: 0.6;
+}
+
+@media (max-width: 959.98px) {
+  .home {
+    padding: 20px 6px 48px;
+  }
+  .home-lead {
+    font-size: 18px;
+  }
+  .home-actions {
+    margin-bottom: 36px;
+  }
+  .home-row-actions {
+    flex-basis: 100%;
+    padding-left: 54px; /* line the chips up with the title text */
+  }
+}
+
+/* Phone drawer: keep the profile row pinned to the bottom like the desktop sidebar */
+@media (max-width: 959.98px) {
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--primary .md-sidebar__inner {
+    height: 100%;
+  }
+  .md-sidebar--primary .md-sidebar__inner {
+    padding: 0;
+  }
+  .md-nav--primary .md-nav__title {
+    display: none; /* the theme's own drawer title is replaced by the Examnotes wordmark */
+  }
+}
+
+/* The home page is a menu: the theme's "Next: Mid Sem" footer bar adds nothing there */
+.md-container:has(.home) > .md-footer {
+  display: none !important;
 }
