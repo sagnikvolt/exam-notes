@@ -1,3 +1,7 @@
 site/
 __pycache__/
 .cache/
+
+# local-only source files (repo is public)
+raw/*
+!raw/.gitkeep

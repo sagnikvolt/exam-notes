@@ -1,8 +1,12 @@
-site_name: Sagnik's Exam Notes
+site_name: IEM Kolkata EE Prep
 site_url: https://exam.sagniknath.in/
 site_description: Mid sem and end sem questions & answers — B.Tech EE, IEM Kolkata
+repo_name: sagnikvolt/exam-notes
+repo_url: https://github.com/sagnikvolt/exam-notes
+
 theme:
   name: material
+  logo: assets/iem-logo.svg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -15,7 +19,8 @@ theme:
       accent: amber
       toggle: {icon: material/weather-sunny, name: Light mode}
   features:
-    - navigation.tabs
+    - navigation.instant
+    - navigation.instant.prefetch
     - navigation.sections
     - navigation.indexes
     - navigation.top
@@ -23,6 +28,7 @@ theme:
     - search.highlight
     - search.suggest
     - content.code.copy
+
 markdown_extensions:
   - admonition
   - attr_list
@@ -38,32 +44,38 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.arithmatex: {generic: true}
+
 extra_css:
   - stylesheets/extra.css
+  - https://unpkg.com/katex@0.16.11/dist/katex.min.css
+
 extra_javascript:
-  - javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0.16.11/dist/katex.min.js
+  - https://unpkg.com/katex@0.16.11/dist/contrib/auto-render.min.js
+
 nav:
   - Home: index.md
   - 7th Semester:
       - Electric Drives:
-        - Overview: sem7/electric-drives/index.md
-        - Mid Sem: sem7/electric-drives/midsem.md
-        - End Sem: sem7/electric-drives/endsem.md
-      - Embedded System:
-        - Overview: sem7/embedded-system/index.md
-        - Mid Sem: sem7/embedded-system/midsem.md
-        - End Sem: sem7/embedded-system/endsem.md
-      - Computer Network:
-        - Overview: sem7/computer-network/index.md
-        - Mid Sem: sem7/computer-network/midsem.md
-        - End Sem: sem7/computer-network/endsem.md
-      - HRD & Organisational Behaviour:
-        - Overview: sem7/hsmc701/index.md
-        - Mid Sem: sem7/hsmc701/midsem.md
-        - End Sem: sem7/hsmc701/endsem.md
-      - Essential Studies for Professionals VII:
-        - Overview: sem7/esp-vii/index.md
-        - Mid Sem: sem7/esp-vii/midsem.md
-        - End Sem: sem7/esp-vii/endsem.md
-  - 8th Semester: sem8/index.md
+          - Mid Sem: sem7/electric-drives/midsem.md
+          - End Sem: sem7/electric-drives/endsem.md
+          - Overview: sem7/electric-drives/index.md
+      - Embedded Systems:
+          - Overview: sem7/embedded-system/index.md
+          - Mid Sem: sem7/embedded-system/midsem.md
+          - End Sem: sem7/embedded-system/endsem.md
+      - Computer Networks:
+          - Overview: sem7/computer-network/index.md
+          - Mid Sem: sem7/computer-network/midsem.md
+          - End Sem: sem7/computer-network/endsem.md
+      - HRD & OB:
+          - Overview: sem7/hsmc701/index.md
+          - Mid Sem: sem7/hsmc701/midsem.md
+          - End Sem: sem7/hsmc701/endsem.md
+      - ESP VII:
+          - Overview: sem7/esp-vii/index.md
+          - Mid Sem: sem7/esp-vii/midsem.md
+          - End Sem: sem7/esp-vii/endsem.md
+  - 8th Semester:
+      - (Coming soon): sem8/index.md
