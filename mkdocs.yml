@@ -1,0 +1,69 @@
+site_name: Sagnik's Exam Notes
+site_url: https://exam.sagniknath.in/
+site_description: Mid sem and end sem questions & answers — B.Tech EE, IEM Kolkata
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle: {icon: material/weather-night, name: Dark mode}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle: {icon: material/weather-sunny, name: Light mode}
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed: {alternate_style: true}
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex: {generic: true}
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
+nav:
+  - Home: index.md
+  - 7th Semester:
+      - Electric Drives:
+        - Overview: sem7/electric-drives/index.md
+        - Mid Sem: sem7/electric-drives/midsem.md
+        - End Sem: sem7/electric-drives/endsem.md
+      - Embedded System:
+        - Overview: sem7/embedded-system/index.md
+        - Mid Sem: sem7/embedded-system/midsem.md
+        - End Sem: sem7/embedded-system/endsem.md
+      - Computer Network:
+        - Overview: sem7/computer-network/index.md
+        - Mid Sem: sem7/computer-network/midsem.md
+        - End Sem: sem7/computer-network/endsem.md
+      - HRD & Organisational Behaviour:
+        - Overview: sem7/hsmc701/index.md
+        - Mid Sem: sem7/hsmc701/midsem.md
+        - End Sem: sem7/hsmc701/endsem.md
+      - Essential Studies for Professionals VII:
+        - Overview: sem7/esp-vii/index.md
+        - Mid Sem: sem7/esp-vii/midsem.md
+        - End Sem: sem7/esp-vii/endsem.md
+  - 8th Semester: sem8/index.md
