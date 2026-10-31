@@ -3,28 +3,26 @@ title: Electric Drives — Mid Sem Q&A
 hide: [toc]
 ---
 
-# Electric Drives — Mid Sem { .instapaper-subject-title }
+# Electric Drives — Mid Sem
 
-<div class="instapaper-container" markdown="1">
+## Syllabus
 
-<!-- QUESTION 1 -->
-<div class="question-article" id="q1" 
-     data-qid="Q1"
-     data-title="Describe the 4-quadrant operation of an electrical drive."
-     data-meta="PEC-EE 701C · 5 marks · Mid Sem · 2 min read"
-     data-glimpse="An electric drive operates in four distinct quadrants on the torque-speed plane depending on the sign of angular speed and torque..."
-     data-thumb="../img/four-quadrant-operation.svg" markdown="1">
+1. DC motor characteristics — emf/torque equations, torque-speed curves, armature voltage control, flux weakening
+2. Chopper fed DC drive — duty ratio control, steady-state operation, current ripple, losses & efficiency
+3. Multi-quadrant DC drive — four-quadrant operation, 1/2/4-quadrant choppers, regenerative braking
+4. Closed-loop control of DC drive — inner current & outer speed loop, dynamic model, transfer functions
+5. Induction motor characteristics — equivalent circuit, torque-slip, fan/pump loads, flux weakening
+6. Scalar (V/f) control — 3-phase VSI, PWM/SVM, steady-state V/f analysis
+7. Slip ring induction motor control — rotor resistance control, slip power recovery
+
+**Main textbook:** Fundamentals of Electrical Drives — G.K. Dubey
 
 ## Q1. Describe the 4-quadrant operation of an electrical drive. <small>(5 marks · Mid Sem)</small>
 
-<div class="article-lead" markdown="1">
 An electric drive operates across four distinct quadrants on the torque-speed ($\omega-T$) plane, determined by the polarities of rotational speed and electromagnetic torque.
-</div>
 
-<figure class="article-illustration">
-  <img src="../img/four-quadrant-operation.svg" alt="4-Quadrant Operation of an Electrical Drive" loading="lazy" />
-  <figcaption>Illustration: 4-Quadrant Drive Operating Characteristics on the Torque-Speed Plane</figcaption>
-</figure>
+![4-Quadrant Operation of an Electrical Drive](img/four-quadrant-operation.svg)
+*Illustration: 4-Quadrant Drive Operating Characteristics on the Torque-Speed Plane*
 
 ### Detailed Technical Explanation
 
@@ -52,26 +50,12 @@ An electric motor can operate either as a motor (converting electrical power to 
 
 *Source: G.K. Dubey, Fundamentals of Electrical Drives, Ch. 1*
 
-</div>
-
-<!-- QUESTION 2 -->
-<div class="question-article" id="q2"
-     data-qid="Q2"
-     data-title="Derive the torque-speed equation for a separately excited DC motor."
-     data-meta="PEC-EE 701C · 5 marks · Mid Sem · 3 min read"
-     data-glimpse="Under steady-state DC conditions, armature terminal voltage V = Eb + Ia·Ra. Using Eb = KΦω and T = KΦIa, solving for speed yields ω = V/(KΦ) - (Ra/(KΦ)²)T..."
-     data-thumb="../img/separately-excited-dc-motor.svg" markdown="1">
-
 ## Q2. Derive the torque-speed equation for a separately excited DC motor. <small>(5 marks · Mid Sem)</small>
 
-<div class="article-lead" markdown="1">
 The steady-state torque-speed characteristic of a separately excited DC motor reveals an inherently linear speed-droop relationship governed by armature resistance and field excitation flux.
-</div>
 
-<figure class="article-illustration">
-  <img src="../img/separately-excited-dc-motor.svg" alt="Separately Excited DC Motor Circuit Diagram" loading="lazy" />
-  <figcaption>Illustration: Separately Excited DC Motor Equivalent Circuit Schematic</figcaption>
-</figure>
+![Separately Excited DC Motor Circuit Diagram](img/separately-excited-dc-motor.svg)
+*Illustration: Separately Excited DC Motor Equivalent Circuit Schematic*
 
 ### Mathematical Derivation
 
@@ -116,26 +100,12 @@ $$ \omega = \frac{V}{K \Phi} - \frac{R_a}{(K \Phi)^2} T $$
 
 *Source: G.K. Dubey, Fundamentals of Electrical Drives, Ch. 2*
 
-</div>
-
-<!-- QUESTION 3 -->
-<div class="question-article" id="q3"
-     data-qid="Q3"
-     data-title="Explain the principle of regenerative braking in a chopper-fed DC drive."
-     data-meta="PEC-EE 701C · 5 marks · Mid Sem · 3 min read"
-     data-glimpse="During regenerative braking, the DC motor acts as a generator. A step-up (boost) chopper configuration allows returning kinetic energy into the higher voltage DC bus..."
-     data-thumb="../img/chopper-regenerative-braking.svg" markdown="1">
-
 ## Q3. Explain the principle of regenerative braking in a chopper-fed DC drive. <small>(5 marks · Mid Sem)</small>
 
-<div class="article-lead" markdown="1">
 Regenerative braking in a chopper-fed DC drive operates on the step-up (boost) chopper principle, allowing mechanical kinetic energy from the rotating motor to be boosted and fed back into the main DC power source.
-</div>
 
-<figure class="article-illustration">
-  <img src="../img/chopper-regenerative-braking.svg" alt="Chopper-fed DC Drive Regenerative Braking" loading="lazy" />
-  <figcaption>Illustration: Step-Up Chopper Topology for DC Motor Regenerative Braking</figcaption>
-</figure>
+![Chopper-fed DC Drive Regenerative Braking](img/chopper-regenerative-braking.svg)
+*Illustration: Step-Up Chopper Topology for DC Motor Regenerative Braking*
 
 ### Operating Principle & Circuit Action
 
@@ -160,26 +130,12 @@ By dynamically varying the duty ratio $\delta$, the effective braking torque and
 
 *Source: G.K. Dubey, Fundamentals of Electrical Drives, Ch. 3*
 
-</div>
-
-<!-- QUESTION 4 -->
-<div class="question-article" id="q4"
-     data-qid="Q4"
-     data-title="Explain scalar (V/f) speed control of a 3-phase induction motor."
-     data-meta="PEC-EE 701C · 5 marks · Mid Sem · 4 min read"
-     data-glimpse="Scalar control maintains a constant ratio of stator voltage to supply frequency below base speed to keep the air-gap magnetic flux constant and avoid magnetic saturation..."
-     data-thumb="../img/vf-control-induction-motor.svg" markdown="1">
-
 ## Q4. Explain scalar (V/f) speed control of a 3-phase induction motor. <small>(5 marks · Mid Sem)</small>
 
-<div class="article-lead" markdown="1">
 Scalar $V/f$ control regulates the synchronous speed of a 3-phase induction motor by varying stator frequency while simultaneously adjusting terminal voltage to maintain constant magnetic flux in the core.
-</div>
 
-<figure class="article-illustration">
-  <img src="../img/vf-control-induction-motor.svg" alt="Scalar V/f Speed Control Characteristics" loading="lazy" />
-  <figcaption>Illustration: Induction Motor Torque-Speed Curves under Variable Frequency (V/f) Control</figcaption>
-</figure>
+![Scalar V/f Speed Control Characteristics](img/vf-control-induction-motor.svg)
+*Illustration: Induction Motor Torque-Speed Curves under Variable Frequency (V/f) Control*
 
 ### Theoretical Analysis & Working Principle
 
@@ -200,16 +156,12 @@ $$ E_1 = 4.44 \cdot k_w \cdot f \cdot N_{ph} \cdot \Phi_m \implies \Phi_m \appro
 ### Operating Regions:
 
 * **Region 1 — Sub-Base Speed ($f \le f_{base}$, Constant Torque Region):**
-  * Both voltage and frequency are scaled proportionally: $\frac{V_1}{f} = \text{constant}$.
-  * Air-gap flux $\Phi_m$ is held constant at rated value.
-  * Maximum breakdown torque $T_{max}$ remains constant across this speed range.
-  * *Voltage Boost at Low Frequencies:* At very low frequencies ($< 15\text{ Hz}$), stator resistance drop $I_1 R_1$ becomes significant compared to $E_1$. An additional voltage offset (voltage boost) is applied to maintain rated flux.
+    * Both voltage and frequency are scaled proportionally: $\frac{V_1}{f} = \text{constant}$.
+    * Air-gap flux $\Phi_m$ is held constant at rated value.
+    * Maximum breakdown torque $T_{max}$ remains constant across this speed range.
+    * *Voltage Boost at Low Frequencies:* At very low frequencies ($< 15\text{ Hz}$), stator resistance drop $I_1 R_1$ becomes significant compared to $E_1$. An additional voltage offset (voltage boost) is applied to maintain rated flux.
 * **Region 2 — Above Base Speed ($f > f_{base}$, Field Weakening Region):**
-  * Stator voltage reaches rated insulation limit ($V_1 = V_{rated}$) and cannot be increased further.
-  * Only frequency $f$ is increased. Consequently, flux weakens ($\Phi_m \propto \frac{1}{f}$), and maximum torque decreases proportionally to $\frac{1}{f^2}$ (constant power mode).
+    * Stator voltage reaches rated insulation limit ($V_1 = V_{rated}$) and cannot be increased further.
+    * Only frequency $f$ is increased. Consequently, flux weakens ($\Phi_m \propto \frac{1}{f}$), and maximum torque decreases proportionally to $\frac{1}{f^2}$ (constant power mode).
 
 *Source: G.K. Dubey, Fundamentals of Electrical Drives, Ch. 5*
-
-</div>
-
-</div>

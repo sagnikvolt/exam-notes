@@ -7,8 +7,6 @@ document$.subscribe(() => {
       { left: "\\(", right: "\\)", display: false },
       { left: "\\[", right: "\\]", display: true }
     ],
-    // The hidden source copy of each question is rendered once, inside the reader, by instapaper.js
-    ignoredClasses: ['instapaper-container'],
     throwOnError: false
   })
 })

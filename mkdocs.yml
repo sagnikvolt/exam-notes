@@ -6,6 +6,7 @@ repo_url: https://github.com/sagnikvolt/exam-notes
 
 theme:
   name: material
+  font: false
   logo: assets/iem-logo.svg
   favicon: assets/iem-logo.svg
   palette:

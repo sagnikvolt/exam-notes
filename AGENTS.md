@@ -26,6 +26,7 @@ docs/
   sem7/<subject>/endsem.md  end-sem Q&A
   sem7/<subject>/img/       diagrams for that subject
   sem8/index.md             placeholder until 8th-sem syllabus exists
+scripts/check_content.py    checks pages for mistakes that break the site (run before every push)
 .github/workflows/deploy.yml  auto-deploy on push to main — don't edit without asking
 raw/                        local-only source files (see section 9)
 ```
@@ -48,7 +49,7 @@ raw/                        local-only source files (see section 9)
 
 ## 4. Always (before every push)
 
-1. Run `pip install mkdocs-material` once, then `mkdocs build --strict` — it must finish with **no warnings or errors** (broken links, missing files and bad nav entries show up here).
+1. Run `python scripts/check_content.py` (fix every ERROR it prints), then `pip install mkdocs-material` once and `mkdocs build --strict` — it must finish with **no warnings or errors** (broken links, missing files and bad nav entries show up here).
 2. Look at the page on **mobile width (~390 px)** if you changed layout, tables, images or math. If you touched `extra.css`, `instapaper.js`, `index.md` or any question block, also run the **checklist in section 12.4**.
 3. `git status` — confirm only intended files changed; `site/` and `raw/*` must not appear.
 4. Commit and push to `main`. The site updates in about 1–2 minutes. Check the **Actions** tab shows "Deploy site" succeeded.
@@ -66,11 +67,9 @@ This site is for exam revision. A wrong answer costs the owner marks.
 - Cite the source (textbook + chapter, or "Paper: Mid Sem 2025") in a short line at the end of the answer when known.
 - **Questions are typed up generically, not copied.** The owner does not publish question-paper PDFs or photos. Write each question in clear, generic wording that keeps the same technical meaning, topic and marks, instead of reproducing the paper verbatim. If the owner pastes a question or gives a photo for you to work from, use it only as input: rephrase it, never commit the file or quote the paper's layout, headers, or college/exam branding. Mark anything unreadable `[unclear]` and ask.
 
-## 6. Q&A format (use exactly this on every question)
+## 6. Writing questions and answers (plain Markdown only)
 
-Pages that have questions use the **Instapaper-style reader**: a list of questions, and the full answer shown when one is opened. `instapaper.js` builds that from the block below, so the block must be exact. (The old `??? success "Answer"` collapsible format is **no longer used**; do not bring it back.)
-
-Page header, once per file (the `{ .instapaper-subject-title }` and `markdown="1"` parts are required):
+**A question is just a Markdown heading followed by its answer.** No wrapper `<div>`s, no `data-` attributes, no HTML needed. The site turns it into the Instapaper-style list + reader by itself and works out the title, marks, preview text, thumbnail (the first picture) and "min read" on its own.
 
 ```markdown
 ---
@@ -78,69 +77,64 @@ title: Electric Drives — Mid Sem Q&A
 hide: [toc]
 ---
 
-# Electric Drives — Mid Sem { .instapaper-subject-title }
-
-<div class="instapaper-container" markdown="1">
-
-  ...question blocks go here...
-
-</div>
-```
-
-One block per question (copy this, change the text):
-
-```markdown
-<div class="question-article" id="q1"
-     data-qid="Q1"
-     data-title="Describe the 4-quadrant operation of an electrical drive."
-     data-meta="PEC-EE 701C · 5 marks · Mid Sem · 2 min read"
-     data-glimpse="One or two sentences shown as the preview in the list..."
-     data-thumb="../img/four-quadrant-operation.svg" markdown="1">
+# Electric Drives — Mid Sem
 
 ## Q1. Describe the 4-quadrant operation of an electrical drive. <small>(5 marks · Mid Sem)</small>
 
-<div class="article-lead" markdown="1">
-Short opening paragraph. Math works: $T = K\phi I_a$
-</div>
+First paragraph: it becomes the larger "lead" line and the preview in the list. Math: $T = K\phi I_a$
 
-<figure class="article-illustration">
-  <img src="../img/four-quadrant-operation.svg" alt="Describe the picture" loading="lazy" />
-  <figcaption>Illustration: what the picture shows</figcaption>
-</figure>
+![Four-quadrant diagram](img/four-quadrant-operation.svg)
+*Illustration: torque-speed plane*
 
-### Heading for a part of the answer
+### Part of the answer
 
-Answer text. Block math:
+Text, lists, tables, equations:
 
 $$ \omega = \frac{V - I_a R_a}{K\phi} $$
 
 *Source: Dubey, Ch. 2*
 
-</div>
+## Q2. Next question <small>(5 marks · Mid Sem)</small>
+
+Answer...
 ```
 
-Rules for the block:
+Rules (the checker `scripts/check_content.py` enforces most of these):
 
-- `id` is `q1`, `q2`, … in order; `data-qid` is `Q1`, `Q2`, … Never reuse or skip ids, and never change an id that already exists (people share `#q2` links).
-- `data-meta` is `COURSE-CODE · N marks · Mid Sem|End Sem · N min read`. The list cards show everything after the course code.
-- `data-title`, `data-glimpse` and the `##` heading text must agree. `data-glimpse` is plain text (no math, no markdown), 1–2 sentences.
-- **`markdown="1"` is required** on every `<div>` that contains Markdown (the container, each `question-article`, each `article-lead`). Without it the content shows as raw text like `## Q1`.
-- The `##` heading goes **first** inside the block. It is used for the build and permalinks; the reader shows `data-title` instead.
-- `data-thumb` and `<img src>` are optional, but when used the path is **`../img/<file>`** (every page lives in its own folder, so `img/` without `../` is a 404).
-- **Lists:** leave a blank line before every list, and indent nested lists by **4 spaces** (3 spaces silently flattens them).
-- **Headings with attributes** must be on one line: `# Title { .cls }`. A `{: .cls }` line below a heading does nothing.
-- Keep answers as short as the marks allow. Wide tables scroll badly on phones; prefer lists.
-- Questions go in the order of the paper. Don't merge mid-sem and end-sem questions.
-- If you are not sure an answer is correct, add `!!! warning "Verify this"` inside the answer.
-- A page with no questions yet has **no** `instapaper-container`: just the title and `!!! note "No questions yet"`.
+1. One `# Page title` at the top, then questions. Each question starts with `## Q<number>. Title`. **Always put the marks in `<small>(5 marks · Mid Sem)</small>`**: the list on screen is grouped by marks (10 marks, then 5, then 2 ...), highest first. A question without marks lands in an "Other" group at the bottom.
+2. The **number is the identity** of the question (its link is `#q3`). Number new questions with the next free number. **Never renumber or reuse numbers** of existing questions unless the owner asks (shared links would change). A gap after removing one is fine.
+3. Inside an answer use `###` or deeper for sub-headings. Never use another `## ` heading in an answer.
+4. Anything written between the `# Title` and the first question (e.g. a `!!! note`) is shown at the top of the list. Keep it short.
+5. **Lists:** blank line before every list; nested items indented **4 spaces** (2 or 3 flattens them).
+6. **Heading attributes** go on the same line: `# Title { .cls }`.
+7. **Pictures:** Markdown syntax with a path relative to the `.md` file: `![alt text](img/name.svg)`. A line of italic text directly under it is shown as its caption. Resize with `![alt](img/name.svg){ width=60% }`.
+8. **Raw HTML** (`<video>`, `<iframe>`) is not rewritten by MkDocs, so paths inside it need `../`: `../img/name.svg`, `../vid/clip.mp4`.
+9. Keep answers as short as the marks allow. Wide tables scroll badly on phones; prefer lists.
+10. If you are not sure an answer is correct, add `!!! warning "Verify this"` inside it.
+11. A page with no questions yet is just the title and `!!! note "No questions yet"`. It has no `## Q` headings.
+12. The old wrapper format (`<div class="question-article" data-title=...>`) and `??? success` collapsibles are **gone**. Don't bring them back; the checker rejects them.
 
-## 7. Adding things
+## 7. Recipes: how to make common changes (do exactly this, nothing more)
 
-**New question/answer:** append a question block (section 6) inside the `instapaper-container` of the right `midsem.md` / `endsem.md`. If the page still has the "No questions yet" note, replace it with the page header + container from section 6 when adding the first question.
+**A content request is only a content change.** When the owner says "add this from my notes", "remove that question", "make the text bigger", "add a video", you edit the question files (or one font number). You do **not** edit `instapaper.js`, `index.md`, `mkdocs.yml` or other CSS, you do **not** create new pages or sections, and you do **not** wrap things in new HTML. If a request seems to need that, stop and ask the owner.
 
-**New subject (or 8th-sem subjects):** create `docs/sem7|sem8/<slug>/index.md`, `midsem.md`, `endsem.md`; add the subject under `nav:` in `mkdocs.yml`; add a row in `docs/index.md` (copy an existing `home-row`); **add a link row in the sidebar list inside `docs/javascripts/instapaper.js`** (the sidebar is written by hand in that file, it does not read `nav:`). Use lowercase-hyphen slugs. For 8th sem, replace the "Coming soon" placeholder.
+- **Add text / more detail to an answer:** type it into that question's answer. Nothing else changes.
+- **Add a new question:** append `## Q<next number>. Title <small>(N marks · Mid Sem)</small>` + the answer at the end of the right `midsem.md` / `endsem.md`. If the page still has the "No questions yet" note, replace the note with the questions.
+- **Remove a question:** delete from its `## Q<number>.` line down to (not including) the next `## Q` line. Don't renumber the others.
+- **Edit a question's title or marks:** change the text of its `## Q<number>.` heading. The list and reader update themselves.
+- **How the screen is organised (nothing to do, just know it):** every subject has two tabs, **Mid Sem** (`midsem.md`) and **End Sem** (`endsem.md`). `index.md` is only a plain overview page (no tabs). Inside Mid/End Sem the list starts with a **Syllabus** card, then questions grouped by marks (10, 5, 2...), and each question has a tick circle so the reader can mark it as read (saved in their own browser, no login). Keep those file names exactly.
+- **Update the syllabus:** Mid Sem and End Sem have *different* syllabi, so edit the `## Syllabus` section near the top of `midsem.md` or `endsem.md` (plain Markdown list, right under the `# Title` line, before the `## Q1.` questions). Write the heading exactly `## Syllabus`. If you write a note box (`!!! note`), put it above `## Syllabus`, never below it.
+- **Make fonts bigger / smaller:** edit the numbers in the `FONT SIZES` block at the very top of `docs/stylesheets/extra.css` (there is one set for desktop and one for phones, right below it). Example: `--ip-answer-size: 19px;` -> `22px;`. Don't touch any other CSS for this. (Readers can also use the **Aa** button on the page.)
+- **Add a picture:** save an SVG or WebP (<= 150 KB) in `docs/sem7/<subject>/img/`, then in the answer: `![What it shows](img/name.svg)` and, on the next line, `*Caption*`.
+- **Add a short video:** save MP4/WebM (<= ~1 MB, 5-10 s) in `docs/sem7/<subject>/vid/` and write
+  `<video src="../vid/clip.mp4" controls muted playsinline preload="none" poster="../img/thumb.webp"></video>`
+- **Add a YouTube video** (unlisted, longer than ~15 s): `<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="What it shows" allowfullscreen></iframe>`
+- **Add a table / note box / equation:** normal Markdown. Tables: `| A | B |` rows. Note: `!!! note "Title"` then the text indented 4 spaces. Math: `$x$` inline, `$$ x $$` as its own block. Keep tables narrow.
+- **Move or reorder questions:** ask the owner first (numbers are link identities).
+- **New subject (or 8th-sem subjects):** create `docs/sem7|sem8/<slug>/index.md`, `midsem.md`, `endsem.md` (lowercase-hyphen slug); add it under `nav:` in `mkdocs.yml`; add a row in `docs/index.md` (copy an existing `home-row`); add a link row in the sidebar list in `docs/javascripts/instapaper.js` (the sidebar is written by hand there; it does not read `nav:`). This is the only content task that touches those files. For 8th sem, replace the "Coming soon" placeholder.
+- **Rename or move an existing page:** don't, without asking. It breaks bookmarked links.
 
-**Never rename or move an existing page** without asking — it breaks links people have bookmarked or shared. If you must, ask first.
+After any of these: `python scripts/check_content.py`, `mkdocs build --strict`, look at the page once, commit, push.
 
 ## 8. Performance rules (the site must stay very fast)
 
@@ -193,16 +187,19 @@ The site looks like the Instapaper app: left sidebar, question list, reader. On 
 
 1. **It re-runs on every page view** (`document$.subscribe`, because of instant navigation). Everything added to `document` or `window` must use the `{ signal: ac.signal }` AbortController at the top of the callback, or it stacks up and one click/key press fires 4 times. Never add a bare `document.addEventListener` here.
 2. **Never hard-code `/` as the site root.** Use the `root` / `base` variable (from `__md_scope`). The site is served at the domain root today, but links must still work under `/exam-notes/` or `localhost`.
-3. **Duplicate ids:** the reader shows a *copy* of each question; the copy has its `id`s removed. Don't put ids back (duplicate ids make the page jump).
+3. **How questions are found:** the script looks for `h2` headings that start with `Q<number>` that are **direct children** of the page content, and treats everything after each one (up to the next) as that answer. It *moves* those nodes into the reader (not copies), so there are no duplicate ids. Don't change this to wrap questions in extra containers, and don't add a second copy of the content.
 4. **Scrolling:** never call `scrollIntoView` (it scrolls the whole page). Scroll the list or the reader container instead. Use `scrollTo({ behavior: 'instant' })`. Opening a question on a phone must land at the top of the answer.
 5. **Hash:** on desktop the URL gets `#qN`. On phones the **list** URL must stay clean; only the open reader has `#qN` (this is what makes the phone's Back button return to the list).
 6. **No dead controls** (section 3 rule 10). Don't re-add placeholder buttons (+, tag, folder, trash, archive).
 7. Keyboard: `j`/`k` move between questions; arrow keys only while the list has focus; ignore typing in inputs and ignore Ctrl/Alt/Meta combinations.
 8. KaTeX is rendered once per answer and cached. Don't re-render on every click.
+9. **Tabs and syllabus:** pages whose path is `.../midsem/` or `.../endsem/` get the Mid Sem | End Sem tab bar (pattern in `instapaper.js`). The `## Syllabus` heading becomes a card at the top of the list, above the marks groups (no tick). `sem<N>/<subject>/` overview pages stay normal pages. Don't change the URL scheme.
+10. **Read ticks** are saved in `localStorage` under `examnotes.done.v1`, keyed by page path + question id (`q3`). Always wrap storage in try/catch (it can be blocked). Never change how ids are made (`q<number>`), or readers lose their ticks.
+11. The list is built from the marks groups; prev/next, `j`/`k` and "Next question" must follow the order shown on screen, not the order in the file.
 
 ### 12.2 Rules for `docs/stylesheets/extra.css`
 
-1. **Scope the "lock to the screen" rules.** Only question pages may use `height: 100vh; overflow: hidden`, and only through `:has(.instapaper-container, .instapaper-app)`. Home, overview and "No questions yet" pages must scroll normally. A global `overflow: hidden` clips the home page.
+1. **Scope the "lock to the screen" rules.** Only question pages may use `height: 100vh; overflow: hidden`, and only through `:has(.instapaper-app)`. Home, overview and "No questions yet" pages must scroll normally. A global `overflow: hidden` clips the home page.
 2. **Desktop pane lock** lives inside `@media (min-width: 960px)`. On phones the **page** scrolls (not an inner box), so the browser's address bar collapses normally.
 3. The breakpoint is **959.98px** in both the CSS and the JS (`matchMedia`). Change both or neither.
 4. `.instapaper-reader` and `.instapaper-feed` must stay `position: relative`. KaTeX adds hidden absolutely-positioned copies of equations; without a positioned parent they stretch the whole page and create a second scrollbar behind the panes.
@@ -215,6 +212,7 @@ The site looks like the Instapaper app: left sidebar, question list, reader. On 
 - The home page is hand-written HTML (`home`, `home-row`, `home-chip` classes). Keep `hide: [toc]` and keep each link relative to the site root (`sem7/<slug>/`, `sem7/<slug>/midsem/`). Check every link exists after a build.
 - Don't claim things that aren't true ("verified", "previous university papers", exam dates). Questions are typed up generically (section 5).
 - Don't put Markdown inside the raw HTML block (it will not be processed); write plain HTML.
+- Font sizes live in the `FONT SIZES` block at the top of `extra.css`. Use those variables instead of hard-coding `px` sizes for the answer and the list text.
 
 ### 12.4 Checklist after ANY change to layout, CSS, JS, Home or a question block
 
@@ -228,5 +226,9 @@ Run `mkdocs build --strict`, then `mkdocs serve` and check **all** of these (des
 6. Home page: nothing clipped at either width; the first screen on a phone shows the title and the first subject.
 7. Browser console: no errors. Network tab: no 404 (images, favicon).
 8. Open a page in a new tab by typing `.../midsem/#q3`: it shows question 3.
+9. Add a throw-away question with a table, an image, a video and a list, check it renders on phone width, then delete it.
+10. Tabs: from Mid Sem tap **End Sem**, then **Mid Sem** again. Each switch must be instant (no white flash / full reload), the empty End Sem page must still show the tabs, and the Syllabus card must open at the top of the list on both.
+11. Ticks: tick a question in the list (the page must NOT open it), reload the page: the tick and the "1/4" counts are still there. Tick from the end of an answer and from the bottom pill too.
+12. Marks groups: questions appear under "10 marks", "5 marks", "2 marks" (highest first); tapping a group title folds it; prev/next and `j`/`k` walk the questions in the order on screen.
 
 If any check fails, fix it before pushing. If you can't, **don't push** and tell the owner what failed.

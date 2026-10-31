@@ -12,6 +12,19 @@ html, body {
 }
 
 :root {
+  /* ======================================================================
+     FONT SIZES: change a number here and the whole site follows.
+     (Phone values are in the block right below this one.)
+     ====================================================================== */
+  --ip-answer-size: 19px;        /* answer text in the reader */
+  --ip-answer-line: 1.72;        /* line height of the answer text */
+  --ip-answer-h3-size: 22px;     /* sub-headings (###) inside an answer */
+  --ip-question-title-size: 32px;/* big question title above the answer */
+  --ip-meta-size: 13px;          /* grey line under the question title */
+  --ip-card-title-size: 14.5px;  /* question title in the list */
+  --ip-card-text-size: 12.5px;   /* preview text in the list */
+  --ip-card-meta-size: 11.5px;   /* "5 marks - 2 min read" in the list */
+
   --ip-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
   --ip-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   
@@ -30,6 +43,20 @@ html, body {
   --ip-hover-gray: #ebebea;
   --ip-active-pill: #ebebea;
   --ip-pill-bg: rgba(255, 255, 255, 0.94);
+  --ip-done: #16a34a;
+}
+
+@media (max-width: 959.98px) {
+  :root {
+    --ip-answer-size: 18px;
+    --ip-answer-line: 1.65;
+    --ip-answer-h3-size: 20px;
+    --ip-question-title-size: 28px;
+    --ip-meta-size: 13px;
+    --ip-card-title-size: 16px;
+    --ip-card-text-size: 14px;
+    --ip-card-meta-size: 12.5px;
+  }
 }
 
 /* Make the theme's own page background follow the panes (no grey "box" around the list on phones) */
@@ -132,18 +159,18 @@ html, body {
 
   /* Question pages only: lock to the viewport and let each pane scroll on its own.
      Every other page (home, overview) scrolls normally. */
-  .md-main__inner:has(.instapaper-container, .instapaper-app),
-  .md-content:has(.instapaper-container, .instapaper-app) {
+  .md-main__inner:has(.instapaper-app),
+  .md-content:has(.instapaper-app) {
     height: 100vh !important;
     overflow: hidden !important;
   }
 
-  .md-content__inner:has(.instapaper-container, .instapaper-app) {
+  .md-content__inner:has(.instapaper-app) {
     height: 100% !important;
   }
 
   /* Normal pages: keep the text off the screen edges */
-  .md-content__inner:not(:has(.instapaper-container, .instapaper-app)) {
+  .md-content__inner:not(:has(.instapaper-app)) {
     padding: 24px clamp(20px, 4vw, 56px) 64px !important;
   }
 
@@ -246,50 +273,15 @@ html, body {
   letter-spacing: 0.02em;
 }
 
-/* User Profile Footer */
+/* Credit line at the bottom of the sidebar */
 .ip-user-footer {
   margin-top: auto;
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-top: 1px solid var(--ip-border);
   background-color: var(--ip-bg-left);
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-family: var(--ip-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ip-text-title);
-}
-
-.ip-user-avatar {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #3b82f6;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-}
-
-.ip-user-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.ip-user-name {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ip-user-more {
+  font-size: 12.5px;
   color: var(--ip-text-meta);
-  cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------
@@ -424,7 +416,7 @@ html, body {
 
 .card-title {
   font-family: var(--ip-sans) !important;
-  font-size: 14.5px !important;
+  font-size: var(--ip-card-title-size) !important;
   font-weight: 700 !important;
   color: var(--ip-text-title) !important;
   line-height: 1.32 !important;
@@ -437,7 +429,7 @@ html, body {
 
 .card-meta {
   font-family: var(--ip-sans);
-  font-size: 11.5px;
+  font-size: var(--ip-card-meta-size);
   color: var(--ip-text-meta);
   margin-bottom: 5px;
   font-weight: 400;
@@ -445,7 +437,7 @@ html, body {
 
 .card-glimpse {
   font-family: var(--ip-sans);
-  font-size: 12.5px;
+  font-size: var(--ip-card-text-size);
   color: var(--ip-text-glimpse);
   line-height: 1.42;
   margin: 0;
@@ -524,9 +516,15 @@ html, body {
   color: var(--ip-text-title);
 }
 
-.toolbar-btn.fav-btn.is-favorited svg {
-  fill: #ef4444;
-  stroke: #ef4444;
+.toolbar-btn.done-btn.is-done {
+  color: var(--ip-done);
+}
+.toolbar-btn.done-btn.is-done svg circle {
+  fill: var(--ip-done);
+  stroke: var(--ip-done);
+}
+.toolbar-btn.done-btn.is-done svg polyline {
+  stroke: #ffffff;
 }
 
 .toolbar-btn.type-settings-btn {
@@ -613,8 +611,8 @@ html, body {
   margin: 0 auto;
   padding: 40px 36px 90px;
   font-family: var(--ip-serif);
-  font-size: 19px;
-  line-height: 1.72;
+  font-size: var(--ip-answer-size);
+  line-height: var(--ip-answer-line);
   color: var(--ip-text-body);
 }
 
@@ -628,7 +626,7 @@ html, body {
 
 .reader-title {
   font-family: inherit !important;
-  font-size: 32px !important;
+  font-size: var(--ip-question-title-size) !important;
   font-weight: 700 !important;
   line-height: 1.25 !important;
   letter-spacing: -0.015em;
@@ -638,7 +636,7 @@ html, body {
 
 .reader-byline {
   font-family: var(--ip-sans);
-  font-size: 13px;
+  font-size: var(--ip-meta-size);
   color: var(--ip-text-meta);
   font-weight: 400;
 }
@@ -684,7 +682,7 @@ html, body {
 
 .reader-content h3 {
   font-family: inherit !important;
-  font-size: 22px !important;
+  font-size: var(--ip-answer-h3-size) !important;
   font-weight: 700 !important;
   margin: 36px 0 14px 0 !important;
   color: var(--ip-text-title) !important;
@@ -723,9 +721,74 @@ html, body {
   max-width: 100%;
   overflow-x: auto;
 }
+/* Pictures, figures, video and embeds: plain Markdown/HTML works, this makes it fit and look right */
 .reader-content img {
+  display: block;
   max-width: 100%;
   height: auto;
+  margin: 1.2em auto;
+  border: 1.5px solid var(--ip-text-title);
+  border-radius: 8px;
+  background: #ffffff; /* diagrams with a transparent background stay readable in dark mode */
+}
+[data-md-color-scheme="slate"] .reader-content img {
+  border-color: #3f3f46;
+}
+.reader-content figure {
+  margin: 28px 0;
+  text-align: center;
+}
+.reader-content figure img {
+  margin-bottom: 0;
+}
+.reader-content figcaption {
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ip-text-meta);
+  margin-top: 10px;
+  text-align: left;
+}
+.reader-content video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 1.2em 0;
+  border-radius: 8px;
+  background: #000000;
+}
+.reader-content iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin: 1.2em 0;
+  border: 0;
+  border-radius: 8px;
+}
+/* The first paragraph of an answer is the lead */
+.reader-content > p:first-child {
+  font-size: 1.03em;
+  line-height: 1.58;
+  color: #333333;
+  margin-bottom: 1.4em;
+}
+[data-md-color-scheme="slate"] .reader-content > p:first-child {
+  color: #d4d4d8;
+}
+
+/* Note written above the first question */
+.feed-intro {
+  padding: 12px 18px;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  color: var(--ip-text-glimpse);
+  border-bottom: 1px solid var(--ip-border-light);
+}
+.feed-intro > :last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 959.98px) {
@@ -755,13 +818,13 @@ html, body {
   }
 
   /* --- Question pages: no theme header, no side gaps ------------------------- */
-  body:has(.instapaper-container, .instapaper-app) .md-header {
+  body:has(.instapaper-app) .md-header {
     display: none !important;
   }
-  .md-main__inner:has(.instapaper-container, .instapaper-app) {
+  .md-main__inner:has(.instapaper-app) {
     margin: 0 !important;
   }
-  .md-content__inner:has(.instapaper-container, .instapaper-app) {
+  .md-content__inner:has(.instapaper-app) {
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -781,10 +844,14 @@ html, body {
     border-right: none;
   }
 
-  .instapaper-feed-header {
+  .feed-top {
     position: sticky;
     top: 0;
     z-index: 8;
+    background-color: var(--ip-bg-middle);
+  }
+
+  .instapaper-feed-header {
     height: 56px;
     min-height: 56px;
     padding: 0 12px;
@@ -874,16 +941,13 @@ html, body {
   }
 
   .card-title {
-    font-size: 16px !important;
     line-height: 1.3 !important;
     margin-bottom: 5px !important;
   }
   .card-meta {
-    font-size: 12.5px;
     margin-bottom: 5px;
   }
   .card-glimpse {
-    font-size: 14px;
     line-height: 1.42;
   }
   .card-thumb {
@@ -911,22 +975,15 @@ html, body {
 
   .instapaper-article {
     padding: 34px 22px 130px;
-    font-size: 18px;
-    line-height: 1.65;
   }
   .reader-header {
     margin-bottom: 20px;
   }
   .reader-title {
-    font-size: 28px !important;
     line-height: 1.2 !important;
     margin-bottom: 12px !important;
   }
-  .article-lead {
-    font-size: 18.5px;
-  }
   .reader-content h3 {
-    font-size: 20px !important;
     margin-top: 30px !important;
   }
 
@@ -1230,4 +1287,373 @@ html, body {
 /* The home page is a menu: the theme's "Next: Mid Sem" footer bar adds nothing there */
 .md-container:has(.home) > .md-footer {
   display: none !important;
+}
+
+/* Picture followed by an italic line = caption (plain Markdown: ![alt](img/x.svg) then *Caption*) */
+.reader-content p > img + em {
+  display: block;
+  margin: -0.6em 0 1.4em;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ip-text-meta);
+}
+
+/* --------------------------------------------------------------------------
+   9. Subject tabs (Syllabus | Mid Sem | End Sem), marks groups, "read" ticks
+   -------------------------------------------------------------------------- */
+.subject-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--ip-active-pill);
+}
+.subject-tab {
+  flex: 1;
+  padding: 7px 8px;
+  border-radius: 9px;
+  text-align: center;
+  white-space: nowrap;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  color: var(--ip-text-meta) !important;
+}
+.subject-tab:hover {
+  color: var(--ip-text-title) !important;
+}
+.subject-tab.is-active {
+  background: var(--ip-bg-middle);
+  color: var(--ip-text-title) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+}
+.feed-top .subject-tabs {
+  margin: 10px 14px 8px;
+}
+
+/* Syllabus page: same calm look as the Home page */
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) {
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > h1 {
+  margin: 8px 0 18px;
+  font-family: var(--ip-serif);
+  font-size: clamp(30px, 6vw, 40px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--ip-text-title);
+}
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > h2 {
+  margin: 32px 0 10px;
+  font-family: var(--ip-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ip-text-meta);
+}
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > .subject-tabs {
+  max-width: 420px;
+  margin-bottom: 26px;
+}
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > p,
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > ol,
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > ul {
+  font-family: var(--ip-serif);
+  font-size: 17.5px;
+  line-height: 1.6;
+  color: var(--ip-text-body);
+}
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > ol li,
+.md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) > ul li {
+  margin-bottom: 0.6em;
+}
+
+/* Marks groups in the question list */
+.q-group[hidden] {
+  display: none;
+}
+.q-group-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 18px 6px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--ip-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ip-text-meta);
+}
+.q-group-title {
+  color: var(--ip-text-title);
+}
+.q-group-count {
+  flex: 1;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.q-group-chevron {
+  transition: transform 0.15s ease;
+}
+.q-group.is-collapsed .q-group-chevron {
+  transform: rotate(-90deg);
+}
+.q-group.is-collapsed .q-group-cards {
+  display: none;
+}
+
+/* "Read" tick on each question */
+.card-check {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  padding: 0;
+  border: 1.5px solid var(--ip-text-meta);
+  border-radius: 50%;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+.card-check:hover {
+  border-color: var(--ip-done);
+}
+.instapaper-card.is-done .card-check {
+  background: var(--ip-done);
+  border-color: var(--ip-done);
+  color: #ffffff;
+}
+.instapaper-card.is-done .card-title,
+.instapaper-card.is-done .card-glimpse {
+  color: var(--ip-text-meta) !important;
+}
+.card-check:focus-visible {
+  outline: 2px solid var(--ip-active-blue);
+  outline-offset: 2px;
+}
+.instapaper-card {
+  gap: 12px;
+}
+
+/* End of an answer */
+.reader-finish {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ip-border-light);
+}
+.reader-finish button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--ip-border);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--ip-sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ip-text-title);
+}
+.reader-finish button[hidden] {
+  display: none;
+}
+.reader-finish button:hover {
+  background: var(--ip-hover-gray);
+}
+.finish-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--ip-text-meta);
+  border-radius: 50%;
+  color: transparent;
+}
+.reader-finish.is-done .finish-done {
+  border-color: var(--ip-done);
+  color: var(--ip-done);
+}
+.reader-finish.is-done .finish-icon {
+  background: var(--ip-done);
+  border-color: var(--ip-done);
+  color: #ffffff;
+}
+
+/* Mid/End Sem page with no questions yet */
+.instapaper-app.is-empty .instapaper-toolbar,
+.instapaper-app.is-empty .feed-count,
+.instapaper-app.is-empty .search-btn {
+  display: none;
+}
+.reader-empty {
+  margin-top: 20vh;
+  text-align: center;
+  font-family: var(--ip-sans);
+  font-size: 15px;
+  color: var(--ip-text-meta);
+}
+@media (max-width: 959.98px) {
+  .instapaper-app.is-empty .instapaper-reader {
+    display: none !important;
+  }
+  .q-group-head {
+    padding-top: 18px;
+  }
+  .reader-finish {
+    margin-top: 36px;
+  }
+}
+
+/* Syllabus page on phones: keep the text off the screen edges */
+@media (max-width: 959.98px) {
+  .md-content__inner:has(.subject-tabs):not(:has(.instapaper-app)) {
+    padding: 8px 20px 40px !important;
+  }
+}
+
+
+/* ---- Syllabus entry (top of each Mid/End Sem list) and text fixes ---- */
+.q-syllabus { padding: 2px 0 6px; }
+.q-syllabus[hidden] { display: none; }
+.reader-finish button[hidden], .done-btn[hidden] { display: none !important; }
+body, .md-typeset, .md-content { font-family: var(--ip-sans); }
+.md-typeset code, .md-typeset pre, .md-typeset kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.feed-home-title { min-width: 0; }
+@media (max-width: 959.98px) {
+  .feed-home-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.2;
+  }
+}
+
+
+/* ---- Phones: list-page buttons in a floating pill at the bottom ---- */
+.feed-pill { display: none; }
+@media (max-width: 959.98px) {
+  .instapaper-feed-header { grid-template-columns: minmax(0, 1fr); padding: 0 16px; }
+  .instapaper-feed-header .feed-back-btn,
+  .instapaper-feed-header .feed-header-right { display: none; }
+  .feed-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: fixed;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    padding: 4px 8px;
+    border: 1px solid var(--ip-border);
+    border-radius: 999px;
+    background-color: var(--ip-pill-bg);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+  }
+  .feed-pill .pill-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    border-radius: 999px;
+    color: var(--ip-text-title) !important;
+    cursor: pointer;
+  }
+  .instapaper-app.mobile-reader-open .feed-pill { display: none; }
+  .instapaper-card-list { padding-bottom: 90px; }
+}
+
+@media (max-width: 959.98px) {
+  .feed-top > .subject-tabs { display: none; }
+  .feed-pill .subject-tabs {
+    display: flex;
+    margin: 0 2px;
+    padding: 3px;
+    gap: 2px;
+    border-radius: 999px;
+    background: var(--ip-active-pill);
+    width: auto;
+  }
+  .feed-pill .subject-tab {
+    flex: none;
+    padding: 0 12px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 13.5px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .feed-pill .pill-btn { width: 42px; }
+}
+
+
+/* ---- Phones, ordinary pages: header buttons moved to a bottom pill ---- */
+.page-pill { display: none; }
+@media (max-width: 959.98px) {
+  .md-header .md-header__button[for="__drawer"],
+  .md-header .md-header__button[for="__search"],
+  .md-header .md-header__option { display: none !important; }
+  .md-header__title { margin-left: 16px; }
+  body:not(:has(.instapaper-app)) .page-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: fixed;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    padding: 4px 8px;
+    border: 1px solid var(--ip-border);
+    border-radius: 999px;
+    background-color: var(--ip-pill-bg);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+  }
+  .page-pill .pill-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    border-radius: 999px;
+    color: var(--ip-text-title);
+    cursor: pointer;
+  }
+  .md-main { padding-bottom: 80px; }
 }

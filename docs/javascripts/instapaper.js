@@ -32,6 +32,29 @@ document$.subscribe(() => {
   const rel = path.startsWith(base) ? path.slice(base.length) : path.replace(/^\//, '');
   const root = base;
 
+  // Phones, ordinary pages (Home, overview pages): menu / theme / search live in a floating pill at the bottom.
+  // They just press the theme's own (hidden) header buttons, so the menu, search and dark mode keep working.
+  document.querySelectorAll('.page-pill').forEach((n) => n.remove());
+  {
+    const pi = (d) => `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+    const pill = document.createElement('div');
+    pill.className = 'page-pill';
+    pill.innerHTML = `
+      <button type="button" class="pill-btn" data-act="menu" aria-label="Menu">${pi('<line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>')}</button>
+      <button type="button" class="pill-btn" data-act="search" aria-label="Search">${pi('<circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>')}</button>
+      <button type="button" class="pill-btn" data-act="theme" aria-label="Switch light or dark mode">${pi('<circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"></path>')}</button>`;
+    pill.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-act]');
+      if (!btn) return;
+      const act = btn.getAttribute('data-act');
+      const target = act === 'menu' ? document.querySelector('label.md-header__button[for="__drawer"]')
+        : act === 'search' ? document.querySelector('label.md-header__button[for="__search"]')
+        : document.querySelector('[data-md-component="palette"] label:not([hidden])');
+      if (target) target.click();
+    });
+    document.body.appendChild(pill);
+  }
+
   // =========================================================================
   // 1. Build Clean Instapaper Left Sidebar
   // =========================================================================
@@ -104,13 +127,7 @@ document$.subscribe(() => {
           </a>
         </div>
 
-        <div class="ip-user-footer">
-          <div class="ip-user-avatar">
-            S
-          </div>
-          <span class="ip-user-name">sagnikvolt</span>
-          <span class="ip-user-more">⁝</span>
-        </div>
+        <div class="ip-user-footer">Made by Sagnik Kumar Nath</div>
       `;
 
       // Clear existing MkDocs nav elements and attach clean sidebar
@@ -123,35 +140,129 @@ document$.subscribe(() => {
   // =========================================================================
   // 2. Build 3-Pane Middle Feed and Right Reader
   // =========================================================================
-  const container = document.querySelector('.instapaper-container');
-  if (!container) return;
+  // A question is just a Markdown "## Q<number>. Title <small>(5 marks)</small>" heading plus everything
+  // after it up to the next such heading. Nothing else is required: the title, marks, preview text,
+  // thumbnail and reading time are worked out here, so authors only write normal Markdown.
+  const pageContent = document.querySelector('.md-content__inner');
+  if (!pageContent) return;
+  if (pageContent.querySelector('.instapaper-app')) return; // already built for this page view
 
-  const rawQuestions = Array.from(container.querySelectorAll('.question-article'));
-  if (rawQuestions.length === 0) return;
+  const clean = (t) => String(t || '').replace(/[¶¶]/g, '').replace(/\s+/g, ' ').trim();
+  const isSyllabusHead = (el) => el.tagName === 'H2' && /^\s*Syllabus\s*¶?\s*$/i.test(el.textContent);
+  const isQuestionHead = (el) => el.tagName === 'H2' && (/^\s*Q\s*\d+/i.test(el.textContent) || isSyllabusHead(el));
+  const isThemeChrome = (el) => /(^|\s)(md-source-file|md-content__button|md-feedback|md-source|md-footer)(\s|$)/.test(el.getAttribute('class') || '') || el.tagName === 'ASIDE' || el.tagName === 'FORM';
 
-  const questionsData = rawQuestions.map((el, idx) => {
-    const qid = el.getAttribute('data-qid') || `Q${idx + 1}`;
-    const id = el.id || `q${idx + 1}`;
-    const title = el.getAttribute('data-title') || el.querySelector('h2')?.textContent.replace(/[¶\u00b6]/g, '').trim() || `Question ${idx + 1}`;
-    const meta = el.getAttribute('data-meta') || 'PEC-EE 701C · 5 marks · Mid Sem · 2 min read';
-    const glimpse = el.getAttribute('data-glimpse') || el.querySelector('.article-lead')?.textContent.trim() || '';
-    const thumb = el.getAttribute('data-thumb') || '';
-    
-    const fullContent = el.cloneNode(true);
-    // The hidden original keeps the ids; the copy must not duplicate them (duplicate ids made the page jump).
-    fullContent.removeAttribute('id');
-    fullContent.querySelectorAll('[id]').forEach((n) => n.removeAttribute('id'));
-    fullContent.querySelectorAll('a.headerlink').forEach((a) => a.remove());
-    const cloneH2 = fullContent.querySelector('h2');
-    if (cloneH2) cloneH2.remove();
+  const kids = Array.from(pageContent.children);
+  const firstQ = kids.findIndex(isQuestionHead);
+  const pageH1 = pageContent.querySelector(':scope > h1');
 
-    const parts = meta.split('·').map(x => x.trim()).filter(Boolean);
-    const metaShort = (parts.length > 2 ? parts.slice(1) : parts).join(' • ');
+  // Subject pages: .../midsem/ and .../endsem/ share a Mid Sem | End Sem tab bar. Each has its own "## Syllabus" at the top of the list.
+  const subjMatch = rel.match(/^(sem\d+)\/([^/]+)\/(midsem|endsem)?\/?$/);
+  const pageKind = subjMatch ? (subjMatch[3] || 'overview') : '';
+  const subjectBase = subjMatch ? `${root}${subjMatch[1]}/${subjMatch[2]}/` : '';
+  const tabsHtml = (active) => !subjMatch ? '' : `<nav class="subject-tabs" aria-label="Subject sections">${
+    [['midsem', 'Mid Sem', 'midsem/'], ['endsem', 'End Sem', 'endsem/']].map(([k, label, href]) =>
+      `<a class="subject-tab${k === active ? ' is-active' : ''}" href="${subjectBase}${href}"${k === active ? ' aria-current="page"' : ''}>${label}</a>`).join('')
+  }</nav>`;
 
-    return { id, qid, title, meta, metaShort, glimpse, thumb, fullContent };
+  if (subjMatch && pageKind === 'overview') return; // subject overview page: a normal page
+  // Ordinary page without questions: leave it alone. Mid/End Sem pages always get the layout, even when empty.
+  if (firstQ === -1 && !(subjMatch && (pageKind === 'midsem' || pageKind === 'endsem'))) return;
+
+  const subject = clean(pageH1 && pageH1.textContent) || 'Questions';
+  const subjectName = subject.replace(/\s*[—–-]\s*(Mid|End)\s*Sem\s*$/i, '') || subject; // the tabs already say Mid / End
+  const introNodes = kids.slice(0, firstQ === -1 ? kids.length : firstQ).filter((el) => el !== pageH1 && !isThemeChrome(el));
+
+  const groups = [];
+  let currentGroup = null;
+  (firstQ === -1 ? [] : kids.slice(firstQ)).forEach((el) => {
+    if (isQuestionHead(el)) { currentGroup = { head: el, nodes: [] }; groups.push(currentGroup); }
+    else if (currentGroup && !isThemeChrome(el)) currentGroup.nodes.push(el);
   });
 
-  container.style.display = 'none';
+  const examLabel = pageKind === 'endsem' ? 'End Sem' : 'Mid Sem';
+  const usedIds = new Set();
+  const questionsData = groups.map((g, idx) => {
+    const headCopy = g.head.cloneNode(true);
+    headCopy.querySelectorAll('a.headerlink').forEach((a) => a.remove());
+    const smallEl = headCopy.querySelector('small');
+    const smallText = smallEl ? smallEl.textContent : '';
+    if (smallEl) smallEl.remove();
+    const headText = clean(headCopy.textContent);
+    const isSyllabus = isSyllabusHead(g.head);
+    const m = isSyllabus ? null : headText.match(/^Q\s*(\d+)\s*[.:)\-–—]*\s*(.*)$/i);
+    const num = m ? m[1] : String(idx + 1);
+    const title = isSyllabus ? 'Syllabus' : ((m ? m[2] : headText) || `Question ${num}`);
+    const marksMatch = `${smallText} ${headText}`.match(/(\d+(?:\.\d+)?)\s*marks?/i);
+    const marks = (marksMatch && !isSyllabus) ? marksMatch[1] : '';
+
+    let id = isSyllabus ? 'syllabus' : `q${num}`;
+    if (usedIds.has(id)) id = `q${num}-${idx + 1}`;
+    usedIds.add(id);
+
+    const words = g.nodes.reduce((n, el) => n + clean(el.textContent).split(' ').length, 0);
+    const mins = Math.max(1, Math.round(words / 180));
+    const metaBits = [];
+    if (marks) metaBits.push(`${marks} mark${marks === '1' ? '' : 's'}`);
+    if (isSyllabus) metaBits.push(`${examLabel} syllabus`); else metaBits.push(`${mins} min read`);
+
+    // Preview text: first real paragraph, with equations left out
+    const firstPara = g.nodes.find((el) => el.tagName === 'P' && clean(el.textContent).length > 20);
+    let glimpse = '';
+    if (isSyllabus) {
+      const items = g.nodes.flatMap((el) => Array.from(el.querySelectorAll ? el.querySelectorAll('li') : []));
+      const lines = items.length ? items.map((li) => clean(li.firstChild ? li.textContent : '').split(/\s+[—–-]\s+/)[0]) : [clean(g.nodes.map((n) => n.textContent).join(' '))];
+      glimpse = lines.join(' · ');
+      if (glimpse.length > 170) glimpse = glimpse.slice(0, 167).trimEnd() + '...';
+    } else if (firstPara) {
+      const pc = firstPara.cloneNode(true);
+      pc.querySelectorAll('.arithmatex, .katex, .katex-display, annotation').forEach((n) => n.remove());
+      glimpse = clean(pc.textContent).replace(/\(\s*\)/g, '').replace(/\s+([.,;:])/g, '$1');
+      if (glimpse.length > 170) glimpse = glimpse.slice(0, 167).trimEnd() + '...';
+    }
+
+    // Thumbnail: the first picture in the answer, if any
+    let thumb = '';
+    for (const el of g.nodes) {
+      const img = el.tagName === 'IMG' ? el : el.querySelector('img');
+      if (img) { thumb = img.currentSrc || img.src; break; }
+    }
+
+    return {
+      id, qid: isSyllabus ? 'Syllabus' : `Q${num}`, isSyllabus, title, glimpse, thumb, marks,
+      metaShort: metaBits.join(' • '),
+      meta: [subjectName].concat(metaBits).join(' · '),
+      head: g.head, nodes: g.nodes,
+      body: null,
+    };
+  });
+
+  // ---- "read" ticks: saved in this browser only (localStorage), so no account or server is needed ----
+  const STORE_KEY = 'examnotes.done.v1';
+  const pageKey = rel || '/';
+  let doneMap = {};
+  try { doneMap = JSON.parse(localStorage.getItem(STORE_KEY) || '{}') || {}; } catch (e) { doneMap = {}; }
+  const isDone = (id) => !!doneMap[`${pageKey}#${id}`];
+  function setDone(id, on) {
+    if (on) doneMap[`${pageKey}#${id}`] = Date.now(); else delete doneMap[`${pageKey}#${id}`];
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(doneMap)); } catch (e) { /* private mode: keep it for this visit only */ }
+    refreshProgress();
+  }
+
+  // ---- group the questions by marks: highest first (10, 5, 2 ...), questions without marks last ----
+  const groupMap = new Map();
+  const syllabusQ = questionsData.find((q) => q.isSyllabus) || null;
+  const realQs = questionsData.filter((q) => !q.isSyllabus);
+  realQs.forEach((q) => {
+    if (!groupMap.has(q.marks)) groupMap.set(q.marks, []);
+    groupMap.get(q.marks).push(q);
+  });
+  const groupsOrdered = Array.from(groupMap.entries()).sort((a, b) => {
+    if (a[0] === '') return 1;
+    if (b[0] === '') return -1;
+    return parseFloat(b[0]) - parseFloat(a[0]);
+  });
+  const ordered = (syllabusQ ? [syllabusQ] : []).concat(groupsOrdered.flatMap(([, list]) => list)); // the order shown on screen = order for prev / next
 
   let appWrapper = document.querySelector('.instapaper-app');
   if (appWrapper) appWrapper.remove();
@@ -163,15 +274,18 @@ document$.subscribe(() => {
   const feed = document.createElement('aside');
   feed.className = 'instapaper-feed';
 
-  const feedTitle = esc((document.querySelector('.md-content__inner > h1')?.textContent || 'Questions').replace(/[¶\u00b6]/g, '').trim());
+  const feedTitle = esc(subjectName);
   const chevronLeft = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>`;
+  const checkSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+  const chevronDown = `<svg class="q-group-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
   feed.innerHTML = `
+    <div class="feed-top">
     <div class="instapaper-feed-header">
       <a class="feed-back-btn" href="${root}" aria-label="Back to home">${chevronLeft}</a>
       <div class="feed-header-left">
         <span class="feed-home-icon">${icons.home}</span>
         <span class="feed-home-title">${feedTitle}</span>
-        <span class="feed-count">${questionsData.length}</span>
+        <span class="feed-count"></span>
       </div>
       <div class="feed-header-right">
         <button class="feed-icon-btn search-btn" title="Search questions" aria-label="Search questions">
@@ -182,42 +296,95 @@ document$.subscribe(() => {
         </button>
       </div>
     </div>
+    ${tabsHtml(pageKind)}
     <div class="feed-search-drawer" style="display: none;">
       <input type="text" class="feed-search-input" placeholder="Search questions..." aria-label="Search questions" />
+    </div>
     </div>
     <div class="instapaper-card-list"></div>
   `;
 
   const cardList = feed.querySelector('.instapaper-card-list');
 
-  questionsData.forEach((q, idx) => {
+  // Phones: the header buttons live in a floating pill at the bottom (easy to reach with a thumb)
+  const pillIcon = (d) => `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+  const feedPill = document.createElement('div');
+  feedPill.className = 'feed-pill';
+  feedPill.innerHTML = `
+    <a class="pill-btn" href="${root}" aria-label="Back to home">${chevronLeft}</a>
+    ${tabsHtml(pageKind)}
+    <button type="button" class="pill-btn pill-search" aria-label="Search questions">${pillIcon('<circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>')}</button>
+    <button type="button" class="pill-btn pill-theme" aria-label="Switch light or dark mode">${pillIcon('<circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"></path>')}</button>
+  `;
+  feed.appendChild(feedPill);
+  feedPill.querySelector('.pill-search').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    feed.querySelector('.search-btn').click();
+  });
+  feedPill.querySelector('.pill-theme').addEventListener('click', () => feed.querySelector('.theme-btn').click());
+
+  function makeCard(q) {
     const card = document.createElement('div');
-    card.className = `instapaper-card ${idx === 0 ? 'is-active' : ''}`;
+    card.className = 'instapaper-card';
     card.setAttribute('data-target-id', q.id);
     card.tabIndex = 0;
     card.setAttribute('role', 'button');
 
     card.innerHTML = `
+      ${q.isSyllabus ? '' : `<button type="button" class="card-check" aria-label="Mark as read" aria-pressed="false" title="Mark as read">${checkSvg}</button>`}
       <div class="card-body">
-        <h4 class="card-title">${q.title}</h4>
-        <div class="card-meta">${q.metaShort}</div>
-        <p class="card-glimpse">${q.glimpse}</p>
+        <h4 class="card-title">${esc(q.title)}</h4>
+        <div class="card-meta">${esc(q.metaShort)}</div>
+        <p class="card-glimpse">${esc(q.glimpse)}</p>
       </div>
-      ${q.thumb ? `<div class="card-thumb"><img src="${q.thumb}" alt="${q.title}" loading="lazy"/></div>` : ''}
+      ${q.thumb ? `<div class="card-thumb"><img src="${esc(q.thumb)}" alt="" loading="lazy"/></div>` : ''}
     `;
 
+    const tick = card.querySelector('.card-check');
+    if (tick) tick.addEventListener('click', (e) => {
+      e.stopPropagation(); // ticking must not open the question
+      setDone(q.id, !isDone(q.id));
+    });
     card.addEventListener('click', () => {
       selectQuestion(q.id);
       if (isMobile()) openMobileReader();
     });
     card.addEventListener('keydown', (e) => {
+      if (e.target !== card) return; // Enter/Space on the tick button belongs to the button
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         card.click();
       }
     });
+    return card;
+  }
 
-    cardList.appendChild(card);
+  if (syllabusQ) {
+    const top = document.createElement('div');
+    top.className = 'q-syllabus';
+    top.appendChild(makeCard(syllabusQ));
+    cardList.appendChild(top);
+  }
+
+  groupsOrdered.forEach(([key, list]) => {
+    const label = key ? `${key} mark${key === '1' ? '' : 's'}` : 'Other';
+    const section = document.createElement('section');
+    section.className = 'q-group';
+    section.innerHTML = `
+      <button type="button" class="q-group-head" aria-expanded="true">
+        <span class="q-group-title">${esc(label)}</span>
+        <span class="q-group-count"></span>
+        ${chevronDown}
+      </button>
+      <div class="q-group-cards"></div>
+    `;
+    const box = section.querySelector('.q-group-cards');
+    list.forEach((q) => box.appendChild(makeCard(q)));
+    section.querySelector('.q-group-head').addEventListener('click', (e) => {
+      const collapsed = section.classList.toggle('is-collapsed');
+      e.currentTarget.setAttribute('aria-expanded', String(!collapsed));
+    });
+    cardList.appendChild(section);
   });
 
   // Right Section (Reader Pane)
@@ -242,8 +409,8 @@ document$.subscribe(() => {
         <button class="toolbar-btn mobile-step-btn next-q-btn" title="Next question" aria-label="Next question">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <button class="toolbar-btn fav-btn" title="Like / Bookmark">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <button class="toolbar-btn done-btn" title="Mark as read" aria-label="Mark as read" aria-pressed="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"></circle><polyline points="7.5 12.5 10.5 15.5 16.5 9"></polyline></svg>
         </button>
         <button class="toolbar-btn tag-btn" title="Tags">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
@@ -289,11 +456,28 @@ document$.subscribe(() => {
   appWrapper.appendChild(feed);
   appWrapper.appendChild(reader);
 
-  const contentParent = document.querySelector('.md-content__inner') || container.parentNode;
-  contentParent.insertBefore(appWrapper, contentParent.firstChild);
+  pageContent.insertBefore(appWrapper, pageContent.firstChild);
 
-  // Build each answer once (incl. KaTeX) and reuse it, so switching questions is instant.
-  const articleCache = new Map();
+  // Anything written above the first question (e.g. a short note) is kept, at the top of the list.
+  if (introNodes.length) {
+    const intro = document.createElement('div');
+    intro.className = 'feed-intro';
+    intro.append(...introNodes);
+    feed.insertBefore(intro, cardList);
+  }
+
+  // Move each question's own content into the reader (moved, not copied: no duplicate ids, nothing left behind).
+  questionsData.forEach((q) => {
+    const body = document.createElement('div');
+    body.className = 'reader-content';
+    body.append(...q.nodes);
+    body.querySelectorAll('img:not([loading]), iframe:not([loading])').forEach((n) => n.setAttribute('loading', 'lazy'));
+    body.querySelectorAll('video:not([preload])').forEach((v) => v.setAttribute('preload', 'none'));
+    q.head.remove();
+    q.body = body;
+    q.mathDone = false;
+  });
+
   const mathOptions = {
     delimiters: [
       { left: "$$", right: "$$", display: true },
@@ -303,25 +487,26 @@ document$.subscribe(() => {
     ],
     throwOnError: false
   };
+  const headerCache = new Map();
   function getArticleNodes(qData) {
-    let nodes = articleCache.get(qData.id);
-    if (nodes) return nodes;
-    const header = document.createElement('header');
-    header.className = 'reader-header';
-    const h1 = document.createElement('h1');
-    h1.className = 'reader-title';
-    h1.textContent = qData.title;
-    const byline = document.createElement('div');
-    byline.className = 'reader-byline';
-    byline.textContent = qData.meta;
-    header.append(h1, byline);
-    const content = document.createElement('div');
-    content.className = 'reader-content';
-    content.append(...Array.from(qData.fullContent.childNodes));
-    if (typeof renderMathInElement === 'function') renderMathInElement(content, mathOptions);
-    nodes = [header, content];
-    articleCache.set(qData.id, nodes);
-    return nodes;
+    let header = headerCache.get(qData.id);
+    if (!header) {
+      header = document.createElement('header');
+      header.className = 'reader-header';
+      const h1 = document.createElement('h1');
+      h1.className = 'reader-title';
+      h1.textContent = qData.title;
+      const byline = document.createElement('div');
+      byline.className = 'reader-byline';
+      byline.textContent = qData.meta;
+      header.append(h1, byline);
+      headerCache.set(qData.id, header);
+    }
+    if (!qData.mathDone && typeof renderMathInElement === 'function') {
+      renderMathInElement(qData.body, mathOptions); // once per answer, then reused
+      qData.mathDone = true;
+    }
+    return [header, qData.body];
   }
 
   // Scroll only the question list (never the whole page) to keep the active card in view.
@@ -357,6 +542,56 @@ document$.subscribe(() => {
   }
   window.addEventListener('popstate', hideMobileReader, listen);
 
+  // End of every answer: mark as read, or go straight on to the next question
+  const finish = document.createElement('div');
+  finish.className = 'reader-finish';
+  finish.innerHTML = `
+    <button type="button" class="finish-done"><span class="finish-icon">${checkSvg}</span><span class="finish-label">Mark as read</span></button>
+    <button type="button" class="finish-next">Next question <span aria-hidden="true">&rsaquo;</span></button>
+  `;
+  const doneBtn = reader.querySelector('.done-btn');
+  const toggleCurrentDone = () => { if (currentId) setDone(currentId, !isDone(currentId)); };
+  doneBtn.addEventListener('click', toggleCurrentDone);
+  finish.querySelector('.finish-done').addEventListener('click', toggleCurrentDone);
+  finish.querySelector('.finish-next').addEventListener('click', () => stepQuestion(1));
+
+  function updateDoneButtons() {
+    const on = !!currentId && isDone(currentId);
+    doneBtn.classList.toggle('is-done', on);
+    doneBtn.setAttribute('aria-pressed', String(on));
+    doneBtn.title = on ? 'Marked as read (tap to undo)' : 'Mark as read';
+    finish.classList.toggle('is-done', on);
+    finish.querySelector('.finish-label').textContent = on ? 'Read. Tap to undo' : 'Mark as read';
+    const pos = ordered.findIndex((q) => q.id === currentId);
+    finish.querySelector('.finish-next').hidden = pos < 0 || pos >= ordered.length - 1;
+    const isSy = !!syllabusQ && currentId === syllabusQ.id;
+    doneBtn.hidden = isSy;
+    finish.querySelector('.finish-done').hidden = isSy;
+    finish.querySelector('.finish-next').textContent = isSy ? 'First question ›' : 'Next question ›';
+  }
+
+  // Ticks on the cards, "2/3" counts on each marks group and the total next to the title
+  function refreshProgress() {
+    let total = 0;
+    let done = 0;
+    cardList.querySelectorAll('.q-group').forEach((sec) => {
+      const cards = Array.from(sec.querySelectorAll('.instapaper-card'));
+      let d = 0;
+      cards.forEach((c) => {
+        const on = isDone(c.getAttribute('data-target-id'));
+        c.classList.toggle('is-done', on);
+        c.querySelector('.card-check').setAttribute('aria-pressed', String(on));
+        if (on) d += 1;
+      });
+      sec.querySelector('.q-group-count').textContent = `${d}/${cards.length}`;
+      total += cards.length;
+      done += d;
+    });
+    const cnt = feed.querySelector('.feed-count');
+    if (cnt) cnt.textContent = total ? `${done}/${total}` : '';
+    updateDoneButtons();
+  }
+
   const prevBtn = reader.querySelector('.prev-q-btn');
   const nextBtn = reader.querySelector('.next-q-btn');
   let currentId = null;
@@ -371,11 +606,12 @@ document$.subscribe(() => {
       if (on) keepCardVisible(c);
     });
 
-    articleViewport.replaceChildren(...getArticleNodes(qData));
+    articleViewport.replaceChildren(...getArticleNodes(qData), finish);
     reader.scrollTo({ top: 0, behavior: 'instant' });
-    const pos = questionsData.indexOf(qData);
+    updateDoneButtons();
+    const pos = ordered.indexOf(qData);
     if (prevBtn) prevBtn.disabled = pos <= 0;
-    if (nextBtn) nextBtn.disabled = pos >= questionsData.length - 1;
+    if (nextBtn) nextBtn.disabled = pos >= ordered.length - 1;
 
     // On phones the list keeps a clean URL; only the reader entry carries #qN (so Back returns to the list).
     const writeHash = !isMobile() || appWrapper.classList.contains('mobile-reader-open');
@@ -386,8 +622,14 @@ document$.subscribe(() => {
 
   const currentHash = window.location.hash.replace('#', '');
   const hashMatches = currentHash && questionsData.some(q => q.id === currentHash);
-  selectQuestion(hashMatches ? currentHash : questionsData[0].id);
-  if (hashMatches && isMobile()) appWrapper.classList.add('mobile-reader-open'); // opened from a shared link
+  if (ordered.length) {
+    selectQuestion(hashMatches ? currentHash : (realQs[0] || ordered[0]).id);
+    if (hashMatches && isMobile()) appWrapper.classList.add('mobile-reader-open'); // opened from a shared link
+  } else {
+    appWrapper.classList.add('is-empty'); // Mid/End Sem page with no questions yet
+    articleViewport.innerHTML = '<p class="reader-empty">Questions added to this page will open here.</p>';
+  }
+  refreshProgress();
 
   // Search Toggle
   const searchBtn = feed.querySelector('.search-btn');
@@ -405,11 +647,10 @@ document$.subscribe(() => {
       cardList.querySelectorAll('.instapaper-card').forEach(card => {
         const titleText = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
         const glimpseText = card.querySelector('.card-glimpse')?.textContent.toLowerCase() || '';
-        if (titleText.includes(query) || glimpseText.includes(query)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = (titleText.includes(query) || glimpseText.includes(query)) ? '' : 'none';
+      });
+      cardList.querySelectorAll('.q-group, .q-syllabus').forEach((sec) => {
+        sec.hidden = !Array.from(sec.querySelectorAll('.instapaper-card')).some((c) => c.style.display !== 'none');
       });
     });
   }
@@ -435,18 +676,10 @@ document$.subscribe(() => {
     });
   }
 
-  // Favorite Heart
-  const favBtn = reader.querySelector('.fav-btn');
-  if (favBtn) {
-    favBtn.addEventListener('click', () => {
-      favBtn.classList.toggle('is-favorited');
-    });
-  }
-
   // Previous / next question (phone toolbar)
   function stepQuestion(delta) {
-    const pos = questionsData.findIndex(q => q.id === currentId);
-    const target = questionsData[pos + delta];
+    const pos = ordered.findIndex(q => q.id === currentId);
+    const target = ordered[pos + delta];
     if (!target) return;
     selectQuestion(target.id);
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -523,7 +756,7 @@ document$.subscribe(() => {
     const up = e.key === 'k' || (e.key === 'ArrowUp' && inFeed);
     if (!down && !up) return;
 
-    const cards = Array.from(cardList.querySelectorAll('.instapaper-card')).filter(c => c.style.display !== 'none');
+    const cards = Array.from(cardList.querySelectorAll('.instapaper-card')).filter(c => c.style.display !== 'none' && !c.closest('.q-group.is-collapsed'));
     const activeCard = cardList.querySelector('.instapaper-card.is-active');
     const currentIndex = cards.indexOf(activeCard);
     const target = cards[currentIndex + (down ? 1 : -1)];
