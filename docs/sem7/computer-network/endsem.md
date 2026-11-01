@@ -5,41 +5,11 @@
 
 ## Syllabus
 
-1. Data communication Components
-    - Representation of data and its flow Networks
-    - Various Connection Topology
-    - Protocols and Standards
-    - OSI model
-    - Transmission Media
-    - LAN: Wired LAN, Wireless LANs, Connecting LAN and Virtual LAN
-    - Techniques for Bandwidth utilization: Multiplexing - Frequency division, Time division and Wave division
-    - Concepts on spread spectrum
-2. Data Link Layer and Medium Access Sub Layer
-    - Error Detection and Error Correction - Fundamentals
-    - Block coding, Hamming Distance, CRC
-    - Flow Control and Error control protocols - Stop and Wait, Go back – N ARQ, Selective Repeat ARQ, Sliding Window, Piggybacking
-    - Random Access, Multiple access protocols -Pure ALOHA, Slotted ALOHA, CSMA/CD, CDMA/CA
-3. Network Layer
-    - Switching
-    - Logical addressing – IPV4, IPV6
-    - Address mapping – ARP, RARP, BOOTP and DHCP–Delivery
-    - Forwarding and Unicast Routing protocols
-4. Transport Layer
-    - Process to Process Communication
-    - User Datagram Protocol (UDP)
-    - Transmission Control Protocol (TCP)
-    - SCTP Congestion Control
-    - Quality of Service, QoS improving techniques: Leaky Bucket and Token Bucket algorithm
-5. Application Layer
-    - Domain Name Space (DNS), DDNS
-    - TELNET
-    - EMAIL
-    - File Transfer Protocol (FTP)
-    - WWW, HTTP
-    - SNMP
-    - Bluetooth
-    - Firewalls
-    - Basic concepts of Cryptography
+1. Data communication — components, topologies, OSI model, transmission media, LAN/WLAN/VLAN, multiplexing, spread spectrum
+2. Data link & MAC layer — error detection/correction, Hamming distance, CRC, Stop-and-Wait, Go-Back-N, Selective Repeat, ALOHA, CSMA/CD, CSMA/CA
+3. Network layer — switching, IPv4/IPv6, ARP, RARP, BOOTP, DHCP, unicast routing
+4. Transport layer — UDP, TCP, SCTP, congestion control, QoS, leaky bucket & token bucket
+5. Application layer — DNS, DDNS, TELNET, email, FTP, WWW, HTTP, SNMP, Bluetooth, firewalls, cryptography basics
 
 **Main textbook:** Data Communication and Networking — B.A. Forouzan
 

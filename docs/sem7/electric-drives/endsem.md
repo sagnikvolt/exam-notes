@@ -174,17 +174,17 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - The **DC series motor** (and now ac induction motor drives with converters).
 - It has very high starting torque ($T\propto I_a^2$) and automatically reduces speed as load rises.
 
-## Q19. Find the average output voltage of a half-wave uncontrolled rectifier for a supply of $23\sin(50t)$. <small>(2 marks · Module 3 · End Sem)</small>
+## Q19. Find the average output voltage of a half-wave uncontrolled rectifier for a supply of 23sin(50t). <small>(2 marks · Module 3 · End Sem)</small>
 
 - For a half-wave uncontrolled rectifier $V_{avg}=\frac{V_m}{\pi}$ with $V_m = 23$ V.
 - $V_{avg}=\frac{23}{\pi}\approx 7.32$ V (the angular frequency 50 rad/s does not affect the average).
 
-## Q20. Find the average output voltage of a half-wave controlled rectifier for $10\sin(50t)$ at a firing angle of $30^\circ$. <small>(2 marks · Module 3 · End Sem)</small>
+## Q20. Find the average output voltage of a half-wave controlled rectifier for 10sin(50t) at a firing angle of 30°. <small>(2 marks · Module 3 · End Sem)</small>
 
 - $V_{avg}=\frac{V_m}{2\pi}(1+\cos\alpha)$ with $V_m=10$ V and $\alpha=30^\circ$.
 - $V_{avg}=\frac{10}{2\pi}(1+0.866)=2.97$ V.
 
-## Q21. Find the conduction angle for a purely inductive load with a firing angle of $90^\circ$. <small>(2 marks · Module 3 · End Sem)</small>
+## Q21. Find the conduction angle for a purely inductive load with a firing angle of 90°. <small>(2 marks · Module 3 · End Sem)</small>
 
 - For a purely inductive load in a half-wave circuit, the current starts at $\alpha$ and ends at $\beta=2\pi-\alpha$, so conduction angle $=2\pi-2\alpha$.
 - For $\alpha=90^\circ$: conduction angle $=360^\circ-180^\circ=180^\circ$.
@@ -474,7 +474,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Permanent magnet synchronous and brushless dc motor drives** are replacing dc servo motors in the fractional-hp range.
 - The trend favours ac drives, but dc drives will remain in use for some time.
 
-## Q70. A drive has motor torque $T=150-0.1N$ and a load torque of 100 N-m. The load torque changes to $-100$ N-m. Find the initial and final equilibrium speeds. (Dubey 2.1) <small>(5 marks · Module 1 · End Sem)</small>
+## Q70. A drive has motor torque T=150-0.1N and a load torque of 100 N-m. The load torque changes to -100 N-m. Find the initial and final equilibrium speeds. (Dubey 2.1) <small>(5 marks · Module 1 · End Sem)</small>
 
 - **Given:** $T=150-0.1N$ N-m ($N$ in rpm); initially $T_L=100$ N-m, finally $T_L=-100$ N-m (active load).
 - **Condition:** at equilibrium motor torque equals load torque, $T=T_L$.
@@ -557,7 +557,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Quadrant III** ($T_L=-200$): $-400-0.4N=-200\Rightarrow N=-500$ rpm.
 - **Result:** the speeds are 500 rpm (motoring), 1500 rpm (braking) and $-500$ rpm (quadrant III).
 
-## Q80. Calculate the starting time of a drive with $J=10$ kg-m$^2$, $T=15+0.5\omega_m$ and $T_L=5+0.6\omega_m$. (Dubey 2.11) <small>(5 marks · Module 1 · End Sem)</small>
+## Q80. Calculate the starting time of a drive with J=10 kg-m², T=15+0.5ωm and TL=5+0.6ωm. (Dubey 2.11) <small>(5 marks · Module 1 · End Sem)</small>
 
 - **Dynamic torque:** $T-T_L=10-0.1\omega_m$, and $J\frac{d\omega_m}{dt}=10-0.1\omega_m$.
 - **Steady-state speed:** $\omega_{ss}=100$ rad/s (when $T=T_L$), with time constant $\tau=\frac{J}{0.1}=100$ s.
@@ -800,7 +800,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Current:** $I_{a2}=500\times\frac{0.3906}{0.8}\approx244$ A.
 - **Result:** speed **500 rpm** and current **about 244 A** (compare 625 A for constant torque).
 
-## Q102. A 220 V, 800 rpm, 80 A separately excited motor with $R_a=0.12\ \Omega$ drives a constant-torque load. Find the speed if the source voltage drops to 200 V. (Dubey 5.5) <small>(5 marks · Module 3 · End Sem)</small>
+## Q102. A 220 V, 800 rpm, 80 A separately excited motor with Ra=0.12 Ω drives a constant-torque load. Find the speed if the source voltage drops to 200 V. (Dubey 5.5) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Constant torque and flux:** the armature current stays at 80 A.
 - **Initial emf:** $E_1=220-80\times0.12=210.4$ V.
@@ -821,7 +821,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Caution:** 112.5 A may exceed the rating, so the machine may overheat.
 - **Result:** speed **500 rpm**, armature current **112.5 A**.
 
-## Q104. A 220 V, 960 rpm, 80 A dc series motor ($R_a=R_f=0.05\ \Omega$) drives a constant-torque load. The terminal voltage is changed from 220 V to $-200$ V and the field turns reduced to 80%. Find the speed and current and say whether the speed reverses. (Dubey 5.7) <small>(10 marks · Module 3 · End Sem)</small>
+## Q104. A 220 V, 960 rpm, 80 A dc series motor (Ra=Rf=0.05 Ω) drives a constant-torque load. The terminal voltage is changed from 220 V to -200 V and the field turns reduced to 80%. Find the speed and current and say whether the speed reverses. (Dubey 5.7) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Given:** $R=R_a+R_f=0.1\ \Omega$; linear magnetic circuit; torque is constant.
 - **Initial emf:** $E_1=220-80\times0.1=212$ V at 960 rpm.
@@ -837,7 +837,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     The direction depends on the type of load (passive or active). Check how your textbook answers "will the speed reverse".
 
-## Q105. A 230 V, 750 rpm, 25 A dc series motor drives a load with torque proportional to speed squared; $R_a+R_f=1\ \Omega$. Find the terminal voltage and current for 400 rpm and state the assumption. (Dubey 5.8) <small>(10 marks · Module 3 · End Sem)</small>
+## Q105. A 230 V, 750 rpm, 25 A dc series motor drives a load with torque proportional to speed squared; Ra+Rf=1 Ω. Find the terminal voltage and current for 400 rpm and state the assumption. (Dubey 5.8) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Given:** $V_1=230$ V, $N_1=750$ rpm, $I_1=25$ A, $R=1\ \Omega$.
 - **Assumption:** the magnetic circuit is linear (no saturation), so $\phi\propto I_a$ and $T\propto I_a^2$.
@@ -858,7 +858,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Torque and speed:** dynamic and regenerative braking torque falls with speed, while plugging gives torque even at standstill.
 - **Choice:** regeneration for large drives with energy recovery, dynamic braking for simple drives, plugging where the fastest stop is needed.
 
-## Q107. A 230 V, 870 rpm, 100 A separately excited motor ($R_a=0.05\ \Omega$) is coupled to an overhauling load of 400 N-m. Find the speed at which regenerative braking holds the load. (Dubey 5.10) <small>(5 marks · Module 3 · End Sem)</small>
+## Q107. A 230 V, 870 rpm, 100 A separately excited motor (Ra=0.05 Ω) is coupled to an overhauling load of 400 N-m. Find the speed at which regenerative braking holds the load. (Dubey 5.10) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Motor constant:** $E=230-100\times0.05=225$ V at $\omega=91.1$ rad/s, so $K\phi=2.470$ V-s/rad.
 - **Armature current:** $I_a=\frac{T}{K\phi}=\frac{400}{2.470}=162$ A.
@@ -866,7 +866,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Speed:** $\omega=\frac{238.1}{2.470}=96.4$ rad/s.
 - **Result:** the load is held at **about 921 rpm**.
 
-## Q108. A 230 V, 960 rpm, 200 A separately excited motor ($R_a=0.02\ \Omega$) drives an overhauling load whose torque varies from zero to rated. Flux can be changed and saturates at 1.2 times rated. Find the speed range of regenerative holding without exceeding twice rated current. (Dubey 5.11) <small>(5 marks · Module 3 · End Sem)</small>
+## Q108. A 230 V, 960 rpm, 200 A separately excited motor (Ra=0.02 Ω) drives an overhauling load whose torque varies from zero to rated. Flux can be changed and saturates at 1.2 times rated. Find the speed range of regenerative holding without exceeding twice rated current. (Dubey 5.11) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Rated constants:** $E=230-4=226$ V, so $K\phi_r=\frac{226}{100.5}=2.248$ and $T_r=449.6$ N-m.
 - **Lowest speed:** at zero torque ($I_a=0$) with the maximum flux $1.2\phi_r$: $\omega=\frac{230}{1.2\times2.248}=85.3$ rad/s, which is 814 rpm.
@@ -885,7 +885,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **External resistance:** $R_B=0.936-0.02$.
 - **Result:** $R_B\approx0.92\ \Omega$ (the current is 1.23 times rated).
 
-## Q110. A 220 V, 100 A dc series motor ($R_a=0.04$, $R_f=0.06\ \Omega$) gave a no-load test as a separately excited generator at 1000 rpm. It is dynamically braked with 1.5 Ω. Find the current and torque at 800 rpm. (Dubey 5.13) <small>(10 marks · Module 3 · End Sem)</small>
+## Q110. A 220 V, 100 A dc series motor (Ra=0.04, Rf=0.06 Ω) gave a no-load test as a separately excited generator at 1000 rpm. It is dynamically braked with 1.5 Ω. Find the current and torque at 800 rpm. (Dubey 5.13) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Test data (1000 rpm):** $I_f$ = 25, 50, 75, 100, 125, 150, 175 A gives $E$ = 66.5, 124, 158.5, 181, 198.5, 211, 221.5 V.
 - **Circuit:** in series dynamic braking the machine self-excites, so $E=I_a(R_a+R_f+R_B)=I_a\times1.6$.
@@ -927,7 +927,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Remedy:** a smaller $R_B$ lowers the critical speed so braking works down to a lower speed.
 - **Conclusion:** the torque is zero at a finite speed because the series generator cannot self-excite below the critical speed.
 
-## Q113. A dc shunt motor is braked by self-excited dynamic braking with $R_B=0.5\ \Omega$. Find the braking torque at 1200 rpm. (Dubey 5.16) <small>(10 marks · Module 3 · End Sem)</small>
+## Q113. A dc shunt motor is braked by self-excited dynamic braking with RB=0.5 Ω. Find the braking torque at 1200 rpm. (Dubey 5.16) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Connection:** the armature is disconnected from the source and joined to $R_B$, while the field winding stays across the armature terminals, so the motor self-excites.
 - **Armature circuit:** $E=V_t+I_aR_a$ with $V_t$ the terminal voltage across $R_B$ and the field.
@@ -943,7 +943,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     This question points to a textbook example whose data is not in the question bank scan. The method is correct; the final number needs that example's data. The same method is used numerically in the next question.
 
-## Q114. A dc shunt motor has $R_a=0.2\ \Omega$ and $R_f=120\ \Omega$. It holds an overhauling load of 50 N-m by self-excited dynamic braking with $R_B=10\ \Omega$. Find the speed. (Dubey 5.17) <small>(10 marks · Module 3 · End Sem)</small>
+## Q114. A dc shunt motor has Ra=0.2 Ω and Rf=120 Ω. It holds an overhauling load of 50 N-m by self-excited dynamic braking with RB=10 Ω. Find the speed. (Dubey 5.17) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Magnetization at 1000 rpm:** $I_f$ = 0.2, 0.3, 0.4, 0.5, 0.75, 1, 1.5, 2.0 A gives $E$ = 80, 120, 150, 170, 200, 220, 245, 263 V.
 - **Circuit:** $R_B$ and the field are both across the armature, so $V_t=120I_f$ and $I_a=V_t\left(\frac{1}{10}+\frac{1}{120}\right)=13\,I_f$.
@@ -956,7 +956,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Torque check:** $\frac{198.6\times21}{83.3}\approx50$ N-m.
 - **Result:** the motor holds the load at **about 795 rpm**.
 
-## Q115. For the motor of the previous problem, find $R_B$ to hold the overhauling load of 50 N-m at 900 rpm. (Dubey 5.18) <small>(10 marks · Module 3 · End Sem)</small>
+## Q115. For the motor of the previous problem, find RB to hold the overhauling load of 50 N-m at 900 rpm. (Dubey 5.18) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Same method:** with a general $R_B$, $V_t=120I_f$ and $I_a=V_t\left(\frac{1}{R_B}+\frac{1}{120}\right)$.
 - **Emf factor:** $E=V_t\left[1+0.2\left(\frac{1}{R_B}+\frac{1}{120}\right)\right]=kV_t$.
@@ -969,7 +969,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Refined value:** $R_B\approx12.6\ \Omega$ with $I_f\approx1.92$ A.
 - **Result:** $R_B\approx12.6\ \Omega$ (a larger $R_B$ gives a higher holding speed).
 
-## Q116. Dynamic braking brings a 220 V, 1500 rpm, 50 A separately excited motor ($R_a=0.5\ \Omega$, $L_a=50$ mH, $J=2$ kg-m$^2$) to rest from 1600 rpm; load torque is proportional to speed and equals 20% of rated torque at 1500 rpm. Find the braking resistance for twice rated current, the speed expression, and the braking time. (Dubey 5.19) <small>(5 marks · Module 3 · End Sem)</small>
+## Q116. Dynamic braking brings a 220 V, 1500 rpm, 50 A separately excited motor (Ra=0.5 Ω, La=50 mH, J=2 kg-m²) to rest from 1600 rpm; load torque is proportional to speed and equals 20% of rated torque at 1500 rpm. Find the braking resistance for twice rated current, the speed expression, and the braking time. (Dubey 5.19) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Constants:** $K\phi=\frac{220-25}{157.1}=1.241$ V-s/rad, $T_r=62.07$ N-m, and load coefficient $B=\frac{0.2\times62.07}{157.1}=0.0790$ N-m-s/rad.
 - **(a) Braking resistance:** at 1600 rpm $E=1.241\times167.55=208$ V; for 100 A, $R_a+R_B=\frac{208}{100}=2.08$, so **$R_B=1.58\ \Omega$**.
@@ -1004,7 +1004,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Stopping time:** $t=\tau\ln\left(1+\frac{0.656\times157.1}{98.7}\right)=3.05\ln2.044$.
 - **Result:** $t\approx2.18$ s, with $R_B=2.27\ \Omega$ (the same as with inductance).
 
-## Q120. Derive the energy dissipated in the armature circuit of a separately excited motor accelerating from standstill to $\omega_{m1}$ with constant load torque $T_L$, when $\omega_{m2}$ is the steady-state speed. (Dubey 5.23) <small>(10 marks · Module 3 · End Sem)</small>
+## Q120. Derive the energy dissipated in the armature circuit of a separately excited motor accelerating from standstill to ωm1 with constant load torque TL, when ωm2 is the steady-state speed. (Dubey 5.23) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Equations:** $V=K\phi\omega+I_aR_a$ and $J\frac{d\omega}{dt}=K\phi I_a-T_L$ ($L_a$ and friction neglected).
 - **Time constant and offset:** $\tau=\frac{JR_a}{(K\phi)^2}$ and $a=\frac{T_LR_a}{(K\phi)^2}$.
@@ -1059,7 +1059,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Speed falls:** the braking torque decelerates the rotor until $E$ equals $V$ again.
 - **Settling:** the motor then returns to motoring (almost no-load) at the lower speed $\omega=\frac{V}{K\phi_{new}}$.
 
-## Q125. A separately excited motor is used over 0 to $2N$ rpm, using armature voltage control (0 to $N$, full flux) and field weakening ($N$ to $2N$, constant $V$). Draw $I_a$ vs speed for constant load torque and torque vs speed for constant $I_a$. (Dubey 5.28) <small>(5 marks · Module 3 · End Sem)</small>
+## Q125. A separately excited motor is used over 0 to 2N rpm, using armature voltage control (0 to N, full flux) and field weakening (N to 2N, constant V). Draw Ia vs speed for constant load torque and torque vs speed for constant Ia. (Dubey 5.28) <small>(5 marks · Module 3 · End Sem)</small>
 
 ![Armature current and torque against speed](img/field-weakening-curves.svg)
 
@@ -1082,7 +1082,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Armature voltage control:** this needs a variable-voltage converter rated for the full armature power, which only makes sense for the lower range.
 - **Conclusion:** armature control up to base speed and field control above it use the machine within its voltage, current and flux limits.
 
-## Q127. A 220 V, 200 A, 750 rpm separately excited motor ($R_a=0.05\ \Omega$) drives a load $T_L=500-0.25N$ N-m. Find the terminal voltage and current at 400 rpm, and the flux as a percent of rated at 1500 rpm. (Dubey 5.30) <small>(10 marks · Module 3 · End Sem)</small>
+## Q127. A 220 V, 200 A, 750 rpm separately excited motor (Ra=0.05 Ω) drives a load TL=500-0.25N N-m. Find the terminal voltage and current at 400 rpm, and the flux as a percent of rated at 1500 rpm. (Dubey 5.30) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Rated constant:** $E=220-200\times0.05=210$ V at 78.54 rad/s, so $K\phi=2.674$ V-s/rad.
 - **Below rated, torque at 400 rpm:** $T_L=500-0.25\times400=400$ N-m.
@@ -1108,7 +1108,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Brush wear:** higher speed shortens brush and commutator life.
 - **Typical limit:** field weakening is normally limited to about 2 to 4 times base speed, set by the maker.
 
-## Q129. A 230 V, 1000 rpm, 105 A separately excited motor has $R_a=0.06\ \Omega$. Find the flux as a percent of rated at 1500 rpm when the developed power stays at its rated value. (Dubey 5.32) <small>(10 marks · Module 3 · End Sem)</small>
+## Q129. A 230 V, 1000 rpm, 105 A separately excited motor has Ra=0.06 Ω. Find the flux as a percent of rated at 1500 rpm when the developed power stays at its rated value. (Dubey 5.32) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Rated emf:** $E_1=230-105\times0.06=223.7$ V.
 - **Rated developed power:** $P=E_1I_{a1}=223.7\times105=23.49$ kW.
@@ -1147,7 +1147,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Solution:** $N=\frac{-0.08+\sqrt{0.0064+6.08}}{0.01216}=196.3$ rpm.
 - **Result:** (a) **772.8 V** and (b) **about 196 rpm**.
 
-## Q132. A 2-pole series motor runs at 750 rpm taking 100 A from 220 V with its two field coils in series ($R_a=0.06\ \Omega$, each coil 0.04 Ω). The coils are put in parallel. Find the speed for (a) same torque and (b) same output power. (Dubey 5.35) <small>(10 marks · Module 3 · End Sem)</small>
+## Q132. A 2-pole series motor runs at 750 rpm taking 100 A from 220 V with its two field coils in series (Ra=0.06 Ω, each coil 0.04 Ω). The coils are put in parallel. Find the speed for (a) same torque and (b) same output power. (Dubey 5.35) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Series connection:** $R=0.06+0.08=0.14\ \Omega$, $E_1=220-14=206$ V, flux $\phi=cI$.
 - **Parallel connection:** each coil carries $I/2$ so $\phi=\frac{cI}{2}$ and $R=0.06+0.02=0.08\ \Omega$.
@@ -1160,7 +1160,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Speed (b):** $\frac{N'}{N}=\frac{212.2\times100}{206\times48.53}=2.123$, so $N'\approx1592$ rpm.
 - **Result:** (a) **about 1074 rpm** and (b) **about 1592 rpm**.
 
-## Q133. A 220 V, 1500 rpm, 10 A separately excited motor ($R_a=2\ \Omega$) is fed by a single-phase fully-controlled rectifier from 230 V, 50 Hz, with continuous conduction. Find the firing angle for (a) half rated torque at 500 rpm, (b) rated torque at $-1000$ rpm. (Dubey 5.36) <small>(5 marks · Module 3 · End Sem)</small>
+## Q133. A 220 V, 1500 rpm, 10 A separately excited motor (Ra=2 Ω) is fed by a single-phase fully-controlled rectifier from 230 V, 50 Hz, with continuous conduction. Find the firing angle for (a) half rated torque at 500 rpm, (b) rated torque at -1000 rpm. (Dubey 5.36) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Constants:** $K\phi=\frac{220-20}{157.1}=1.273$; the rectifier output is $V_d=\frac{2\sqrt2}{\pi}\times230\cos\alpha=207.1\cos\alpha$.
 - **(a) Operating point:** $I_a=5$ A and $E=1.273\times52.36=66.7$ V.
@@ -1168,7 +1168,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Angle (a):** $\cos\alpha=\frac{76.7}{207.1}=0.370$, so **$\alpha=68.3^\circ$**.
 - **(b) Operating point:** $I_a=10$ A and $E=-133.3$ V, so $V_d=-133.3+20=-113.3$ V and $\cos\alpha=-0.547$, giving **$\alpha=123.2^\circ$** (inverter mode).
 
-## Q134. For the drive of the previous problem let $L_a=50$ mH. Find no-load speeds and the speed and torque on the boundary of continuous and discontinuous conduction for $\alpha=60^\circ$ and $120^\circ$. (Dubey 5.37) <small>(5 marks · Module 3 · End Sem)</small>
+## Q134. For the drive of the previous problem let La=50 mH. Find no-load speeds and the speed and torque on the boundary of continuous and discontinuous conduction for α=60° and 120°. (Dubey 5.37) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Constants:** $V_m=325.3$ V, $Z=\sqrt{R^2+(\omega L)^2}=15.83\ \Omega$, $\varphi=\tan^{-1}\frac{\omega L}{R}=82.7^\circ$.
 - **No-load speed:** $E_0=V_m$ for $\alpha\le90^\circ$ and $V_m\sin\alpha$ above, so $N_0=\frac{E_0}{K\phi}$ is **2440 rpm** at $60^\circ$ and **2113 rpm** at $120^\circ$.
@@ -1179,7 +1179,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     These come from the exact conduction formula checked by simulation. Check the form of the boundary equation your class uses, since the book may use a different but equivalent form.
 
-## Q135. A 220 V, 1200 rpm, 15 A separately excited motor ($R_a=1.8\ \Omega$, $L_a=32$ mH) is fed by a single-phase fully-controlled rectifier from 230 V, 50 Hz. Identify the mode and find the torque for (i) $\alpha=60^\circ$ at 450 rpm and (ii) $\alpha=60^\circ$ at 1500 rpm. (Dubey 5.38) <small>(5 marks · Module 3 · End Sem)</small>
+## Q135. A 220 V, 1200 rpm, 15 A separately excited motor (Ra=1.8 Ω, La=32 mH) is fed by a single-phase fully-controlled rectifier from 230 V, 50 Hz. Identify the mode and find the torque for (i) α=60° at 450 rpm and (ii) α=60° at 1500 rpm. (Dubey 5.38) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Constants:** $K\phi=\frac{220-27}{125.7}=1.536$ and the boundary emf at $60^\circ$ is $E_b=71.0$ V (about 442 rpm).
 - **Rule:** if $E<E_b$ the conduction is continuous, otherwise it is discontinuous.
@@ -1190,7 +1190,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     Case (i) is almost on the boundary (450 rpm against 442 rpm), so the answer is sensitive. The torque values come from solving the current waveform, not a closed formula.
 
-## Q136. For the drive of the previous problem find the mode and the speed for $\alpha=45^\circ$ at (a) 40 N-m and (b) 10 N-m. (Dubey 5.39) <small>(5 marks · Module 3 · End Sem)</small>
+## Q136. For the drive of the previous problem find the mode and the speed for α=45° at (a) 40 N-m and (b) 10 N-m. (Dubey 5.39) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Boundary at $45^\circ$:** $E_b=119.5$ V, with boundary current 14.9 A and torque 22.9 N-m.
 - **Rule:** a torque above 22.9 N-m means continuous conduction; below it means discontinuous.
@@ -1198,7 +1198,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Speed (a):** $N=\frac{99.5}{1.536\times0.1047}\approx$ **619 rpm**.
 - **(b) 10 N-m:** $I_a=6.51$ A, so it is **discontinuous**; matching the average current to 6.51 A gives $E\approx195.2$ V, so $N\approx$ **1214 rpm**.
 
-## Q137. A 230 V, 960 rpm, 20 A separately excited motor ($R_a=1.2\ \Omega$, $L_a=50$ mH) is fed by a single-phase half-controlled rectifier from 230 V, 50 Hz. Find no-load speeds and boundary speeds and torques for $\alpha=45^\circ$, $90^\circ$, $135^\circ$, and plot the speed-torque curve for $\alpha=45^\circ$. (Dubey 5.40) <small>(10 marks · Module 3 · End Sem)</small>
+## Q137. A 230 V, 960 rpm, 20 A separately excited motor (Ra=1.2 Ω, La=50 mH) is fed by a single-phase half-controlled rectifier from 230 V, 50 Hz. Find no-load speeds and boundary speeds and torques for α=45°, 90°, 135°, and plot the speed-torque curve for α=45°. (Dubey 5.40) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Constants:** $K\phi=\frac{230-24}{100.5}=2.049$, $V_m=325.3$ V and the continuous-mode output is $V_d=\frac{V_m}{\pi}(1+\cos\alpha)$.
 - **No-load speed:** $E_0=V_m$ for $\alpha\le90^\circ$ and $V_m\sin\alpha$ above, so $N_0=$ **1516 rpm** at $45^\circ$ and $90^\circ$, and **1072 rpm** at $135^\circ$.
@@ -1214,7 +1214,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 
 ![Speed-torque curve for alpha 45 degrees, half-controlled rectifier](img/half-controlled-speed-torque.svg)
 
-## Q138. A 230 V, 650 rpm, 100 A separately excited motor ($R_a=0.08\ \Omega$, $L_a=8$ mH) is controlled by a single-phase half-controlled rectifier from 230 V, 50 Hz. Find the mode and speed for (a) $\alpha=60^\circ$ and (b) $\alpha=120^\circ$, each at 1000 N-m. (Dubey 5.41) <small>(10 marks · Module 3 · End Sem)</small>
+## Q138. A 230 V, 650 rpm, 100 A separately excited motor (Ra=0.08 Ω, La=8 mH) is controlled by a single-phase half-controlled rectifier from 230 V, 50 Hz. Find the mode and speed for (a) α=60° and (b) α=120°, each at 1000 N-m. (Dubey 5.41) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Constants:** $K\phi=\frac{230-8}{68.07}=3.261$ V-s/rad, so 1000 N-m needs $I_a=\frac{1000}{3.261}=306.6$ A.
 - **Output voltage (continuous):** $V_d=\frac{V_m}{\pi}(1+\cos\alpha)=103.5(1+\cos\alpha)$.
@@ -1227,7 +1227,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Observation:** the highly inductive circuit stays continuous even at large firing angles.
 - **Result:** (a) **383 rpm** and (b) **80 rpm**, both in continuous conduction.
 
-## Q139. For the drive of the previous problem find the mode and torque for (a) $\alpha=60^\circ$ at 200 rpm and (b) $\alpha=120^\circ$ at 200 rpm. (Dubey 5.42) <small>(10 marks · Module 3 · End Sem)</small>
+## Q139. For the drive of the previous problem find the mode and torque for (a) α=60° at 200 rpm and (b) α=120° at 200 rpm. (Dubey 5.42) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Emf at 200 rpm:** $E=3.261\times20.94=68.3$ V.
 - **(a) Mode at $60^\circ$:** $E<E_b=151.6$ V, so conduction is **continuous**.
@@ -1240,7 +1240,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Torque (b):** $T=3.261\times16.4\approx$ **53 N-m**.
 - **Result:** (a) continuous, about 3550 N-m; (b) discontinuous, about 53 N-m.
 
-## Q140. A 220 V, 750 rpm, 200 A separately excited motor ($R_a=0.05\ \Omega$, $R_f=20\ \Omega$) drives $T_L=500-0.2N$ N-m. Armature is fed from a 3-phase fully-controlled rectifier (170 V line), field from a single-phase half-controlled rectifier (250 V). Find the firing angles for 600 rpm and 1200 rpm. (Dubey 5.43) <small>(10 marks · Module 3 · End Sem)</small>
+## Q140. A 220 V, 750 rpm, 200 A separately excited motor (Ra=0.05 Ω, Rf=20 Ω) drives TL=500-0.2N N-m. Armature is fed from a 3-phase fully-controlled rectifier (170 V line), field from a single-phase half-controlled rectifier (250 V). Find the firing angles for 600 rpm and 1200 rpm. (Dubey 5.43) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Constants:** $K\phi=\frac{220-10}{78.54}=2.674$; full field is 220 V (11 A); the armature rectifier gives $V_d=\frac{3\sqrt2}{\pi}\times170\cos\alpha=229.6\cos\alpha$.
 - **(a) 600 rpm, torque:** $T_L=500-120=380$ N-m with full field.
@@ -1253,7 +1253,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Field current and voltage:** $I_f=0.632\times11=6.95$ A, so $V_f=139$ V and $\cos\alpha_f=\frac{139}{112.5}-1=0.235$.
 - **Field firing angle (b):** **$\alpha_f=76.4^\circ$**.
 
-## Q141. A 220 V, 600 rpm, 500 A separately excited motor ($R_a=0.02\ \Omega$, $R_f=10\ \Omega$) is fed from a 440 V three-wire supply: armature through a Y-Δ transformer and 3-phase full converter, field through a single-phase transformer and half-controlled rectifier. Find the transformer ratios, and the armature firing angles for rated torque and field at (i) 400 rpm and (ii) $-400$ rpm. (Dubey 5.44) <small>(10 marks · Module 3 · End Sem)</small>
+## Q141. A 220 V, 600 rpm, 500 A separately excited motor (Ra=0.02 Ω, Rf=10 Ω) is fed from a 440 V three-wire supply: armature through a Y-Δ transformer and 3-phase full converter, field through a single-phase transformer and half-controlled rectifier. Find the transformer ratios, and the armature firing angles for rated torque and field at (i) 400 rpm and (ii) -400 rpm. (Dubey 5.44) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Armature ratio:** at $\alpha=0$ the converter gives $1.3505V_{L}=220$ V, so the secondary line voltage is $162.9$ V and the turns ratio is $\frac{440}{162.9}=2.70$.
 - **Field rectifier ratio:** at $\alpha=0$ the half-controlled rectifier gives $\frac{2\sqrt2}{\pi}V_s=0.9V_s=220$ V, so $V_s=244.4$ V and the ratio is $\frac{440}{244.4}=1.80$.
@@ -1266,7 +1266,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Note:** the motor is driven in the reverse direction by the same current direction, so converter operation changes from rectifying to inverting.
 - **Result:** ratios 2.70 and 1.80; angles 47.0° and 126.2°.
 
-## Q142. A 220 V, 750 rpm, 200 A separately excited motor ($R_a=0.05\ \Omega$) is fed from a 3-phase non-circulating-current dual converter (400 V line). Find the firing angles of both converters for (i) motoring at rated torque and 600 rpm and (ii) regeneration at rated torque and 600 rpm. (Dubey 5.45) <small>(10 marks · Module 3 · End Sem)</small>
+## Q142. A 220 V, 750 rpm, 200 A separately excited motor (Ra=0.05 Ω) is fed from a 3-phase non-circulating-current dual converter (400 V line). Find the firing angles of both converters for (i) motoring at rated torque and 600 rpm and (ii) regeneration at rated torque and 600 rpm. (Dubey 5.45) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Converter output:** $V_d=\frac{3\sqrt2}{\pi}\times400\cos\alpha=540.2\cos\alpha$.
 - **Motor constant:** $K\phi=\frac{220-10}{78.54}=2.674$, so $E=2.674\times62.83=168.0$ V at 600 rpm.
@@ -1278,7 +1278,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Firing angle B:** $\cos\alpha_B=-\frac{158}{540.2}=-0.2925$, so **$\alpha_B=107.0^\circ$**.
 - **Converter A (idle):** now A is blocked.
 - **Result:** (i) $\alpha_A=70.8^\circ$ and (ii) $\alpha_B=107.0^\circ$.
-## Q143. A 220 V, 24 A, 1000 rpm separately excited motor ($R_a=2\ \Omega$) is controlled by a 500 Hz chopper from 230 V. Find the duty ratio for 1.2 times rated torque at 500 rpm. (Dubey 5.51) <small>(5 marks · Module 3 · End Sem)</small>
+## Q143. A 220 V, 24 A, 1000 rpm separately excited motor (Ra=2 Ω) is controlled by a 500 Hz chopper from 230 V. Find the duty ratio for 1.2 times rated torque at 500 rpm. (Dubey 5.51) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Motor constant:** $E=220-24\times2=172$ V at 104.7 rad/s, so $K\phi=1.642$ V-s/rad.
 - **Armature current:** the torque is 1.2 times rated, so $I_a=1.2\times24=28.8$ A.
@@ -1289,7 +1289,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     The scan shows "100 rpm" for the rated speed. It is read here as 1000 rpm, because 500 rpm would otherwise be five times the rated speed.
 
-## Q144. A 230 V, 50 A, 800 rpm separately excited motor ($R_a=0.4\ \Omega$) is controlled by a 500 Hz chopper from 230 V in continuous conduction. Plot the speed-torque characteristics for motoring at duty ratios 0.3 and 0.6 and for regenerative braking at 0.7 and 0.4. (Dubey 5.52) <small>(5 marks · Module 3 · End Sem)</small>
+## Q144. A 230 V, 50 A, 800 rpm separately excited motor (Ra=0.4 Ω) is controlled by a 500 Hz chopper from 230 V in continuous conduction. Plot the speed-torque characteristics for motoring at duty ratios 0.3 and 0.6 and for regenerative braking at 0.7 and 0.4. (Dubey 5.52) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Motor constant:** $E=230-20=210$ V at 83.78 rad/s, so $K\phi=2.507$ V-s/rad; each line is $\omega=\frac{V_a}{K\phi}\mp\frac{R_a}{(K\phi)^2}T$.
 - **Motoring $d=0.3$:** $V_a=69$ V; no-load speed 263 rpm and stall torque 432 N-m (a straight line between them).
@@ -1300,7 +1300,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     For regeneration the average motor voltage is taken as $V_a=dV$. Check which duty-ratio definition your textbook uses for the regenerative chopper.
 
-## Q145. A 230 V, 1000 rpm, 30 A separately excited motor ($R_a=0.7\ \Omega$, $L_a=50$ mH) is braked regeneratively by an 800 Hz chopper from 230 V. Answer five questions on duty ratio, speed, power and field current. (Dubey 5.53) <small>(5 marks · Module 3 · End Sem)</small>
+## Q145. A 230 V, 1000 rpm, 30 A separately excited motor (Ra=0.7 Ω, La=50 mH) is braked regeneratively by an 800 Hz chopper from 230 V. Answer five questions on duty ratio, speed, power and field current. (Dubey 5.53) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Constant:** $E=230-21=209$ V, so $K\phi=1.996$ V-s/rad; in regeneration $V_a=dV$ and $E=V_a+I_aR_a$.
 - **(i) Rated torque at 800 rpm:** $E=1.996\times83.78=167.2$ V, so $V_a=167.2-21=146.2$ V and the duty ratio is $d=\frac{146.2}{230}=$ **0.636**.
@@ -1308,7 +1308,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **(iii) and (iv) $d_{max}=0.9$, $I_{max}=60$ A:** $E=207+60\times0.7=249$ V gives a maximum speed of **1191 rpm** and the power fed to the source is $V_aI_a=207\times60=$ **12.4 kW**.
 - **(v) Field control with $d=0.9$ at 1500 rpm and 30 A:** $E=207+21=228$ V, so $K\phi=\frac{228}{157.1}=1.451$, which is 72.7% of rated, and the field current is $0.727\times0.5=$ **0.364 A**.
 
-## Q146. A 230 V, 1200 rpm, 15 A separately excited motor ($R_a=1.2\ \Omega$) is dynamically braked by a chopper with a 20 Ω braking resistance. Find (i) the duty ratio for 1000 rpm and braking torque 1.5 times rated and (ii) the speed for duty ratio 0.5 at rated torque. (Dubey 5.54) <small>(5 marks · Module 3 · End Sem)</small>
+## Q146. A 230 V, 1200 rpm, 15 A separately excited motor (Ra=1.2 Ω) is dynamically braked by a chopper with a 20 Ω braking resistance. Find (i) the duty ratio for 1000 rpm and braking torque 1.5 times rated and (ii) the speed for duty ratio 0.5 at rated torque. (Dubey 5.54) <small>(5 marks · Module 3 · End Sem)</small>
 
 - **Chopper model:** the chopper shorts $R_B$ for a fraction $d$ of the time, so the effective resistance is $R_{eff}=(1-d)R_B$.
 - **Motor constant:** $E=230-18=212$ V at 125.7 rad/s, so $K\phi=1.687$ V-s/rad.
@@ -1316,7 +1316,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Resistance (i):** $R_a+R_{eff}=\frac{176.7}{22.5}=7.85\ \Omega$, so $R_{eff}=6.65\ \Omega$ and $d=1-\frac{6.65}{20}=$ **0.667**.
 - **(ii) $d=0.5$, rated torque:** $R_{eff}=10\ \Omega$, so $E=15\times(1.2+10)=168$ V and the speed is $\frac{168}{1.687}=99.6$ rad/s, which is **951 rpm**.
 
-## Q147. A 220 V, 300 A dc series motor ($R=0.04\ \Omega$) is chopper-controlled from 220 V. Using its magnetization curve at 600 rpm, find the speed for duty ratio 0.8 at 300 A, and the torque for 500 rpm and $d=0.8$. (Dubey 5.55) <small>(10 marks · Module 3 · End Sem)</small>
+## Q147. A 220 V, 300 A dc series motor (R=0.04 Ω) is chopper-controlled from 220 V. Using its magnetization curve at 600 rpm, find the speed for duty ratio 0.8 at 300 A, and the torque for 500 rpm and d=0.8. (Dubey 5.55) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Magnetization at 600 rpm:** $I_f$ = 50, 100, 150, 250, 300, 350 A gives $E$ = 66.5, 124, 158.5, 198.5, 211, 221.5 V.
 - **Average input:** $V_a=0.8\times220=176$ V.
@@ -1329,7 +1329,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Torque:** $T=\frac{EI}{\omega}=\frac{165.9\times252.3}{52.36}$.
 - **Result:** (i) **466 rpm** and (ii) **about 800 N-m** (at about 252 A).
 
-## Q148. The series motor of the previous problem is controlled in regenerative braking by a chopper from 220 V. Find (i) the speed for $d=0.8$ at rated braking torque, (ii) the torque for $d=0.85$ at 610 rpm, (iii) the maximum speed for 300 A and $d=0.95$, (iv) the resistance needed for 1500 rpm at rated current. (Dubey 5.56) <small>(10 marks · Module 3 · End Sem)</small>
+## Q148. The series motor of the previous problem is controlled in regenerative braking by a chopper from 220 V. Find (i) the speed for d=0.8 at rated braking torque, (ii) the torque for d=0.85 at 610 rpm, (iii) the maximum speed for 300 A and d=0.95, (iv) the resistance needed for 1500 rpm at rated current. (Dubey 5.56) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Assumption:** in regeneration $V_a=dV$ and the field connections are arranged so the series machine generates; $E=V_a+IR$.
 - **Rated torque:** at 300 A, $E=211$ V at 600 rpm, so $T_r=\frac{211\times300}{62.83}=1007$ N-m.
@@ -1345,7 +1345,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     The chopper convention for regeneration ($V_a=dV$) and the interpolation of the magnetization curve affect the numbers. Match the convention used in your lecture notes.
 
-## Q149. A 220 V, 190 A series motor ($R_a=0.03\ \Omega$, $R_f=0.02\ \Omega$) is dynamically braked by a chopper with a 2 Ω braking resistor. Using the 500 rpm magnetization curve, find (i) the speed for $d=0.6$ and 160 A, (ii) the speed for $d=0.75$ at half rated torque. (Dubey 5.57) <small>(10 marks · Module 3 · End Sem)</small>
+## Q149. A 220 V, 190 A series motor (Ra=0.03 Ω, Rf=0.02 Ω) is dynamically braked by a chopper with a 2 Ω braking resistor. Using the 500 rpm magnetization curve, find (i) the speed for d=0.6 and 160 A, (ii) the speed for d=0.75 at half rated torque. (Dubey 5.57) <small>(10 marks · Module 3 · End Sem)</small>
 
 - **Magnetization at 500 rpm:** $I_f$ = 40, 80, 120, 160, 200 A gives $E$ = 52, 108, 148, 176, 189 V.
 - **Chopper model:** the effective braking resistance is $R_{eff}=(1-d)R_B$, so the total resistance is $R=0.05+(1-d)\times2$.
@@ -1386,7 +1386,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Double cage running:** the inner cage has low resistance but high leakage reactance, so it takes over at low slip and gives good running performance.
 - **Torque motor:** it has a high-resistance rotor, giving a high starting torque and a nearly linear torque-speed curve; it works for long periods at standstill or low speed, with high losses and a high rating for its size.
 
-## Q153. A 440 V, 50 Hz, 6-pole, Y-connected induction motor has per-phase $R_s=R_r'=0.3\ \Omega$, $X_s=X_r'=1.0\ \Omega$, $X_m=40\ \Omega$ and full-load slip 0.05. Find current, torque and efficiency at full load, the maximum torque and the speed at which it occurs. (Dubey 6.3) <small>(5 marks · Module 4 · End Sem)</small>
+## Q153. A 440 V, 50 Hz, 6-pole, Y-connected induction motor has per-phase Rs=Rr'=0.3 Ω, Xs=Xr'=1.0 Ω, Xm=40 Ω and full-load slip 0.05. Find current, torque and efficiency at full load, the maximum torque and the speed at which it occurs. (Dubey 6.3) <small>(5 marks · Module 4 · End Sem)</small>
 
 - **Method:** use the per-phase equivalent circuit with $V=\frac{440}{\sqrt3}=254$ V and $\omega_s=104.7$ rad/s (1000 rpm).
 - **(i) Current at $s=0.05$:** total impedance is $R_s+jX_s$ plus $jX_m$ in parallel with $(6+j1)$, giving $I_s=$ **39.0 A at 0.90 pf lagging**.
@@ -1481,7 +1481,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Transient current:** the difference between the supply voltage and the residual emf can reach nearly twice the supply voltage, so the transient current and torque peak may be several times the starting current.
 - **Remedy:** closed-circuit transition (Korndorfer) or a short transition time, so the rotor flux does not decay.
 
-## Q163. A 3-phase, 50 kW, 400 V, 960 rpm, 50 Hz, 6-pole motor has $R_s=0.08$, $R_r'=0.1$, $X_s=X_r'=0.3\ \Omega$ with a delta stator in two parallel sections. Find the star-delta starting torque ratio and line current, the autotransformer ratio for twice rated line current, the part-winding line current and the series reactors for twice rated current. (Dubey 6.13) <small>(5 marks · Module 4 · End Sem)</small>
+## Q163. A 3-phase, 50 kW, 400 V, 960 rpm, 50 Hz, 6-pole motor has Rs=0.08, Rr'=0.1, Xs=Xr'=0.3 Ω with a delta stator in two parallel sections. Find the star-delta starting torque ratio and line current, the autotransformer ratio for twice rated line current, the part-winding line current and the series reactors for twice rated current. (Dubey 6.13) <small>(5 marks · Module 4 · End Sem)</small>
 
 - **Reference values:** the rated slip is 0.04 and the rated line current is **87.2 A** (equivalent star phase voltage 230.9 V, magnetizing branch neglected); direct start gives 368.7 A and 389 N-m, and $T_{max}=1115$ N-m.
 - **(i) Star-delta:** line current $=\frac{368.7}{\sqrt3}=$ **212.9 A**, starting torque $=\frac{389}{3}=129.8$ N-m, so $\frac{T_{st}}{T_{max}}=$ **0.116**.
@@ -1534,7 +1534,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Large rotor resistance:** the net torque at the running speed can fall below the light load torque (or even become negative), so the motor slows down and stops.
 - **Small rotor resistance:** the net torque stays positive near synchronous speed, so the motor continues to run at light load.
 
-## Q168. A 440 V, 50 Hz, 6-pole, Y-connected motor has $R_s=0.5$, $R_r'=0.6$, $X_s=X_r'=1\ \Omega$ and a stator-to-rotor turns ratio of 2. Used for regenerative braking, find the maximum overhauling torque, the safe speed range and the speed at which it holds 160 N-m. (Dubey 6.18) <small>(5 marks · Module 4 · End Sem)</small>
+## Q168. A 440 V, 50 Hz, 6-pole, Y-connected motor has Rs=0.5, Rr'=0.6, Xs=Xr'=1 Ω and a stator-to-rotor turns ratio of 2. Used for regenerative braking, find the maximum overhauling torque, the safe speed range and the speed at which it holds 160 N-m. (Dubey 6.18) <small>(5 marks · Module 4 · End Sem)</small>
 
 - **Data:** $V_{ph}=254$ V, $\omega_s=104.7$ rad/s and $\sqrt{R_s^2+X^2}=\sqrt{0.25+4}=2.062\ \Omega$ (the turns ratio is not needed because the parameters are already referred).
 - **(i) Maximum overhauling torque:** $T_{gen}=\frac{3V^2}{2\omega_s\left[\sqrt{R_s^2+X^2}-R_s\right]}=$ **592 N-m**.
@@ -1576,7 +1576,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Resistor:** $R'=2.49\ \Omega$, so the actual rotor resistance is $\frac{2.49}{4}=$ **0.62 Ω**.
 - **Maximum braking current:** at $s=2$ it is 88.8 A (78.2 A at $s=1.5$).
 
-## Q172. A 400 V, 50 Hz, 4-pole, Y-connected wound-rotor motor has $R_s=0.5$, $R_r'=0.4$, $X_s=X_r'=1\ \Omega$ and a turns ratio of 2. It runs at 1400 rpm and is braked by plugging. How should the external rotor resistance be varied with speed to stop in minimum time? (Dubey 6.22) <small>(10 marks · Module 4 · End Sem)</small>
+## Q172. A 400 V, 50 Hz, 4-pole, Y-connected wound-rotor motor has Rs=0.5, Rr'=0.4, Xs=Xr'=1 Ω and a turns ratio of 2. It runs at 1400 rpm and is braked by plugging. How should the external rotor resistance be varied with speed to stop in minimum time? (Dubey 6.22) <small>(10 marks · Module 4 · End Sem)</small>
 
 - **Minimum time:** the torque must stay at its maximum value at every speed during braking.
 - **Maximum torque condition:** the slip at maximum torque is $s_m=\frac{R_r'+R_{ext}'}{\sqrt{R_s^2+X^2}}$ and this must equal the instantaneous slip.
@@ -1602,7 +1602,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Features:** the torque is zero at standstill, rises to a maximum at low speed, then falls, with no regeneration to the supply.
 - **Merits:** smooth braking down to standstill, no supply disturbance and simple control by the dc current; the energy is dissipated in the rotor circuit.
 
-## Q174. A 3-phase, 5 kW, 50 Hz, 4-pole, star-connected motor has $R_r'=3\ \Omega$ and $X_r'=4\ \Omega$. Three points of the magnetization curve ($I_m=0.898$, 2.86, 8.2 A; $E=74$, 199, 201 V) are known. Find the dc braking torque, speed and rotor current for each point with a three-lead connection and 12 A dc. (Dubey 6.24) <small>(10 marks · Module 4 · End Sem)</small>
+## Q174. A 3-phase, 5 kW, 50 Hz, 4-pole, star-connected motor has Rr'=3 Ω and Xr'=4 Ω. Three points of the magnetization curve (Im=0.898, 2.86, 8.2 A; E=74, 199, 201 V) are known. Find the dc braking torque, speed and rotor current for each point with a three-lead connection and 12 A dc. (Dubey 6.24) <small>(10 marks · Module 4 · End Sem)</small>
 
 - **Equivalent current:** for the three-lead connection $I_{eq}=\frac{I_{dc}}{\sqrt2}=\frac{12}{\sqrt2}=8.49$ A rms.
 - **Magnetizing reactance:** $X_m=\frac{E}{I_m}$ gives 82.4, 69.6 and 24.5 Ω for the three points.
@@ -1618,7 +1618,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 !!! warning "Verify this"
     The values of $E$ are taken as per-phase rms values at 50 Hz. Check the magnetization data and the dc-to-ac equivalence factor with your class notes.
 
-## Q175. Show that, for an induction motor with negligible stator resistance and no load torque, the acceleration time from standstill to slip $s$ follows the standard log-form expression. (Dubey 6.29) <small>(5 marks · Module 4 · End Sem)</small>
+## Q175. Show that, for an induction motor with negligible stator resistance and no load torque, the acceleration time from standstill to slip s follows the standard log-form expression. (Dubey 6.29) <small>(5 marks · Module 4 · End Sem)</small>
 
 - **Torque (neglecting $R_s$):** $T=\frac{2T_{max}}{\frac{s}{s_m}+\frac{s_m}{s}}$.
 - **Motion equation (no load):** $J\frac{d\omega_m}{dt}=T$ with $\omega_m=\omega_{ms}(1-s)$, so $d\omega_m=-\omega_{ms}\,ds$.
@@ -1634,7 +1634,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **High-speed stage (from $\omega_L$ to $2\omega_L$):** $W_3=\frac12J(2\omega_L-\omega_L)^2=\frac12J\omega_L^2$.
 - **Comparison:** $W_2+W_3=J\omega_L^2$, which is half of $W_1=2J\omega_L^2$, so direct acceleration gives twice the heating.
 
-## Q177. A 400 V, 50 Hz, 6-pole, 50 kW, 960 rpm, Y-connected slip-ring motor ($R_s=0.08$, $R_r'=0.1$, $X_s=X_r'=0.3\ \Omega$, $J=10$ kg-m$^2$) is stopped from no-load speed by reverse-voltage braking. Find the external resistance for minimum braking time, the time, and the energy loss. (Dubey 6.31) <small>(5 marks · Module 4 · End Sem)</small>
+## Q177. A 400 V, 50 Hz, 6-pole, 50 kW, 960 rpm, Y-connected slip-ring motor (Rs=0.08, Rr'=0.1, Xs=Xr'=0.3 Ω, J=10 kg-m²) is stopped from no-load speed by reverse-voltage braking. Find the external resistance for minimum braking time, the time, and the energy loss. (Dubey 6.31) <small>(5 marks · Module 4 · End Sem)</small>
 
 - **Method:** from no load ($s\approx2$) to standstill ($s=1$) the time is $t=\int_1^2\frac{J\omega_s}{T(s)}ds$ with $T(s)=\frac{3V^2(R_2'/s)}{\omega_s\left[(R_s+R_2'/s)^2+X^2\right]}$, where $R_2'=R_r'+R_{ext}'$.
 - **Minimum time:** minimizing $t$ over $R_{ext}'$ gives $R_{ext}'\approx0.79\ \Omega$ (referred to the stator), so the slip of maximum torque is $s_m\approx1.47$ (close to the middle of the range).
@@ -1669,7 +1669,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Poor power factor:** a low voltage and high current at low speed worsen the power factor.
 - **Harmonics:** the phase-controlled waveform adds harmonic losses.
 
-## Q181. A 440 V, 3-phase, 50 Hz, 6-pole, 945 rpm delta-connected motor has $R_s=2$, $R_r'=2$, $X_s=3$, $X_r'=4\ \Omega$ referred to the stator and drives a fan that runs at rated speed at rated voltage. Find the voltage, current and torque at 800 rpm, and the speed, current and torque at 280 V. (Dubey 6.36) <small>(5 marks · Module 4 · End Sem)</small>
+## Q181. A 440 V, 3-phase, 50 Hz, 6-pole, 945 rpm delta-connected motor has Rs=2, Rr'=2, Xs=3, Xr'=4 Ω referred to the stator and drives a fan that runs at rated speed at rated voltage. Find the voltage, current and torque at 800 rpm, and the speed, current and torque at 280 V. (Dubey 6.36) <small>(5 marks · Module 4 · End Sem)</small>
 
 - **Rated point:** $s=0.055$, phase current 11.3 A and torque 132.6 N-m; fan torque is $T_L=132.6\left(\frac{N}{945}\right)^2$.
 - **(i) 800 rpm:** $s=0.2$ and $T_L=95.0$ N-m; the motor torque $T=\frac{3V^2R_r'/s}{\omega_s\left[(R_s+R_r'/s)^2+X^2\right]}$ must equal it, so **$V=253$ V**.
@@ -1743,7 +1743,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Torque sign:** the torque reverses (braking), and its magnitude is $T=\frac{3VE}{\omega_sX_s}\sin\delta$ with the opposite sign.
 - **Drive requirement:** the converter must allow current reversal into the dc link, with an inverter that can pass power back.
 
-## Q190. A 3-phase, 5 kW, 440 V, 50 Hz, 4-pole, Y-connected synchronous motor has $R_s=0.2\ \Omega$, $X_s=8\ \Omega$ and rated field current 1 A. At full load the pf is unity. Find the torque angle, pull-out torque, pf, current and efficiency at half rated torque, and the field current for unity pf at half rated torque. (Dubey 7.8) <small>(5 marks · Module 5 · End Sem)</small>
+## Q190. A 3-phase, 5 kW, 440 V, 50 Hz, 4-pole, Y-connected synchronous motor has Rs=0.2 Ω, Xs=8 Ω and rated field current 1 A. At full load the pf is unity. Find the torque angle, pull-out torque, pf, current and efficiency at half rated torque, and the field current for unity pf at half rated torque. (Dubey 7.8) <small>(5 marks · Module 5 · End Sem)</small>
 
 - **Full-load values:** $V=254$ V, $I_a=\frac{5000}{3\times254}=6.56$ A at unity pf, so $E=V-I_a(R_s+jX_s)=252.7-j52.5$; $|E|=258.1$ V and **$\delta=-11.7^\circ$ (torque angle 11.7°)**.
 - **(ii) Pull-out:** $P_{max}=\frac{3VE}{X_s}=24.6$ kW and the torque is $\frac{24.6\text{ kW}}{157.1}=$ **156.5 N-m** (stator resistance neglected).
@@ -1751,7 +1751,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **(iv) Unity pf at half torque:** $I_a=3.29$ A and $E=V-I_aZ$ gives $|E|=254.7$ V, so the field current is $1\times\frac{254.7}{258.1}=$ **0.987 A**.
 - **Note:** the emf is taken as proportional to field current (linear magnetic circuit).
 
-## Q191. A 3-phase, 5 kW, 440 V, 0.8 pf lagging, 50 Hz, 6-pole, star-connected synchronous motor has negligible $R_s$ and $X_s=6\ \Omega$. Find the torque angle at full load, the pull-out torque, the current and pf at half rated torque, and the torque at unity pf with 150% field current. (Dubey 7.9) <small>(5 marks · Module 5 · End Sem)</small>
+## Q191. A 3-phase, 5 kW, 440 V, 0.8 pf lagging, 50 Hz, 6-pole, star-connected synchronous motor has negligible Rs and Xs=6 Ω. Find the torque angle at full load, the pull-out torque, the current and pf at half rated torque, and the torque at unity pf with 150% field current. (Dubey 7.9) <small>(5 marks · Module 5 · End Sem)</small>
 
 - **Full load:** $I_a=\frac{5000}{\sqrt3\times440\times0.8}=8.20$ A, so $E=V-jX_sI_a=224.5-j39.4$, giving $|E|=227.9$ V and **$\delta=9.94^\circ$**.
 - **(ii) Pull-out torque:** $T_{max}=\frac{3VE}{\omega_sX_s}=\frac{3\times254\times227.9}{104.7\times6}=$ **276.5 N-m**.
@@ -1767,7 +1767,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **(ii) Rated braking torque, $I_f=1.2$ A:** $E=1.2\times258.1=309.7$ V and the mechanical power is 5000 W, so $\delta=9.42^\circ$.
 - **Current and pf:** $I_a=\frac{|E\angle\delta-V|}{|Z|}=$ **9.03 A** and the pf is **0.72**, with lagging current as seen from the bus (the machine supplies reactive power).
 
-## Q193. A 3-phase, 10 kW, 440 V, 0.8 pf lagging, 50 Hz, 4-pole, star-connected PM synchronous motor has negligible resistance and $X_s=10\ \Omega$. It is braked dynamically with $R_B=5\ \Omega$. Find the braking torque at 750 rpm. (Dubey 7.12) <small>(10 marks · Module 5 · End Sem)</small>
+## Q193. A 3-phase, 10 kW, 440 V, 0.8 pf lagging, 50 Hz, 4-pole, star-connected PM synchronous motor has negligible resistance and Xs=10 Ω. It is braked dynamically with RB=5 Ω. Find the braking torque at 750 rpm. (Dubey 7.12) <small>(10 marks · Module 5 · End Sem)</small>
 
 - **Rated current:** $I_a=\frac{10000}{\sqrt3\times440\times0.8}=16.4$ A.
 - **Rated emf:** $jX_sI_a=j10\times16.4(0.8-j0.6)=98.4+j131.2$ V, so $E=254-98.4-j131.2=155.6-j131.2$ and $|E|=203.6$ V at 1500 rpm.
@@ -1832,7 +1832,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Current:** high starting current with field switched on at low speed.
 - **Conclusion:** the rotor can follow the field only if the relative speed is low, which is true from the start in a variable-frequency drive.
 
-## Q198. In variable frequency control of a synchronous motor, why is the $V/f$ ratio kept constant up to base speed and $V$ constant above it? (Dubey 7.17) <small>(10 marks · Module 5 · End Sem)</small>
+## Q198. In variable frequency control of a synchronous motor, why is the V/f ratio kept constant up to base speed and V constant above it? (Dubey 7.17) <small>(10 marks · Module 5 · End Sem)</small>
 
 - **Flux:** the stator flux is proportional to $\frac{V}{f}$, so a constant ratio keeps the flux constant.
 - **Constant torque:** with constant flux the machine can develop its rated torque at rated current at all speeds up to base speed.
@@ -1845,7 +1845,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Emf limit:** it cannot exceed the supply voltage, which is why $V$ is held.
 - **Conclusion:** constant $V/f$ gives constant torque and constant $V$ gives constant power, as with a dc motor.
 
-## Q199. A 20 kW, 440 V, 4-pole, delta-connected PM synchronous motor has $X_s=5\ \Omega$, negligible $R_s$ and rated pf 1.0. It is controlled at constant $V/f$. Find the current, torque angle and pf at half rated torque for (i) 750 rpm and (ii) 1000 rpm, and the braking torque, angle and pf at rated current and 750 rpm in regeneration. (Dubey 7.18) <small>(10 marks · Module 5 · End Sem)</small>
+## Q199. A 20 kW, 440 V, 4-pole, delta-connected PM synchronous motor has Xs=5 Ω, negligible Rs and rated pf 1.0. It is controlled at constant V/f. Find the current, torque angle and pf at half rated torque for (i) 750 rpm and (ii) 1000 rpm, and the braking torque, angle and pf at rated current and 750 rpm in regeneration. (Dubey 7.18) <small>(10 marks · Module 5 · End Sem)</small>
 
 - **Rated values:** the line current is $\frac{20000}{\sqrt3\times440}=26.2$ A, the phase current is 15.15 A, and $E=\sqrt{440^2+(5\times15.15)^2}=446.5$ V with $\delta=9.77^\circ$.
 - **Rated torque:** $T_r=\frac{20000}{157.1}=127.3$ N-m, and half is 63.7 N-m.
@@ -1858,7 +1858,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Power factor:** the current is in phase with the voltage, so the pf is **1.0**.
 - **Observation:** the results at constant $V/f$ are independent of speed, as the drive behaves like a dc motor.
 
-## Q200. A 1000 kW, 3-phase, 6.6 kV, 50 Hz, 6-pole, delta-connected unity pf synchronous motor has $X_s=40\ \Omega$, $R_s=0$ and rated field current 5 A. At constant $V/f$ find the torque and field current for rated armature current, 500 rpm and unity pf, and the armature current and pf for regenerative braking at rated torque, 500 rpm and rated field current. (Dubey 7.19) <small>(10 marks · Module 5 · End Sem)</small>
+## Q200. A 1000 kW, 3-phase, 6.6 kV, 50 Hz, 6-pole, delta-connected unity pf synchronous motor has Xs=40 Ω, Rs=0 and rated field current 5 A. At constant V/f find the torque and field current for rated armature current, 500 rpm and unity pf, and the armature current and pf for regenerative braking at rated torque, 500 rpm and rated field current. (Dubey 7.19) <small>(10 marks · Module 5 · End Sem)</small>
 
 - **Rated values:** line current $\frac{10^6}{\sqrt3\times6600}=87.5$ A and phase current 50.5 A, so $E=\sqrt{6600^2+(40\times50.5)^2}=6902$ V at $I_f=5$ A.
 - **Rated torque:** $T_r=\frac{10^6}{104.7}=9549$ N-m at 1000 rpm.
@@ -1871,7 +1871,7 @@ See AGENTS.md section 6 for pictures, video, tables and the rules.
 - **Power factor:** the current is in phase with the voltage, so the **pf is unity**.
 - **Observation:** a constant $V/f$ control keeps the rated current relation independent of speed.
 
-## Q201. A 5 kW, 3-phase, 440 V, 50 Hz, 4-pole, unity pf, delta-connected PM motor has $X_s=12\ \Omega$ and negligible $R_s$. It is controlled at constant $V/f$ up to base speed and constant voltage above. Find the current and pf for 40% rated torque at 2000 rpm, the torque at 2000 rpm and 0.5 leading pf, and the current and pf for regeneration at 2 kW and at 1.5 kW. (Dubey 7.20) <small>(10 marks · Module 5 · End Sem)</small>
+## Q201. A 5 kW, 3-phase, 440 V, 50 Hz, 4-pole, unity pf, delta-connected PM motor has Xs=12 Ω and negligible Rs. It is controlled at constant V/f up to base speed and constant voltage above. Find the current and pf for 40% rated torque at 2000 rpm, the torque at 2000 rpm and 0.5 leading pf, and the current and pf for regeneration at 2 kW and at 1.5 kW. (Dubey 7.20) <small>(10 marks · Module 5 · End Sem)</small>
 
 - **Rated values:** phase current $\frac{5000}{\sqrt3\times440\times\sqrt3}=3.79$ A, so $E=\sqrt{440^2+(12\times3.79)^2}=442.3$ V and $T_r=31.83$ N-m.
 - **At 2000 rpm:** the frequency is 66.7 Hz, $V=440$ V, $E'=589.7$ V and $X_s'=16\ \Omega$.

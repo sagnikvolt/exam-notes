@@ -1660,3 +1660,16 @@ body, .md-typeset, .md-content { font-family: var(--ip-sans); }
 
 /* Module sub-headings inside a marks group */
 .q-module-head{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--md-default-fg-color--light);padding:.7rem 1rem .25rem;}
+
+/* Pomodoro */
+.pomo{position:fixed;left:12px;bottom:76px;z-index:20;font-family:var(--md-text-font-family,sans-serif);}
+.pomo-pill{border:0;border-radius:999px;padding:.35rem .75rem;font-size:.78rem;font-weight:700;cursor:pointer;background:var(--md-default-bg-color);color:var(--md-default-fg-color);box-shadow:0 2px 8px rgba(0,0,0,.25);font-variant-numeric:tabular-nums;}
+.pomo-run .pomo-pill{background:#dc2626;color:#fff;}
+.pomo-run.pomo-break .pomo-pill{background:#16a34a;}
+.pomo-panel{display:none;position:absolute;left:0;bottom:2.4rem;width:170px;padding:.7rem;border-radius:12px;background:var(--md-default-bg-color);color:var(--md-default-fg-color);box-shadow:0 4px 16px rgba(0,0,0,.3);text-align:center;}
+.pomo-open .pomo-panel{display:block;}
+.pomo-mode{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;opacity:.7;}
+.pomo-time{font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums;margin:.1rem 0 .4rem;}
+.pomo-row{display:flex;gap:.3rem;justify-content:center;margin-top:.3rem;}
+.pomo-row button{flex:1;border:1px solid var(--md-default-fg-color--lighter);background:transparent;color:inherit;border-radius:6px;padding:.25rem 0;font-size:.74rem;cursor:pointer;}
+.pomo-go{background:var(--md-primary-fg-color)!important;color:var(--md-primary-bg-color)!important;border-color:transparent!important;font-weight:700;}

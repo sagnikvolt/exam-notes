@@ -185,6 +185,7 @@ document$.subscribe(() => {
   const questionsData = groups.map((g, idx) => {
     const headCopy = g.head.cloneNode(true);
     headCopy.querySelectorAll('a.headerlink').forEach((a) => a.remove());
+    headCopy.querySelectorAll('.katex-mathml').forEach((a) => a.remove());
     const smallEl = headCopy.querySelector('small');
     const smallText = smallEl ? smallEl.textContent : '';
     if (smallEl) smallEl.remove();
