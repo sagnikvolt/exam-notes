@@ -1657,3 +1657,6 @@ body, .md-typeset, .md-content { font-family: var(--ip-sans); }
   }
   .md-main { padding-bottom: 80px; }
 }
+
+/* Module sub-headings inside a marks group */
+.q-module-head{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--md-default-fg-color--light);padding:.7rem 1rem .25rem;}

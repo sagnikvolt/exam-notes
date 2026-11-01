@@ -195,6 +195,8 @@ document$.subscribe(() => {
     const title = isSyllabus ? 'Syllabus' : ((m ? m[2] : headText) || `Question ${num}`);
     const marksMatch = `${smallText} ${headText}`.match(/(\d+(?:\.\d+)?)\s*marks?/i);
     const marks = (marksMatch && !isSyllabus) ? marksMatch[1] : '';
+    const modMatch = smallText.match(/Module\s*(\d+)/i);
+    const moduleNo = (modMatch && !isSyllabus) ? modMatch[1] : '';
 
     let id = isSyllabus ? 'syllabus' : `q${num}`;
     if (usedIds.has(id)) id = `q${num}-${idx + 1}`;
@@ -230,7 +232,7 @@ document$.subscribe(() => {
     }
 
     return {
-      id, qid: isSyllabus ? 'Syllabus' : `Q${num}`, isSyllabus, title, glimpse, thumb, marks,
+      id, qid: isSyllabus ? 'Syllabus' : `Q${num}`, isSyllabus, title, glimpse, thumb, marks, moduleNo,
       metaShort: metaBits.join(' • '),
       meta: [subjectName].concat(metaBits).join(' · '),
       head: g.head, nodes: g.nodes,
@@ -263,6 +265,8 @@ document$.subscribe(() => {
     if (b[0] === '') return -1;
     return parseFloat(b[0]) - parseFloat(a[0]);
   });
+  // inside each marks group, order by module (when questions carry a Module tag)
+  groupsOrdered.forEach(([, list]) => list.sort((a, b) => (parseInt(a.moduleNo || '99', 10) - parseInt(b.moduleNo || '99', 10))));
   const ordered = (syllabusQ ? [syllabusQ] : []).concat(groupsOrdered.flatMap(([, list]) => list)); // the order shown on screen = order for prev / next
 
   let appWrapper = document.querySelector('.instapaper-app');
@@ -380,7 +384,17 @@ document$.subscribe(() => {
       <div class="q-group-cards"></div>
     `;
     const box = section.querySelector('.q-group-cards');
-    list.forEach((q) => box.appendChild(makeCard(q)));
+    let lastMod = null;
+    list.forEach((q) => {
+      if (q.moduleNo && q.moduleNo !== lastMod) {
+        const mh = document.createElement('div');
+        mh.className = 'q-module-head';
+        mh.textContent = `Module ${q.moduleNo}`;
+        box.appendChild(mh);
+      }
+      lastMod = q.moduleNo;
+      box.appendChild(makeCard(q));
+    });
     section.querySelector('.q-group-head').addEventListener('click', (e) => {
       const collapsed = section.classList.toggle('is-collapsed');
       e.currentTarget.setAttribute('aria-expanded', String(!collapsed));
