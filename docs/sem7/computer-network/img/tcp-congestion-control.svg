@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ax-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <!-- Background card -->
+  <rect x="2" y="2" width="756" height="376" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="380" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">TCP Congestion Control Dynamics (Slow Start, Congestion Avoidance, AIMD)</text>
+
+  <!-- Axes -->
+  <!-- Y axis -->
+  <line x1="80" y1="320" x2="80" y2="60" stroke="#334155" stroke-width="2" marker-end="url(#ax-arr)"/>
+  <text x="70" y="55" text-anchor="end" font-size="12" font-weight="700" fill="#1e40af">CWND (MSS)</text>
+
+  <!-- X axis -->
+  <line x1="80" y1="320" x2="720" y2="320" stroke="#334155" stroke-width="2" marker-end="url(#ax-arr)"/>
+  <text x="720" y="340" text-anchor="end" font-size="12" font-weight="700" fill="#334155">Transmission Round (RTT)</text>
+
+  <!-- Y tick marks -->
+  <g font-size="11" fill="#64748b" text-anchor="end">
+    <text x="72" y="324">0</text>
+    <text x="72" y="270">4</text>
+    <text x="72" y="220">8</text>
+    <text x="72" y="170">12</text>
+    <text x="72" y="120">16 (ssthresh)</text>
+    <text x="72" y="80">20</text>
+  </g>
+
+  <!-- Horizontal dashed line for initial ssthresh = 16 MSS -->
+  <line x1="80" y1="120" x2="380" y2="120" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="230" y="112" font-size="11" font-weight="700" fill="#b45309">Initial ssthresh = 16 MSS</text>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="270" x2="710" y2="270" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="80" y1="220" x2="710" y2="220" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="80" y1="170" x2="710" y2="170" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Congestion Control Curve -->
+  <!-- 
+    Point 0: (80, 310) = 1 MSS
+    Point 1: (110, 300) = 2 MSS
+    Point 2: (140, 270) = 4 MSS
+    Point 3: (170, 220) = 8 MSS
+    Point 4: (200, 120) = 16 MSS (Slow start reaches ssthresh)
+    Point 5: (240, 105) = 17 MSS (Congestion Avoidance: linear +1 MSS)
+    Point 6: (280, 90)  = 18 MSS
+    Point 7: (320, 75)  = 19 MSS
+    Point 8: (360, 60)  = 20 MSS (Loss event: 3 Duplicate ACKs!)
+    Drop to 10 MSS (Fast Recovery / Tahoe drop to 1)
+    Let's show Reno (drops to cwnd/2 = 10 MSS):
+    Point 9: (360, 180) = 10 MSS
+    Then linear increase again:
+    Point 10: (410, 160) = 11 MSS
+    Point 11: (460, 140) = 12 MSS
+    Point 12: (510, 120) = 13 MSS
+    Point 13: (540, 105) = 14 MSS (Loss event: Timeout RTO!)
+    Drop to 1 MSS:
+    Point 14: (540, 310) = 1 MSS
+    Slow Start restarted up to new ssthresh (7 MSS):
+    Point 15: (570, 290) = 2 MSS
+    Point 16: (600, 250) = 4 MSS
+    Point 17: (630, 220) = 7 MSS (new ssthresh)
+    Point 18: (680, 200) = 8 MSS
+  -->
+  <!-- Phase 1 Curve: Slow Start -->
+  <path d="M 80 312 Q 140 290 200 120" fill="none" stroke="#2563eb" stroke-width="3"/>
+
+  <!-- Phase 2 Curve: Congestion Avoidance (Linear) -->
+  <line x1="200" y1="120" x2="360" y2="60" stroke="#16a34a" stroke-width="3"/>
+
+  <!-- 3 Dup ACKs drop line -->
+  <line x1="360" y1="60" x2="360" y2="175" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+
+  <!-- Reno Fast Recovery & Avoidance -->
+  <line x1="360" y1="175" x2="540" y2="105" stroke="#16a34a" stroke-width="3"/>
+
+  <!-- Timeout Drop to 1 MSS -->
+  <line x1="540" y1="105" x2="540" y2="312" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="4 2"/>
+
+  <!-- Slow Start Resume -->
+  <path d="M 540 312 Q 585 300 630 225" fill="none" stroke="#2563eb" stroke-width="3"/>
+  <!-- Linear resume -->
+  <line x1="630" y1="225" x2="710" y2="190" stroke="#16a34a" stroke-width="3"/>
+
+  <!-- Labels on the curve -->
+  <!-- Slow Start 1 -->
+  <rect x="95" y="195" width="85" height="24" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="1"/>
+  <text x="137" y="211" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Slow Start (2ˣ)</text>
+
+  <!-- Congestion Avoidance 1 -->
+  <rect x="230" y="65" width="125" height="24" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+  <text x="292" y="81" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle">Additive Increase (+1)</text>
+
+  <!-- 3 Dup ACKs marker -->
+  <circle cx="360" cy="60" r="5" fill="#ef4444"/>
+  <rect x="365" y="45" width="115" height="22" rx="3" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
+  <text x="422" y="60" font-size="10" font-weight="700" fill="#b91c1c" text-anchor="middle">3 Duplicate ACKs</text>
+
+  <!-- Reno Recovery Label -->
+  <text x="410" y="195" font-size="10" font-weight="600" fill="#d97706">ssthresh = cwnd / 2</text>
+
+  <!-- Timeout marker -->
+  <circle cx="540" cy="105" r="5" fill="#dc2626"/>
+  <rect x="548" y="95" width="120" height="22" rx="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <text x="608" y="110" font-size="10" font-weight="700" fill="#991b1b" text-anchor="middle">Timeout (RTO) Loss!</text>
+
+  <!-- Slow Start 2 -->
+  <text x="560" y="270" font-size="10" font-weight="700" fill="#1e40af">Slow Start</text>
+  <text x="560" y="284" font-size="9" fill="#64748b">(cwnd = 1 MSS)</text>
+
+  <!-- Bottom Legend -->
+  <rect x="80" y="335" width="620" height="30" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <g font-size="11" fill="#334155">
+    <circle cx="100" cy="350" r="5" fill="#2563eb"/>
+    <text x="110" y="354">Slow Start (Exponential)</text>
+    <line x1="260" y1="350" x2="280" y2="350" stroke="#16a34a" stroke-width="3"/>
+    <text x="285" y="354">Congestion Avoidance (Linear)</text>
+    <line x1="480" y1="350" x2="500" y2="350" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+    <text x="505" y="354">Multiplicative Decrease</text>
+  </g>
+</svg>

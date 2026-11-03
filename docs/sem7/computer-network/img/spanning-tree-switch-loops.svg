@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="stp-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="fwd-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <rect x="2" y="2" width="756" height="356" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Spanning Tree Protocol (IEEE 802.1d): Loop Problem &amp; Loop-Free Tree</text>
+
+  <!-- Divider line -->
+  <line x1="380" y1="50" x2="380" y2="340" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Left: The Bridge Loop Problem -->
+  <g transform="translate(30, 55)">
+    <rect x="0" y="0" width="320" height="28" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="160" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">1. The Redundant Switch Loop Problem</text>
+
+    <!-- Top LAN 1 -->
+    <rect x="40" y="45" width="240" height="24" rx="3" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+    <text x="160" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">LAN 1 (Segment A)</text>
+
+    <!-- Switch 1 & Switch 2 -->
+    <rect x="30" y="105" width="110" height="55" rx="5" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="85" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Switch 1</text>
+    <text x="85" y="145" text-anchor="middle" font-size="9" fill="#64748b">(Floods Frame)</text>
+
+    <rect x="180" y="105" width="110" height="55" rx="5" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="235" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Switch 2</text>
+    <text x="235" y="145" text-anchor="middle" font-size="9" fill="#64748b">(Floods Frame)</text>
+
+    <!-- Bottom LAN 2 -->
+    <rect x="40" y="195" width="240" height="24" rx="3" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+    <text x="160" y="212" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">LAN 2 (Segment B)</text>
+
+    <!-- Connection lines -->
+    <line x1="85" y1="69" x2="85" y2="105" stroke="#334155" stroke-width="2"/>
+    <line x1="85" y1="160" x2="85" y2="195" stroke="#334155" stroke-width="2"/>
+    <line x1="235" y1="69" x2="235" y2="105" stroke="#334155" stroke-width="2"/>
+    <line x1="235" y1="160" x2="235" y2="195" stroke="#334155" stroke-width="2"/>
+
+    <!-- Looping arrows -->
+    <path d="M 140 120 C 170 100, 170 160, 140 150" stroke="#dc2626" stroke-width="2.5" fill="none" marker-end="url(#stp-arr)"/>
+    <path d="M 180 150 C 150 160, 150 100, 180 120" stroke="#dc2626" stroke-width="2.5" fill="none" marker-end="url(#stp-arr)"/>
+    <text x="160" y="140" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">Broadcast Storm Loop</text>
+
+    <!-- Danger callout -->
+    <rect x="20" y="235" width="280" height="40" rx="4" fill="#fee2e2" stroke="#fca5a5" stroke-width="1"/>
+    <text x="160" y="252" text-anchor="middle" font-size="10" font-weight="700" fill="#991b1b">Frames circulate infinitely</text>
+    <text x="160" y="266" text-anchor="middle" font-size="9.5" fill="#b91c1c">Table corruption &amp; network crash</text>
+  </g>
+
+  <!-- Right: Spanning Tree Solution -->
+  <g transform="translate(410, 55)">
+    <rect x="0" y="0" width="320" height="28" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="160" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">2. Spanning Tree Loop-Free Topology</text>
+
+    <!-- Top LAN 1 -->
+    <rect x="40" y="45" width="240" height="24" rx="3" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+    <text x="160" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">LAN 1 (Segment A)</text>
+
+    <!-- Switch 1 (Root Bridge) -->
+    <rect x="30" y="105" width="110" height="55" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="85" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#92400e">Switch 1</text>
+    <text x="85" y="139" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">[ROOT BRIDGE]</text>
+    <text x="85" y="152" text-anchor="middle" font-size="8.5" fill="#78350f">Lowest Switch ID</text>
+
+    <!-- Switch 2 with Blocking Port -->
+    <rect x="180" y="105" width="110" height="55" rx="5" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="235" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Switch 2</text>
+    <text x="235" y="142" text-anchor="middle" font-size="9" fill="#64748b">Designated Bridge</text>
+
+    <!-- Bottom LAN 2 -->
+    <rect x="40" y="195" width="240" height="24" rx="3" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+    <text x="160" y="212" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">LAN 2 (Segment B)</text>
+
+    <!-- Forwarding Lines (Green) -->
+    <line x1="85" y1="69" x2="85" y2="105" stroke="#16a34a" stroke-width="2.5"/>
+    <line x1="85" y1="160" x2="85" y2="195" stroke="#16a34a" stroke-width="2.5"/>
+    <line x1="235" y1="69" x2="235" y2="105" stroke="#16a34a" stroke-width="2.5"/>
+
+    <!-- Blocking Link (Red with Cross) -->
+    <line x1="235" y1="160" x2="235" y2="195" stroke="#dc2626" stroke-width="2" stroke-dasharray="3 3"/>
+    <circle cx="235" cy="177" r="9" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+    <line x1="229" y1="171" x2="241" y2="183" stroke="#dc2626" stroke-width="2"/>
+    <line x1="241" y1="171" x2="229" y2="183" stroke="#dc2626" stroke-width="2"/>
+    <text x="250" y="181" font-size="9" font-weight="700" fill="#dc2626">Blocking Port</text>
+
+    <!-- Success callout -->
+    <rect x="20" y="235" width="280" height="40" rx="4" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+    <text x="160" y="252" text-anchor="middle" font-size="10" font-weight="700" fill="#15803d">Single Active Path (No Loops)</text>
+    <text x="160" y="266" text-anchor="middle" font-size="9.5" fill="#166534">Redundant port activates if link fails</text>
+  </g>
+</svg>

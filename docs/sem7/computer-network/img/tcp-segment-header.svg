@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <!-- Card background -->
+  <rect x="2" y="2" width="756" height="406" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">TCP Segment Header Format (32-Bit Word Alignment)</text>
+
+  <!-- Bit ruler (0 to 31) -->
+  <g font-size="10" fill="#64748b" text-anchor="middle">
+    <text x="50" y="48">Bit 0</text>
+    <text x="210" y="48">Bit 7</text>
+    <text x="370" y="48">Bit 15</text>
+    <text x="530" y="48">Bit 23</text>
+    <text x="690" y="48">Bit 31</text>
+  </g>
+  <line x1="40" y1="52" x2="720" y2="52" stroke="#cbd5e1" stroke-width="1"/>
+
+  <!-- Header Grid -->
+  <!-- Row 1: Source Port (16b) | Destination Port (16b) -->
+  <g transform="translate(40, 56)">
+    <rect x="0" y="0" width="340" height="38" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="170" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Source Port (16 bits)</text>
+
+    <rect x="340" y="0" width="340" height="38" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="510" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Destination Port (16 bits)</text>
+  </g>
+
+  <!-- Row 2: Sequence Number (32b) -->
+  <g transform="translate(40, 94)">
+    <rect x="0" y="0" width="680" height="38" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="340" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1d4ed8">Sequence Number (32 bits)</text>
+  </g>
+
+  <!-- Row 3: Acknowledgement Number (32b) -->
+  <g transform="translate(40, 132)">
+    <rect x="0" y="0" width="680" height="38" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="340" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1d4ed8">Acknowledgement Number (32 bits)</text>
+  </g>
+
+  <!-- Row 4: HLEN (4b) | Reserved (6b) | Flags (6b) | Window Size (16b) -->
+  <g transform="translate(40, 170)">
+    <!-- HLEN: 4b (width 85) -->
+    <rect x="0" y="0" width="85" height="38" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="42" y="19" text-anchor="middle" font-size="11" font-weight="700" fill="#92400e">HLEN</text>
+    <text x="42" y="32" text-anchor="middle" font-size="9" fill="#b45309">4 bits</text>
+
+    <!-- Reserved: 6b (width 85) -->
+    <rect x="85" y="0" width="85" height="38" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+    <text x="127" y="19" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Reserved</text>
+    <text x="127" y="32" text-anchor="middle" font-size="9" fill="#64748b">6 bits</text>
+
+    <!-- 6 Control Flags (width 170 / 6 = ~28.3 each) -->
+    <g font-size="10" font-weight="700" text-anchor="middle">
+      <rect x="170" y="0" width="28" height="38" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+      <text x="184" y="24" fill="#991b1b">U</text>
+      <rect x="198" y="0" width="28" height="38" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+      <text x="212" y="24" fill="#166534">A</text>
+      <rect x="226" y="0" width="28" height="38" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+      <text x="240" y="24" fill="#991b1b">P</text>
+      <rect x="254" y="0" width="28" height="38" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+      <text x="268" y="24" fill="#991b1b">R</text>
+      <rect x="282" y="0" width="28" height="38" fill="#dbeafe" stroke="#2563eb" stroke-width="1"/>
+      <text x="296" y="24" fill="#1e40af">S</text>
+      <rect x="310" y="0" width="30" height="38" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+      <text x="325" y="24" fill="#92400e">F</text>
+    </g>
+
+    <!-- Window Size: 16b (width 340) -->
+    <rect x="340" y="0" width="340" height="38" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="510" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">Window Size (Advertised rwnd, 16 bits)</text>
+  </g>
+
+  <!-- Row 5: Checksum (16b) | Urgent Pointer (16b) -->
+  <g transform="translate(40, 208)">
+    <rect x="0" y="0" width="340" height="38" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+    <text x="170" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Checksum (Mandatory, 16 bits)</text>
+
+    <rect x="340" y="0" width="340" height="38" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+    <text x="510" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Urgent Pointer (Valid if URG=1, 16 bits)</text>
+  </g>
+
+  <!-- Row 6: Options & Padding (variable) -->
+  <g transform="translate(40, 246)">
+    <rect x="0" y="0" width="680" height="32" fill="#fafaf9" stroke="#a8a29e" stroke-width="1.5" stroke-dasharray="4 2"/>
+    <text x="340" y="21" text-anchor="middle" font-size="11" font-weight="600" fill="#78716c">Options (e.g. MSS, Window Scale, SACK) + Padding (0 – 40 Bytes)</text>
+  </g>
+
+  <!-- Row 7: Data Payload -->
+  <g transform="translate(40, 282)">
+    <rect x="0" y="0" width="680" height="36" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+    <text x="340" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="#6b21a8">Application Data Payload (variable bytes)</text>
+  </g>
+
+  <!-- Flag Legend below -->
+  <rect x="40" y="330" width="680" height="65" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="55" y="348" font-size="11" font-weight="700" fill="#0f172a">Control Flags (1 bit each):</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="55" y="367"><tspan font-weight="700" fill="#991b1b">U (URG):</tspan> Urgent pointer valid</text>
+    <text x="180" y="367"><tspan font-weight="700" fill="#166534">A (ACK):</tspan> Ack number valid</text>
+    <text x="305" y="367"><tspan font-weight="700" fill="#991b1b">P (PSH):</tspan> Push to app immediately</text>
+    <text x="55" y="386"><tspan font-weight="700" fill="#991b1b">R (RST):</tspan> Reset connection</text>
+    <text x="180" y="386"><tspan font-weight="700" fill="#1e40af">S (SYN):</tspan> Synchronize sequence numbers</text>
+    <text x="390" y="386"><tspan font-weight="700" fill="#92400e">F (FIN):</tspan> Finish transmission</text>
+  </g>
+</svg>

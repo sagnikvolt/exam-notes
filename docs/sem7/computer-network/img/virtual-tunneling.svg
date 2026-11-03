@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="tun-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- Background card -->
+  <rect x="2" y="2" width="756" height="346" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="380" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Virtual Tunneling Architecture &amp; Packet Encapsulation</text>
+
+  <!-- Network Layout Blocks -->
+  <!-- Left: Source Private Network -->
+  <rect x="30" y="65" width="130" height="90" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="95" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Source Site</text>
+  <text x="95" y="108" text-anchor="middle" font-size="11" fill="#3b82f6">(IPv6 / Private LAN)</text>
+  <rect x="55" y="120" width="80" height="25" rx="3" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="95" y="137" text-anchor="middle" font-size="10" font-weight="600" fill="#1d4ed8">Host A</text>
+
+  <!-- Tunnel Ingress Router -->
+  <rect x="190" y="70" width="90" height="80" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="235" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#92400e">Ingress Router</text>
+  <text x="235" y="116" text-anchor="middle" font-size="10" fill="#b45309">(Encapsulator)</text>
+  <text x="235" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#d97706">Adds Outer Hdr</text>
+
+  <!-- Arrow Host to Router -->
+  <line x1="160" y1="110" x2="190" y2="110" stroke="#2563eb" stroke-width="2" marker-end="url(#tun-arr)"/>
+
+  <!-- Center: Transit Backbone (The "Tunnel") -->
+  <rect x="310" y="60" width="140" height="100" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="380" y="85" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Transit Network</text>
+  <text x="380" y="102" text-anchor="middle" font-size="10" fill="#64748b">(IPv4 Internet / WAN)</text>
+  <path d="M 330 130 C 350 115, 410 115, 430 130" stroke="#2563eb" stroke-width="2.5" fill="none" stroke-dasharray="4 2"/>
+  <text x="380" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#2563eb">=== Virtual Tunnel ===</text>
+
+  <line x1="280" y1="110" x2="310" y2="110" stroke="#2563eb" stroke-width="2" marker-end="url(#tun-arr)"/>
+
+  <!-- Tunnel Egress Router -->
+  <rect x="480" y="70" width="90" height="80" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="525" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#92400e">Egress Router</text>
+  <text x="525" y="116" text-anchor="middle" font-size="10" fill="#b45309">(Decapsulator)</text>
+  <text x="525" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#d97706">Strips Outer Hdr</text>
+
+  <line x1="450" y1="110" x2="480" y2="110" stroke="#2563eb" stroke-width="2" marker-end="url(#tun-arr)"/>
+
+  <!-- Right: Destination Private Network -->
+  <rect x="600" y="65" width="130" height="90" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="665" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Destination Site</text>
+  <text x="665" y="108" text-anchor="middle" font-size="11" fill="#3b82f6">(IPv6 / Private LAN)</text>
+  <rect x="625" y="120" width="80" height="25" rx="3" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="665" y="137" text-anchor="middle" font-size="10" font-weight="600" fill="#1d4ed8">Host B</text>
+
+  <line x1="570" y1="110" x2="600" y2="110" stroke="#2563eb" stroke-width="2" marker-end="url(#tun-arr)"/>
+
+  <!-- Packet Format Walkthrough at Bottom -->
+  <g transform="translate(40, 185)">
+    <text x="0" y="18" font-size="12" font-weight="700" fill="#0f172a">Packet Encapsulation Transformation:</text>
+
+    <!-- 1. Original Packet -->
+    <g transform="translate(0, 30)">
+      <rect x="0" y="0" width="80" height="35" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="40" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">Inner IP Hdr</text>
+      <rect x="85" y="0" width="130" height="35" rx="3" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+      <text x="150" y="22" text-anchor="middle" font-size="10.5" font-weight="600" fill="#6b21a8">Original Payload</text>
+      <text x="107" y="48" text-anchor="middle" font-size="10" fill="#64748b">Original Datagram</text>
+    </g>
+
+    <!-- Ingress Arrow -->
+    <path d="M 230 47 L 270 47" stroke="#334155" stroke-width="2" marker-end="url(#tun-arr)"/>
+    <text x="250" y="40" text-anchor="middle" font-size="9" fill="#64748b">Encapsulate</text>
+
+    <!-- 2. Tunneled Packet (Inside Transit) -->
+    <g transform="translate(290, 30)">
+      <rect x="0" y="0" width="85" height="35" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+      <text x="42" y="17" text-anchor="middle" font-size="10" font-weight="700" fill="#92400e">Outer IP Hdr</text>
+      <text x="42" y="29" text-anchor="middle" font-size="9" fill="#b45309">(Tunnel IPv4)</text>
+
+      <rect x="90" y="0" width="80" height="35" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="130" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">Inner IP Hdr</text>
+
+      <rect x="175" y="0" width="120" height="35" rx="3" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+      <text x="235" y="22" text-anchor="middle" font-size="10" font-weight="600" fill="#6b21a8">Original Payload</text>
+      <text x="147" y="48" text-anchor="middle" font-size="10" fill="#64748b">Tunneled Datagram in Transit</text>
+    </g>
+
+    <!-- Egress Arrow -->
+    <path d="M 600 47 L 640 47" stroke="#334155" stroke-width="2" marker-end="url(#tun-arr)"/>
+    <text x="620" y="40" text-anchor="middle" font-size="9" fill="#64748b">Decapsulate</text>
+
+    <!-- Stripped back at B -->
+    <g transform="translate(655, 30)">
+      <rect x="0" y="0" width="70" height="35" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="35" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#15803d">Delivered</text>
+    </g>
+  </g>
+
+  <!-- Footer note -->
+  <text x="380" y="332" text-anchor="middle" font-size="11" fill="#475569">Transit routers forward solely based on Outer IP Header without inspecting or altering Inner payload.</text>
+</svg>

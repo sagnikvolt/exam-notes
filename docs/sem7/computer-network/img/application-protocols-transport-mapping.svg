@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <rect x="2" y="2" width="756" height="296" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Application Protocols Mapped to Underlying Transport Layer</text>
+
+  <!-- Split Header -->
+  <!-- Left Side: TCP -->
+  <g transform="translate(30, 50)">
+    <rect x="0" y="0" width="340" height="42" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="170" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">TCP (Transmission Control Protocol)</text>
+    <text x="170" y="34" text-anchor="middle" font-size="10.5" fill="#2563eb">Connection-oriented, Reliable, Flow &amp; Congestion Control</text>
+
+    <!-- TCP Protocol Cards -->
+    <g transform="translate(0, 55)" font-size="11">
+      <!-- HTTP/HTTPS -->
+      <rect x="0" y="0" width="340" height="34" rx="4" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+      <text x="15" y="22" font-weight="700" fill="#1e40af">HTTP / HTTPS</text>
+      <text x="325" y="22" text-anchor="end" font-weight="600" fill="#64748b">Port 80 / 443</text>
+
+      <!-- SMTP -->
+      <rect x="0" y="42" width="340" height="34" rx="4" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+      <text x="15" y="64" font-weight="700" fill="#1e40af">SMTP (Email Push &amp; Relay)</text>
+      <text x="325" y="64" text-anchor="end" font-weight="600" fill="#64748b">Port 25 / 587</text>
+
+      <!-- POP3 / IMAP -->
+      <rect x="0" y="84" width="340" height="34" rx="4" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+      <text x="15" y="106" font-weight="700" fill="#1e40af">POP3 / IMAP4 (Mail Retrieval)</text>
+      <text x="325" y="106" text-anchor="end" font-weight="600" fill="#64748b">Port 110 / 143</text>
+
+      <!-- FTP / SSH -->
+      <rect x="0" y="126" width="340" height="34" rx="4" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+      <text x="15" y="148" font-weight="700" fill="#1e40af">FTP (File Transfer)</text>
+      <text x="325" y="148" text-anchor="end" font-weight="600" fill="#64748b">Port 20 / 21</text>
+    </g>
+  </g>
+
+  <!-- Right Side: UDP -->
+  <g transform="translate(390, 50)">
+    <rect x="0" y="0" width="340" height="42" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="170" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">UDP (User Datagram Protocol)</text>
+    <text x="170" y="34" text-anchor="middle" font-size="10.5" fill="#b45309">Connectionless, Fast, Low Overhead, No Retransmission</text>
+
+    <!-- UDP Protocol Cards -->
+    <g transform="translate(0, 55)" font-size="11">
+      <!-- DNS Queries -->
+      <rect x="0" y="0" width="340" height="34" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+      <text x="15" y="22" font-weight="700" fill="#92400e">DNS (Standard Host Queries)</text>
+      <text x="325" y="22" text-anchor="end" font-weight="600" fill="#64748b">Port 53</text>
+
+      <!-- DHCP -->
+      <rect x="0" y="42" width="340" height="34" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+      <text x="15" y="64" font-weight="700" fill="#92400e">DHCP / BOOTP (IP Allocation)</text>
+      <text x="325" y="64" text-anchor="end" font-weight="600" fill="#64748b">Port 67 / 68</text>
+
+      <!-- SNMP -->
+      <rect x="0" y="84" width="340" height="34" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+      <text x="15" y="106" font-weight="700" fill="#92400e">SNMP (Network Management)</text>
+      <text x="325" y="106" text-anchor="end" font-weight="600" fill="#64748b">Port 161</text>
+
+      <!-- TFTP -->
+      <rect x="0" y="126" width="340" height="34" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+      <text x="15" y="148" font-weight="700" fill="#92400e">TFTP / Streaming (RTP/VoIP)</text>
+      <text x="325" y="148" text-anchor="end" font-weight="600" fill="#64748b">Port 69</text>
+    </g>
+  </g>
+
+  <!-- Bottom note on DNS dual-mode -->
+  <rect x="30" y="258" width="700" height="30" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="380" y="278" text-anchor="middle" font-size="11" fill="#475569">
+    <tspan font-weight="700" fill="#1e40af">Exam Special Note:</tspan> DNS uses UDP 53 for fast queries/responses, but uses TCP 53 for Zone Transfers between servers.
+  </text>
+</svg>

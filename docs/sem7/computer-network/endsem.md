@@ -1,8 +1,5 @@
 # Computer Network — End Sem
 
-!!! note "No questions yet"
-    Questions and answers will be added here.
-
 ## Syllabus
 
 1. Data communication — components, topologies, OSI model, transmission media, LAN/WLAN/VLAN, multiplexing, spread spectrum
@@ -14,9 +11,9 @@
 **Main textbook:** Data Communication and Networking — B.A. Forouzan
 
 <!--
-TO ADD QUESTIONS: delete the note above and write each question like this (plain Markdown, nothing else needed):
+TO ADD QUESTIONS: write each question like this (plain Markdown, nothing else needed):
 
-## Q1. Question text here <small>(5 marks · Mid Sem)</small>
+## Q1. Question text here <small>(5 marks · End Sem)</small>
 
 Answer text. Math works: $T = K\phi I_a$ or
 
