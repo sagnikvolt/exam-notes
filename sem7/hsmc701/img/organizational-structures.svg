@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <rect x="2" y="2" width="856" height="476" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  
+  <text x="430" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Key Organizational Structures &amp; Reporting Lines</text>
+  <text x="430" y="58" text-anchor="middle" font-size="13" fill="#64748b">Comparison of Functional, Divisional, Matrix (Dual Chain of Command), and Network Structures</text>
+
+  <!-- 1. Functional Structure -->
+  <g transform="translate(30, 85)">
+    <rect width="250" height="175" rx="10" fill="#f8fafc" stroke="#3b82f6" stroke-width="2"/>
+    <rect width="250" height="34" rx="10" fill="#3b82f6"/>
+    <text x="125" y="23" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">1. Functional Structure</text>
+    <text x="125" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#1e293b">[ CEO / President ]</text>
+    <line x1="125" y1="66" x2="125" y2="82" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="30" y1="82" x2="220" y2="82" stroke="#64748b" stroke-width="1.5"/>
+    <g transform="translate(15, 92)">
+      <rect width="45" height="26" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
+      <text x="22" y="17" text-anchor="middle" font-size="10" font-weight="600" fill="#1e40af">HR</text>
+    </g>
+    <g transform="translate(70, 92)">
+      <rect width="50" height="26" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
+      <text x="25" y="17" text-anchor="middle" font-size="10" font-weight="600" fill="#1e40af">Finance</text>
+    </g>
+    <g transform="translate(130, 92)">
+      <rect width="50" height="26" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
+      <text x="25" y="17" text-anchor="middle" font-size="10" font-weight="600" fill="#1e40af">Mktg</text>
+    </g>
+    <g transform="translate(190, 92)">
+      <rect width="45" height="26" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
+      <text x="22" y="17" text-anchor="middle" font-size="10" font-weight="600" fill="#1e40af">IT</text>
+    </g>
+    <text x="15" y="145" font-size="10.5" fill="#334155">&#10004; High specialization &amp; efficiency</text>
+    <text x="15" y="162" font-size="10.5" fill="#dc2626">&#10008; Causes departmental silos</text>
+  </g>
+
+  <!-- 2. Divisional Structure -->
+  <g transform="translate(305, 85)">
+    <rect width="250" height="175" rx="10" fill="#f8fafc" stroke="#10b981" stroke-width="2"/>
+    <rect width="250" height="34" rx="10" fill="#10b981"/>
+    <text x="125" y="23" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">2. Divisional Structure</text>
+    <text x="125" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#1e293b">[ Corporate Head ]</text>
+    <line x1="125" y1="66" x2="125" y2="82" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="60" y1="82" x2="190" y2="82" stroke="#64748b" stroke-width="1.5"/>
+    <g transform="translate(25, 92)">
+      <rect width="95" height="32" rx="4" fill="#d1fae5" stroke="#10b981"/>
+      <text x="47" y="15" text-anchor="middle" font-size="10" font-weight="700" fill="#065f46">Division A</text>
+      <text x="47" y="27" text-anchor="middle" font-size="8.5" fill="#047857">(HR, Mktg, Ops)</text>
+    </g>
+    <g transform="translate(130, 92)">
+      <rect width="95" height="32" rx="4" fill="#d1fae5" stroke="#10b981"/>
+      <text x="47" y="15" text-anchor="middle" font-size="10" font-weight="700" fill="#065f46">Division B</text>
+      <text x="47" y="27" text-anchor="middle" font-size="8.5" fill="#047857">(HR, Mktg, Ops)</text>
+    </g>
+    <text x="15" y="145" font-size="10.5" fill="#334155">&#10004; Fast local/product focus</text>
+    <text x="15" y="162" font-size="10.5" fill="#dc2626">&#10008; Costly duplication of departments</text>
+  </g>
+
+  <!-- 3. Matrix Structure (Dual Chain of Command) -->
+  <g transform="translate(580, 85)">
+    <rect width="250" height="175" rx="10" fill="#f8fafc" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="250" height="34" rx="10" fill="#8b5cf6"/>
+    <text x="125" y="23" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">3. Matrix Structure</text>
+    
+    <g transform="translate(15, 45)">
+      <text x="0" y="18" font-size="10" font-weight="700" fill="#5b21b6">Functional Boss &#8594;</text>
+      <text x="0" y="48" font-size="10" font-weight="700" fill="#d97706">Project Boss &#8595;</text>
+      
+      <!-- Grid -->
+      <rect x="95" y="5" width="60" height="20" rx="3" fill="#ede9fe" stroke="#8b5cf6"/>
+      <text x="125" y="18" text-anchor="middle" font-size="9" font-weight="600" fill="#5b21b6">IT Head</text>
+
+      <rect x="165" y="5" width="60" height="20" rx="3" fill="#ede9fe" stroke="#8b5cf6"/>
+      <text x="195" y="18" text-anchor="middle" font-size="9" font-weight="600" fill="#5b21b6">Design Head</text>
+
+      <rect x="15" y="60" width="70" height="20" rx="3" fill="#fef3c7" stroke="#f59e0b"/>
+      <text x="50" y="73" text-anchor="middle" font-size="8.5" font-weight="600" fill="#b45309">Proj A Head</text>
+
+      <!-- Intersecting Employee with 2 Bosses -->
+      <rect x="95" y="40" width="60" height="38" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="125" y="54" text-anchor="middle" font-size="9" font-weight="700" fill="#991b1b">Employee</text>
+      <text x="125" y="68" text-anchor="middle" font-size="8" font-weight="700" fill="#b91c1c">(2 Bosses!)</text>
+    </g>
+    <text x="15" y="145" font-size="10.5" fill="#334155">&#10004; Efficient resource sharing</text>
+    <text x="15" y="162" font-size="10.5" fill="#dc2626">&#10008; Two-boss stress &amp; conflict</text>
+  </g>
+
+  <!-- 4. Flat Structure vs 5. Network Structure (Bottom Row) -->
+  <g transform="translate(30, 280)">
+    <rect width="380" height="175" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+    <rect width="380" height="30" rx="10" fill="#475569"/>
+    <text x="190" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4. Flat Structure (Wide Span of Control)</text>
+    <text x="190" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#1e293b">[ CEO / Founder ]</text>
+    <line x1="190" y1="62" x2="190" y2="78" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="30" y1="78" x2="350" y2="78" stroke="#64748b" stroke-width="1.5"/>
+    <g transform="translate(20, 88)">
+      <rect width="60" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="30" y="16" text-anchor="middle" font-size="9" fill="#1e293b">Worker 1</text>
+    </g>
+    <g transform="translate(90, 88)">
+      <rect width="60" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="30" y="16" text-anchor="middle" font-size="9" fill="#1e293b">Worker 2</text>
+    </g>
+    <g transform="translate(160, 88)">
+      <rect width="60" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="30" y="16" text-anchor="middle" font-size="9" fill="#1e293b">Worker 3</text>
+    </g>
+    <g transform="translate(230, 88)">
+      <rect width="60" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="30" y="16" text-anchor="middle" font-size="9" fill="#1e293b">Worker 4</text>
+    </g>
+    <g transform="translate(300, 88)">
+      <rect width="60" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="30" y="16" text-anchor="middle" font-size="9" fill="#1e293b">Worker 5</text>
+    </g>
+    <text x="20" y="138" font-size="11" fill="#334155">&#8226; Few management layers, high autonomy &amp; rapid decisions</text>
+    <text x="20" y="156" font-size="11" fill="#64748b">&#8226; Contrast with Tall/Hierarchical: Many layers, slow red tape</text>
+  </g>
+
+  <g transform="translate(450, 280)">
+    <rect width="380" height="175" rx="10" fill="#f8fafc" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="380" height="30" rx="10" fill="#0284c7"/>
+    <text x="190" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">5. Network / Virtual Structure (Outsourced)</text>
+    
+    <!-- Central Hub -->
+    <rect x="130" y="48" width="120" height="34" rx="6" fill="#0284c7" stroke="#0369a1"/>
+    <text x="190" y="69" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">Core Strategic Hub</text>
+
+    <!-- Outsourced Nodes -->
+    <g transform="translate(15, 100)">
+      <rect width="105" height="28" rx="4" fill="#e0f2fe" stroke="#0284c7"/>
+      <text x="52" y="17" text-anchor="middle" font-size="9" font-weight="600" fill="#0369a1">Factory (Asia)</text>
+      <line x1="90" y1="0" x2="130" y2="-25" stroke="#0284c7" stroke-dasharray="3,3"/>
+    </g>
+    <g transform="translate(135, 100)">
+      <rect width="110" height="28" rx="4" fill="#e0f2fe" stroke="#0284c7"/>
+      <text x="55" y="17" text-anchor="middle" font-size="9" font-weight="600" fill="#0369a1">Logistics / Shipping</text>
+      <line x1="190" y1="0" x2="190" y2="-18" stroke="#0284c7" stroke-dasharray="3,3"/>
+    </g>
+    <g transform="translate(260, 100)">
+      <rect width="105" height="28" rx="4" fill="#e0f2fe" stroke="#0284c7"/>
+      <text x="52" y="17" text-anchor="middle" font-size="9" font-weight="600" fill="#0369a1">Support / Call Ctr</text>
+      <line x1="280" y1="0" x2="250" y2="-25" stroke="#0284c7" stroke-dasharray="3,3"/>
+    </g>
+
+    <text x="20" y="148" font-size="11" fill="#334155">&#8226; Extremely flexible, tiny fixed overhead cost</text>
+    <text x="20" y="164" font-size="11" fill="#dc2626">&#8226; Low direct control over vendor quality &amp; data security</text>
+  </g>
+</svg>

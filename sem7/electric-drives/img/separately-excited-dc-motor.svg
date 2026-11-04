@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" width="100%" height="auto">
+  <defs>
+    <marker id="arr-black" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Container Box -->
+  <rect x="4" y="4" width="552" height="332" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Field Circuit (Left Side) -->
+  <g transform="translate(15, 0)">
+    <!-- Title -->
+    <rect x="30" y="22" width="130" height="26" rx="5" fill="#f1f5f9"/>
+    <text x="95" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">FIELD CIRCUIT</text>
+
+    <!-- DC Source Terminals -->
+    <circle cx="50" cy="80" r="5" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="32" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#dc2626">+</text>
+    <circle cx="50" cy="280" r="5" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="34" y="285" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#1e293b">-</text>
+
+    <text x="25" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#1e293b">V<tspan font-size="11" dy="4">f</tspan></text>
+
+    <!-- Connecting Wires -->
+    <line x1="55" y1="80" x2="110" y2="80" stroke="#1e293b" stroke-width="2"/>
+    <line x1="55" y1="280" x2="160" y2="280" stroke="#1e293b" stroke-width="2"/>
+    <line x1="160" y1="280" x2="160" y2="240" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Field Current Arrow If -->
+    <line x1="75" y1="80" x2="105" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+    <text x="85" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#2563eb">I<tspan font-size="10" dy="3">f</tspan></text>
+
+    <!-- Field Rheostat / Resistor Rf -->
+    <rect x="110" y="70" width="45" height="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2"/>
+    <text x="132" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">R<tspan font-size="10" dy="3">f</tspan></text>
+    <line x1="155" y1="80" x2="160" y2="80" stroke="#1e293b" stroke-width="2"/>
+    <line x1="160" y1="80" x2="160" y2="110" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Field Inductor Winding Lf (Coils) -->
+    <path d="M 160 110 
+             C 185 110, 185 130, 160 130 
+             C 185 130, 185 150, 160 150 
+             C 185 150, 185 170, 160 170 
+             C 185 170, 185 190, 160 190 
+             C 185 190, 185 210, 160 210
+             C 185 210, 185 230, 160 230
+             L 160 240" 
+          fill="none" stroke="#1e293b" stroke-width="2.5"/>
+    <text x="195" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#1e293b">L<tspan font-size="10" dy="3">f</tspan></text>
+
+    <!-- Flux Phi Arrow -->
+    <line x1="180" y1="180" x2="235" y2="180" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="4 3" marker-end="url(#arr-black)"/>
+    <text x="208" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" fill="#16a34a">Φ</text>
+  </g>
+
+  <!-- Armature Circuit (Right Side) -->
+  <g transform="translate(12, 0)">
+    <!-- Title -->
+    <rect x="330" y="22" width="165" height="26" rx="5" fill="#f1f5f9"/>
+    <text x="412" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">ARMATURE CIRCUIT</text>
+
+    <!-- Armature Supply Terminals -->
+    <circle cx="280" cy="80" r="5" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="265" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#dc2626">+</text>
+    <circle cx="280" cy="280" r="5" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="267" y="285" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#1e293b">-</text>
+
+    <text x="255" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#1e293b">V</text>
+
+    <!-- Top Rail -->
+    <line x1="285" y1="80" x2="315" y2="80" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Switch Sw -->
+    <circle cx="315" cy="80" r="3" fill="#1e293b"/>
+    <line x1="315" y1="80" x2="335" y2="65" stroke="#1e293b" stroke-width="2.5"/>
+    <circle cx="340" cy="80" r="3" fill="#1e293b"/>
+    <text x="325" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#475569">S<tspan font-size="9" dy="2">w</tspan></text>
+
+    <line x1="340" y1="80" x2="365" y2="80" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Armature Resistance Ra -->
+    <rect x="365" y="70" width="50" height="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2"/>
+    <text x="390" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">R<tspan font-size="10" dy="3">a</tspan></text>
+
+    <line x1="415" y1="80" x2="445" y2="80" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Armature Current Ia Arrow -->
+    <line x1="420" y1="80" x2="438" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+    <text x="424" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#2563eb">I<tspan font-size="10" dy="3">a</tspan></text>
+
+    <line x1="445" y1="80" x2="445" y2="135" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Top Brush -->
+    <rect x="437" y="135" width="16" height="8" fill="#1e293b" rx="1"/>
+    <text x="460" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#dc2626">+</text>
+
+    <!-- Armature Rotor Circle -->
+    <circle cx="445" cy="180" r="36" fill="#eff6ff" stroke="#1e293b" stroke-width="2.5"/>
+    <text x="445" y="186" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#1d4ed8" text-anchor="middle">A</text>
+    <text x="445" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#475569" text-anchor="middle">E<tspan font-size="9" dy="2">b</tspan></text>
+
+    <!-- Bottom Brush -->
+    <rect x="437" y="217" width="16" height="8" fill="#1e293b" rx="1"/>
+    <text x="460" y="225" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#1e293b">-</text>
+
+    <!-- Bottom Return Rail -->
+    <line x1="445" y1="225" x2="445" y2="280" stroke="#1e293b" stroke-width="2"/>
+    <line x1="445" y1="280" x2="285" y2="280" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Mechanical Shaft, Torque (T) & Speed (ω) -->
+    <line x1="481" y1="180" x2="520" y2="180" stroke="#1e293b" stroke-width="4"/>
+    <path d="M 505 166 A 14 14 0 0 1 505 194" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-black)"/>
+    <text x="525" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#d97706">ω</text>
+    <text x="525" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#b45309">T</text>
+  </g>
+</svg>
+

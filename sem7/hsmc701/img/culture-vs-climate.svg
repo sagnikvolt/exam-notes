@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <rect x="2" y="2" width="856" height="476" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  
+  <text x="430" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Organizational Culture vs. Organizational Climate</text>
+  <text x="430" y="58" text-anchor="middle" font-size="13" fill="#64748b">The Iceberg Model: Deep Historical Values vs. Surface Day-to-Day Atmosphere</text>
+
+  <!-- Waterline -->
+  <rect x="40" y="190" width="780" height="260" rx="6" fill="#f0f9ff"/>
+  <line x1="40" y1="190" x2="820" y2="190" stroke="#0284c7" stroke-width="3" stroke-dasharray="6,4"/>
+  <text x="815" y="180" text-anchor="end" font-size="12" font-weight="700" fill="#0284c7">&#8776; Waterline (Boundary of Immediate Perception)</text>
+
+  <!-- ABOVE: CLIMATE -->
+  <g transform="translate(60, 80)">
+    <rect width="740" height="95" rx="8" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="25" y="28" font-size="17" font-weight="700" fill="#0369a1">ORGANIZATIONAL CLIMATE (Above Waterline — "The Weather / Mood")</text>
+    <text x="25" y="52" font-size="12" fill="#0c4a6e">&#8226; <tspan font-weight="700">Nature:</tspan> Surface psychological atmosphere, current feelings, and employee morale</text>
+    <text x="25" y="70" font-size="12" fill="#0c4a6e">&#8226; <tspan font-weight="700">Timeframe:</tspan> Short-term &amp; volatile; can change within <tspan font-weight="700">weeks</tspan> with a new boss, raise, or policy</text>
+    <text x="25" y="88" font-size="12" fill="#0c4a6e">&#8226; <tspan font-weight="700">Manifestations:</tspan> Openness of discussions, degree of warmth/fear, team trust, and stress levels</text>
+  </g>
+
+  <!-- BELOW: CULTURE -->
+  <g transform="translate(60, 210)">
+    <rect width="740" height="225" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="25" y="32" font-size="17" font-weight="700" fill="#075985">ORGANIZATIONAL CULTURE (Below Waterline — "The Personality / Climate")</text>
+    <text x="25" y="56" font-size="12.5" fill="#0f172a">&#8226; <tspan font-weight="700">Nature:</tspan> Deeply rooted system of shared values, beliefs, unwritten rules, and assumptions</text>
+    <text x="25" y="76" font-size="12.5" fill="#0f172a">&#8226; <tspan font-weight="700">Timeframe:</tspan> Multi-year, permanent foundation; requires <tspan font-weight="700">years</tspan> of deliberate effort to shift</text>
+    
+    <!-- 3 Core Elements Cards -->
+    <g transform="translate(20, 92)">
+      <rect width="215" height="115" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+      <text x="15" y="24" font-size="13" font-weight="700" fill="#1e293b">1. Core Values &amp; Beliefs</text>
+      <text x="15" y="46" font-size="11" fill="#475569">&#8226; Customer obsession</text>
+      <text x="15" y="66" font-size="11" fill="#475569">&#8226; Safety &amp; Integrity first</text>
+      <text x="15" y="86" font-size="11" fill="#475569">&#8226; Unwritten codes of conduct</text>
+      <text x="15" y="104" font-size="10.5" font-weight="600" fill="#0284c7">&#10148; Deepest core layer</text>
+    </g>
+
+    <g transform="translate(255, 92)">
+      <rect width="215" height="115" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+      <text x="15" y="24" font-size="13" font-weight="700" fill="#1e293b">2. Visible Artifacts &amp; Symbols</text>
+      <text x="15" y="46" font-size="11" fill="#475569">&#8226; Open floor vs closed cabins</text>
+      <text x="15" y="66" font-size="11" fill="#475569">&#8226; Casual t-shirts vs suits</text>
+      <text x="15" y="86" font-size="11" fill="#475569">&#8226; Logos, architecture, decor</text>
+      <text x="15" y="104" font-size="10.5" font-weight="600" fill="#0284c7">&#10148; Physical expressions</text>
+    </g>
+
+    <g transform="translate(490, 92)">
+      <rect width="230" height="115" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+      <text x="15" y="24" font-size="13" font-weight="700" fill="#1e293b">3. Rituals, Stories &amp; Heroes</text>
+      <text x="15" y="46" font-size="11" fill="#475569">&#8226; Friday townhall celebrations</text>
+      <text x="15" y="66" font-size="11" fill="#475569">&#8226; Founder legends &amp; heroes</text>
+      <text x="15" y="86" font-size="11" fill="#475569">&#8226; Annual recognition rites</text>
+      <text x="15" y="104" font-size="10.5" font-weight="600" fill="#0284c7">&#10148; Socializes new recruits</text>
+    </g>
+  </g>
+</svg>

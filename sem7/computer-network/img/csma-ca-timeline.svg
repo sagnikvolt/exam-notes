@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- Background card -->
+  <rect x="2" y="2" width="756" height="346" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="380" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">CSMA/CA Exchange Timeline (RTS, CTS, NAV, Data, ACK)</text>
+
+  <!-- Lane Labels -->
+  <g font-size="13" font-weight="600" fill="#334155" text-anchor="end">
+    <text x="130" y="85">Source (Tx)</text>
+    <text x="130" y="155">Destination (Rx)</text>
+    <text x="130" y="225">Other Stations</text>
+  </g>
+
+  <!-- Horizontal Timeline Axes -->
+  <line x1="145" y1="80" x2="730" y2="80" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="145" y1="150" x2="730" y2="150" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="145" y1="220" x2="730" y2="220" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Time labels below -->
+  <text x="715" y="98" font-size="11" fill="#64748b" text-anchor="end">Time (t)</text>
+  <text x="715" y="168" font-size="11" fill="#64748b" text-anchor="end">Time (t)</text>
+  <text x="715" y="238" font-size="11" fill="#64748b" text-anchor="end">Time (t)</text>
+
+  <!-- 1. DIFS block -->
+  <rect x="150" y="65" width="45" height="30" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="172" y="84" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">DIFS</text>
+
+  <!-- 2. RTS Frame -->
+  <rect x="200" y="62" width="70" height="36" rx="5" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="235" y="84" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">RTS</text>
+
+  <!-- RTS Transmission down to Destination & Others -->
+  <path d="M 270 80 L 290 145" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M 270 80 L 280 215" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+  <!-- 3. SIFS before CTS -->
+  <rect x="290" y="135" width="35" height="30" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="307" y="154" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">SIFS</text>
+
+  <!-- 4. CTS Frame -->
+  <rect x="330" y="132" width="70" height="36" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="365" y="154" font-size="13" font-weight="700" fill="#92400e" text-anchor="middle">CTS</text>
+
+  <!-- CTS transmission back to Source & Others -->
+  <path d="M 400 150 L 420 85" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M 400 150 L 405 215" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+  <!-- 5. SIFS before Data -->
+  <rect x="420" y="65" width="35" height="30" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="437" y="84" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">SIFS</text>
+
+  <!-- 6. DATA Frame -->
+  <rect x="460" y="60" width="140" height="40" rx="5" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="530" y="84" font-size="14" font-weight="700" fill="#15803d" text-anchor="middle">DATA FRAME</text>
+
+  <!-- Data transmission to Destination -->
+  <path d="M 600 80 L 615 145" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+  <!-- 7. SIFS before ACK -->
+  <rect x="615" y="135" width="35" height="30" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="632" y="154" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">SIFS</text>
+
+  <!-- 8. ACK Frame -->
+  <rect x="655" y="132" width="60" height="36" rx="5" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="685" y="154" font-size="13" font-weight="700" fill="#6b21a8" text-anchor="middle">ACK</text>
+
+  <!-- 9. NAV Bars on Other Stations -->
+  <!-- NAV (RTS) -->
+  <rect x="275" y="208" width="440" height="24" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <text x="495" y="225" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="middle">NAV (Network Allocation Vector) — Medium Deferral</text>
+
+  <!-- Bottom Legend / Notes -->
+  <rect x="30" y="270" width="700" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <g font-size="12" fill="#334155">
+    <text x="45" y="292">• <tspan font-weight="700" fill="#1e40af">RTS / CTS:</tspan> Carries duration field reserving medium, silencing hidden terminals.</text>
+    <text x="45" y="314">• <tspan font-weight="700" fill="#475569">SIFS &lt; DIFS:</tspan> Ongoing transmission retains highest priority over new station contention.</text>
+    <text x="460" y="292">• <tspan font-weight="700" fill="#b91c1c">NAV Timer:</tspan> Virtual carrier sensing countdown.</text>
+    <text x="460" y="314">• <tspan font-weight="700" fill="#15803d">ACK:</tspan> Mandatory link-layer confirmation.</text>
+  </g>
+</svg>

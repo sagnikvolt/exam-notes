@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="dn-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="2" y="2" width="756" height="356" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="380" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Segmentation (Transport Layer) vs. Fragmentation (Network Layer)</text>
+
+  <!-- Level 1: Application Layer -->
+  <g transform="translate(40, 50)">
+    <rect x="0" y="0" width="680" height="36" rx="5" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+    <text x="340" y="23" text-anchor="middle" font-size="13" font-weight="700" fill="#6b21a8">Application Layer: Continuous Data Stream / Message</text>
+  </g>
+
+  <!-- Arrow down to Transport -->
+  <line x1="380" y1="88" x2="380" y2="108" stroke="#334155" stroke-width="2" marker-end="url(#dn-arr)"/>
+  <text x="390" y="102" font-size="11" font-weight="600" fill="#64748b">TCP Segmentation (MSS based)</text>
+
+  <!-- Level 2: Transport Layer Segments -->
+  <g transform="translate(40, 115)">
+    <!-- Segment 1 -->
+    <rect x="0" y="0" width="55" height="40" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="27" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">TCP Hdr</text>
+    <rect x="58" y="0" width="150" height="40" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="133" y="24" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Segment 1 (Seq = 0)</text>
+
+    <!-- Segment 2 -->
+    <rect x="235" y="0" width="55" height="40" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="262" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">TCP Hdr</text>
+    <rect x="293" y="0" width="150" height="40" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="368" y="24" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Segment 2 (Seq = 1460)</text>
+
+    <!-- Segment 3 -->
+    <rect x="470" y="0" width="55" height="40" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="497" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">TCP Hdr</text>
+    <rect x="528" y="0" width="150" height="40" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="603" y="24" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Segment 3 (Seq = 2920)</text>
+  </g>
+
+  <!-- Arrow down to Network Layer -->
+  <line x1="380" y1="158" x2="380" y2="178" stroke="#334155" stroke-width="2" marker-end="url(#dn-arr)"/>
+  <text x="390" y="172" font-size="11" font-weight="600" fill="#64748b">Encapsulation into IP Datagrams</text>
+
+  <!-- Level 3: Network Layer Packets -->
+  <g transform="translate(40, 185)">
+    <!-- IP Packet 1 -->
+    <rect x="0" y="0" width="45" height="40" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="22" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#92400e">IP Hdr</text>
+    <rect x="48" y="0" width="160" height="40" rx="3" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="128" y="24" text-anchor="middle" font-size="10.5" fill="#854d0e">TCP Hdr + Seg 1</text>
+
+    <!-- IP Packet 2 -->
+    <rect x="235" y="0" width="45" height="40" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="257" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#92400e">IP Hdr</text>
+    <rect x="283" y="0" width="160" height="40" rx="3" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="363" y="24" text-anchor="middle" font-size="10.5" fill="#854d0e">TCP Hdr + Seg 2</text>
+
+    <!-- IP Packet 3 -->
+    <rect x="470" y="0" width="45" height="40" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="492" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#92400e">IP Hdr</text>
+    <rect x="518" y="0" width="160" height="40" rx="3" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="598" y="24" text-anchor="middle" font-size="10.5" fill="#854d0e">TCP Hdr + Seg 3</text>
+  </g>
+
+  <!-- Comparison Summary Box -->
+  <rect x="40" y="240" width="680" height="100" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="55" y="260" font-size="12" font-weight="700" fill="#0f172a">Key Differences for Exam Questions:</text>
+  <g font-size="11.5" fill="#334155">
+    <text x="55" y="280">• <tspan font-weight="700" fill="#1e40af">Transport Segmentation:</tspan> Done at source host based on MSS to prevent fragmentation down below.</text>
+    <text x="55" y="300">• <tspan font-weight="700" fill="#b45309">Network Layer Fragmentation:</tspan> Done by intermediate routers when datagram size &gt; Link MTU.</text>
+    <text x="55" y="320">• <tspan font-weight="700" fill="#15803d">Reassembly Location:</tspan> IP fragments reassemble ONLY at final destination host (identified by ID, Flags, Offset).</text>
+  </g>
+</svg>

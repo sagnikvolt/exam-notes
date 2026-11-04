@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <rect x="2" y="2" width="856" height="476" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  
+  <text x="430" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Thomas-Kilmann Conflict &amp; Negotiation Strategies Grid</text>
+  <text x="430" y="58" text-anchor="middle" font-size="13" fill="#64748b">Dual Concern Model: Assertiveness (Focus on Self) vs. Cooperativeness (Focus on Others)</text>
+
+  <!-- Axes -->
+  <line x1="140" y1="410" x2="800" y2="410" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="140" y1="410" x2="140" y2="80" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Axis Labels -->
+  <text x="470" y="445" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">Cooperativeness (Focus on Relationship / Partner's Goals) &#8594;</text>
+  <text x="70" y="250" text-anchor="middle" font-size="15" font-weight="700" fill="#334155" transform="rotate(-90 70 250)">Assertiveness (Focus on Own Goals) &#8594;</text>
+
+  <!-- 1. COMPETING (Top Left) -->
+  <g transform="translate(160, 95)">
+    <rect width="280" height="130" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" font-weight="700" fill="#991b1b">COMPETING (Win - Lose)</text>
+    <text x="20" y="52" font-size="12" font-weight="600" fill="#b91c1c">&#8226; High Assertiveness | Low Cooperation</text>
+    <text x="20" y="74" font-size="12" fill="#450a0a">&#8226; Pursues own interest at other's expense</text>
+    <text x="20" y="94" font-size="12" fill="#450a0a">&#8226; Uses power, rank, or fixed-pie bargaining</text>
+    <text x="20" y="114" font-size="11" font-weight="600" fill="#7f1d1d">&#10148; Example: Hard bargaining on car price</text>
+  </g>
+
+  <!-- 2. COLLABORATING (Top Right) -->
+  <g transform="translate(490, 95)">
+    <rect width="280" height="130" rx="10" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+    <text x="20" y="30" font-size="16" font-weight="700" fill="#14532d">COLLABORATING (Win - Win)</text>
+    <text x="20" y="52" font-size="12" font-weight="600" fill="#15803d">&#8226; High Assertiveness | High Cooperation</text>
+    <text x="20" y="74" font-size="12" fill="#052e16">&#8226; Explores mutual needs to expand the pie</text>
+    <text x="20" y="94" font-size="12" fill="#052e16">&#8226; High trust, open sharing &amp; creative synergy</text>
+    <text x="20" y="114" font-size="11" font-weight="600" fill="#14532d">&#10148; Example: WFH flexibility + evening support</text>
+  </g>
+
+  <!-- 3. COMPROMISING (Center) -->
+  <g transform="translate(325, 235)">
+    <rect width="280" height="95" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="20" y="26" font-size="15" font-weight="700" fill="#78350f">COMPROMISING (Split 50 - 50)</text>
+    <text x="20" y="46" font-size="11.5" font-weight="600" fill="#b45309">&#8226; Medium Assertive | Medium Cooperative</text>
+    <text x="20" y="65" font-size="11.5" fill="#451a03">&#8226; Both parties sacrifice to break deadlock</text>
+    <text x="20" y="83" font-size="11" font-weight="600" fill="#78350f">&#10148; Example: Union asks 10%, firm offers 4% &#8594; 7%</text>
+  </g>
+
+  <!-- 4. AVOIDING (Bottom Left) -->
+  <g transform="translate(160, 315)">
+    <rect width="250" height="85" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="18" y="25" font-size="14" font-weight="700" fill="#334155">AVOIDING (Lose - Lose / Delay)</text>
+    <text x="18" y="44" font-size="11" fill="#475569">&#8226; Low Assertive | Low Cooperative</text>
+    <text x="18" y="61" font-size="11" fill="#475569">&#8226; Withdraws or postpones minor conflict</text>
+    <text x="18" y="77" font-size="10.5" font-weight="600" fill="#1e293b">&#10148; Good when tempers are too hot</text>
+  </g>
+
+  <!-- 5. ACCOMMODATING (Bottom Right) -->
+  <g transform="translate(520, 315)">
+    <rect width="250" height="85" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="18" y="25" font-size="14" font-weight="700" fill="#5b21b6">ACCOMMODATING (Lose - Win)</text>
+    <text x="18" y="44" font-size="11" fill="#6d28d9">&#8226; Low Assertive | High Cooperative</text>
+    <text x="18" y="61" font-size="11" fill="#6d28d9">&#8226; Surrenders own goals to maintain peace</text>
+    <text x="18" y="77" font-size="10.5" font-weight="600" fill="#4c1d95">&#10148; Good when issue matters more to others</text>
+  </g>
+</svg>

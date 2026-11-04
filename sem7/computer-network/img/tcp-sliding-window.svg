@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="100%" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- Card background -->
+  <rect x="2" y="2" width="756" height="276" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">TCP Sender Sliding Window Buffer Organization</text>
+
+  <!-- Outer Window Bracket / Frame -->
+  <rect x="180" y="55" width="370" height="95" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="6 3"/>
+  <text x="365" y="48" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">Send Window (W = min(cwnd, rwnd))</text>
+
+  <!-- Byte Cells (Array of Bytes) -->
+  <!-- 1. Sent and ACKed -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="140" height="45" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="70" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">Category 1</text>
+    <text x="70" y="38" text-anchor="middle" font-size="11" fill="#64748b">Sent &amp; Acknowledged</text>
+
+    <!-- Inside Window: Sent not ACKed -->
+    <rect x="160" y="0" width="170" height="45" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="245" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">Category 2</text>
+    <text x="245" y="38" text-anchor="middle" font-size="11" fill="#dc2626">Sent, Awaiting ACK</text>
+
+    <!-- Inside Window: Usable Window -->
+    <rect x="340" y="0" width="170" height="45" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="425" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">Category 3 (Usable)</text>
+    <text x="425" y="38" text-anchor="middle" font-size="11" fill="#16a34a">Can Send Immediately</text>
+
+    <!-- Outside Window: Cannot send yet -->
+    <rect x="530" y="0" width="160" height="45" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="610" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">Category 4</text>
+    <text x="610" y="38" text-anchor="middle" font-size="11" fill="#94a3b8">Cannot Send Yet</text>
+  </g>
+
+  <!-- Pointers / Edge Indicators -->
+  <line x1="190" y1="175" x2="190" y2="125" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <text x="190" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Left Edge</text>
+  <text x="190" y="210" text-anchor="middle" font-size="10" fill="#64748b">(Last ACK Received)</text>
+
+  <line x1="370" y1="175" x2="370" y2="125" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="370" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">Next Byte to Send</text>
+  <text x="370" y="210" text-anchor="middle" font-size="10" fill="#64748b">(Sender Pointer)</text>
+
+  <line x1="550" y1="175" x2="550" y2="125" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <text x="550" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Right Edge</text>
+  <text x="550" y="210" text-anchor="middle" font-size="10" fill="#64748b">(Left Edge + Window)</text>
+
+  <!-- Sliding Direction Arrow -->
+  <line x1="280" y1="240" x2="480" y2="240" stroke="#0f172a" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="380" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Window Slides Right as ACKs Arrive</text>
+</svg>
